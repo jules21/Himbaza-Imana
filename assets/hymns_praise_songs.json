@@ -1,0 +1,3296 @@
+[
+  {
+    "id": "0",
+    "parent": "-1",
+    "title": "GUSHIMISHA",
+    "content": ""
+  },
+  {
+    "id": "554",
+    "parent": "-1",
+    "title": "GAKIZA",
+    "content": ""
+  },
+  {
+    "id": "3",
+    "parent": "554",
+    "title": " 1.Urukundo ruhebuje",
+    "content": "E8AC581E-CD9D-4AF9-BD3B-BFEC8677972E.txt"
+  },
+  {
+    "id": "5",
+    "parent": "554",
+    "title": " 2.nari naramenyerey'ibyaha",
+    "content": "5FAC6F18-B97D-4FC9-867D-1D33048D18A9.txt"
+  },
+  {
+    "id": "26",
+    "parent": "554",
+    "title": " 3.Nari narazimiriye kure",
+    "content": "2EEAE295-11F2-4DB1-9CC3-36F030BD9E09.txt"
+  },
+  {
+    "id": "27",
+    "parent": "554",
+    "title": " 4.Niboney’urukundo rw’Umukiza",
+    "content": "11ACE8F4-D6A2-4BFA-A5B0-5547B0832FD8.txt"
+  },
+  {
+    "id": "28",
+    "parent": "554",
+    "title": " 5.Sinzibarirwa igihe nakizwaga",
+    "content": "4B04FAD7-300E-48A8-9B01-D6725D02C8E3.txt"
+  },
+  {
+    "id": "29",
+    "parent": "554",
+    "title": " 6.Mu gihe cya Noheri",
+    "content": "B95CD52A-FD8C-48BF-8FFD-6D15B4A915C6.txt"
+  },
+  {
+    "id": "30",
+    "parent": "554",
+    "title": " 7.Nimuze mwese turirimbe",
+    "content": "078C6163-EBCA-42D1-93D4-8BC267D31B9B.txt"
+  },
+  {
+    "id": "36",
+    "parent": "554",
+    "title": " 8.Umucyo wabonekeye",
+    "content": "47B15F9C-B814-4F91-888A-23D70FE19EB9.txt"
+  },
+  {
+    "id": "37",
+    "parent": "554",
+    "title": " 9.Mfit’umukiza mwiza cyane",
+    "content": "99A8582F-7CC2-492E-8E2F-74D0AAF89819.txt"
+  },
+  {
+    "id": "38",
+    "parent": "554",
+    "title": " 10.Yesu wonger’unyigishe",
+    "content": "114E8C90-4E5A-4A3E-9ADE-CF946C4A2173.txt"
+  },
+  {
+    "id": "39",
+    "parent": "554",
+    "title": " 11.Ku musarab’umukiza",
+    "content": "0E9FED4E-F7BC-4C20-9B83-974FB0704D02.txt"
+  },
+  {
+    "id": "40",
+    "parent": "554",
+    "title": " 12.Waratubambiwe Mukiza",
+    "content": "2416EBD2-C4B5-4643-B3C8-49F1A10ABE5F.txt"
+  },
+  {
+    "id": "41",
+    "parent": "554",
+    "title": " 13.Mwana w’Imana",
+    "content": "94D69A3D-A6C7-4EAF-BBFE-0C28CFDB6179.txt"
+  },
+  {
+    "id": "42",
+    "parent": "554",
+    "title": " 14.Isezerano ry’umwami",
+    "content": "1229D72C-0D06-48A9-AABC-09BE14A1D812.txt"
+  },
+  {
+    "id": "43",
+    "parent": "554",
+    "title": " 15.Amasezerano yose",
+    "content": "1F932804-CF48-43B8-8F77-8744AC3F905E.txt"
+  },
+  {
+    "id": "44",
+    "parent": "554",
+    "title": " 16.Za mbaraga zamanukiye",
+    "content": "16A7CEDF-0D52-4C16-BBC2-F4384E335737.txt"
+  },
+  {
+    "id": "45",
+    "parent": "554",
+    "title": " 17.Umuriro wawe Mukiza",
+    "content": "23EE99DB-E06E-42A3-81A4-E9F4DC911940.txt"
+  },
+  {
+    "id": "46",
+    "parent": "554",
+    "title": " 18.Utwoherereze umwuka Wera",
+    "content": "BD3A4FF1-90FE-4AE6-B4D2-E085F35A470A.txt"
+  },
+  {
+    "id": "47",
+    "parent": "554",
+    "title": " 19.Mana  turategereje",
+    "content": "65E9B523-5614-4D19-A5B1-96AE2445C93E.txt"
+  },
+  {
+    "id": "48",
+    "parent": "554",
+    "title": " 20.Mana nyohererez’umuriro wawe",
+    "content": "8F29F83B-75F9-452A-BC2E-15D593D90B98.txt"
+  },
+  {
+    "id": "85",
+    "parent": "554",
+    "title": " 21. Nimuze tureb' imbere",
+    "content": "2449B8F1-F2F7-4D9A-998C-17009926A316.txt"
+  },
+  {
+    "id": "86",
+    "parent": "554",
+    "title": " 22.Yesu Mwami ni w’Umutabaz’ati",
+    "content": "3A1C46C7-D9DC-455A-899B-3120E07C80E1.txt"
+  },
+  {
+    "id": "87",
+    "parent": "554",
+    "title": " 23.Umurima  w’Imana ureze",
+    "content": "CA7D7EB7-907D-46FB-934B-1558FAA159D5.txt"
+  },
+  {
+    "id": "88",
+    "parent": "554",
+    "title": " 24.Yes’aduhamagaye",
+    "content": "5363A5D1-B3A8-4336-8202-2E5C40942724.txt"
+  },
+  {
+    "id": "89",
+    "parent": "554",
+    "title": " 25.Yew’ubabazwa n’ibyaha",
+    "content": "8C1975C7-7E8A-48F9-BEE4-ECCB9A2EDC51.txt"
+  },
+  {
+    "id": "90",
+    "parent": "554",
+    "title": " 26.Ndashakashak’umwana wanjye",
+    "content": "EE59C75E-8D75-449D-B95E-A3EC27662768.txt"
+  },
+  {
+    "id": "91",
+    "parent": "554",
+    "title": " 27.N’inkuru nziza kur’uyu munsi",
+    "content": "5BFC4BE2-3B5E-4E26-8550-9A7D12285E95.txt"
+  },
+  {
+    "id": "92",
+    "parent": "554",
+    "title": " 28.Twarabatuwe rwose",
+    "content": "FFC0D0A4-9410-41C1-A679-E6468E950E2F.txt"
+  },
+  {
+    "id": "93",
+    "parent": "554",
+    "title": " 29.Yesu ni w’ufit’izina ryiza",
+    "content": "1F3F8713-9203-4A94-B723-C722B4969FA8.txt"
+  },
+  {
+    "id": "94",
+    "parent": "554",
+    "title": " 30.Ubugingo bwacu ni bugufi cyane",
+    "content": "47A8821F-8FC1-4C3F-93AB-A4934BF0E997.txt"
+  },
+  {
+    "id": "95",
+    "parent": "554",
+    "title": " 31.Musamariyakazi",
+    "content": "509A520C-D7A8-465A-90FC-163557D49A68.txt"
+  },
+  {
+    "id": "96",
+    "parent": "554",
+    "title": " 32.Siyoni sanganir’umukwe",
+    "content": "5D2468F7-32F1-42B4-81CA-A6FAF5481B46.txt"
+  },
+  {
+    "id": "97",
+    "parent": "554",
+    "title": " 33.Yesu Mukiza yasezeranye",
+    "content": "B4E5D6D6-0DFA-41DB-9F31-DF782985A5AE.txt"
+  },
+  {
+    "id": "98",
+    "parent": "554",
+    "title": " 34.Nyoborwa mu nzira yose",
+    "content": "4974A512-A997-42FA-B252-E438B927B897.txt"
+  },
+  {
+    "id": "99",
+    "parent": "554",
+    "title": " 35.Ni Yesu wangize kub’umuvandimwe we",
+    "content": "91E552BC-5611-4457-8C82-7DA63F3E0B23.txt"
+  },
+  {
+    "id": "100",
+    "parent": "554",
+    "title": " 36.Ubugingo dufite mw’isi",
+    "content": "12F220FF-B791-4C4A-9348-E1B76801484F.txt"
+  },
+  {
+    "id": "101",
+    "parent": "554",
+    "title": " 37.Nubw’ugeze mu magorwa",
+    "content": "DBDDF657-15DE-4713-88E5-3303C575B445.txt"
+  },
+  {
+    "id": "102",
+    "parent": "554",
+    "title": " 38.Nowa  kuki wubak’iyo nkuge",
+    "content": "FF4952B2-C844-4F22-9AE3-AC8B48502A99.txt"
+  },
+  {
+    "id": "103",
+    "parent": "554",
+    "title": " 39.Kur’uyu munsi turashobora",
+    "content": "ACAEDF60-C269-4E0C-964C-B37D5A34A977.txt"
+  },
+  {
+    "id": "104",
+    "parent": "554",
+    "title": " 40.Iyo ndebeshej’ukwizera",
+    "content": "7BE0EB96-8FF3-4582-9A9C-4AB5BFF130C5.txt"
+  },
+  {
+    "id": "105",
+    "parent": "554",
+    "title": " 41.Ndahiriwe kuk’Umucunguzi",
+    "content": "F5DFC2FF-AFFF-47C9-819C-9B5E01E76ECC.txt"
+  },
+  {
+    "id": "106",
+    "parent": "554",
+    "title": " 42.Mfit’amahor’I Gologota",
+    "content": "73DE709D-4B41-45B3-AF91-B8957EEEF79C.txt"
+  },
+  {
+    "id": "107",
+    "parent": "554",
+    "title": " 43.Ngwin’unyigishe ya nkuru",
+    "content": "B2CBC783-7CEE-44E5-9973-174B8034B6D0.txt"
+  },
+  {
+    "id": "108",
+    "parent": "554",
+    "title": " 44.Izina rya Yesu Kristo",
+    "content": "E574B9F0-D1F8-4BB9-9444-F6371F2CBCAF.txt"
+  },
+  {
+    "id": "109",
+    "parent": "554",
+    "title": " 45.Iby’Imana ikora biratutangaza",
+    "content": "383CB7E8-7267-426E-B743-445B6D7C50D7.txt"
+  },
+  {
+    "id": "110",
+    "parent": "554",
+    "title": " 46.Yes’ubu tukuragij’uyu mwana",
+    "content": "7D591CF4-7D11-498B-8E0E-DFC700E0178D.txt"
+  },
+  {
+    "id": "111",
+    "parent": "554",
+    "title": " 47.Nigihe git’intambara igashira",
+    "content": "66FAB869-0C9A-483E-83D0-CEA894F25B74.txt"
+  },
+  {
+    "id": "112",
+    "parent": "554",
+    "title": " 48.Nahaw’ubugingo buhoraho rwose",
+    "content": "50A1C337-8ECC-4F03-B674-DED8509C305E.txt"
+  },
+  {
+    "id": "113",
+    "parent": "554",
+    "title": " 49.Tuzanezerwa cyane mu ijuru",
+    "content": "D59335EB-FBAA-482D-9A8C-06DCD93D3218.txt"
+  },
+  {
+    "id": "114",
+    "parent": "554",
+    "title": " 50.Ririmb’inkuru nziza",
+    "content": "F0264F95-8442-4353-A7A1-05A1A1C03AB6.txt"
+  },
+  {
+    "id": "115",
+    "parent": "554",
+    "title": " 51.Yemwe  bantu  mwese",
+    "content": "E2ECE681-A548-4E09-9C04-F57839107AF4.txt"
+  },
+  {
+    "id": "116",
+    "parent": "554",
+    "title": " 52.Mu bimenyetso byose",
+    "content": "0BF0CC58-37DC-477C-8722-75B289B6F45C.txt"
+  },
+  {
+    "id": "117",
+    "parent": "554",
+    "title": " 53.Umunsi umwe tuzabona",
+    "content": "1D92E40B-BF0F-4423-A8DD-8313BB6177E1.txt"
+  },
+  {
+    "id": "118",
+    "parent": "554",
+    "title": " 54.Har’umuns’izuba rizarasa",
+    "content": "F9E8B59E-24EA-448D-8458-3298D1846CF9.txt"
+  },
+  {
+    "id": "119",
+    "parent": "554",
+    "title": " 55.Nifuza cyane kuzagera muri wa murwa",
+    "content": "BF70A82B-8780-40BD-94DC-A7241DA2AE10.txt"
+  },
+  {
+    "id": "120",
+    "parent": "554",
+    "title": " 56.Twes’uko tur’aha,turanezerwa",
+    "content": "9386CE81-8593-4150-9793-113BD0C827D0.txt"
+  },
+  {
+    "id": "121",
+    "parent": "554",
+    "title": " 57.Umukiza wac’ashobora kutunezeza mw’isi",
+    "content": "710F1188-B962-4925-BC58-5371E21C55C5.txt"
+  },
+  {
+    "id": "122",
+    "parent": "554",
+    "title": " 58.Turi mu gihe cyiza cy’umunsi  w’agakiza",
+    "content": "9C1B1BA7-5DFD-4CCA-B0A2-D317938603DC.txt"
+  },
+  {
+    "id": "123",
+    "parent": "554",
+    "title": " 59.Dor’urukundo rw’Imana",
+    "content": "EBCF439C-2850-4EB0-81F0-17146EA9202D.txt"
+  },
+  {
+    "id": "124",
+    "parent": "554",
+    "title": " 60.Birakomeye  gusobanukirwa",
+    "content": "758F42B0-F677-4A59-8861-87718C9F711F.txt"
+  },
+  {
+    "id": "125",
+    "parent": "554",
+    "title": " 61.Kubw’urukundo rwinshi",
+    "content": "1BCEAFCE-E378-4466-9EA0-AF9172522D67.txt"
+  },
+  {
+    "id": "126",
+    "parent": "554",
+    "title": " 62.Mu gihe cyo gusenga",
+    "content": "79A67C1F-B1AA-4B41-A84E-D8A5FA4ABE93.txt"
+  },
+  {
+    "id": "127",
+    "parent": "554",
+    "title": " 63.Mwami Yesu uranyobore",
+    "content": "300AD6B4-F128-4911-88AF-2A9138087CD8.txt"
+  },
+  {
+    "id": "128",
+    "parent": "554",
+    "title": " 64.Uyu munsi mwiza w’urwibutso",
+    "content": "8BE96F1F-D382-432B-AA13-A04313B79A1A.txt"
+  },
+  {
+    "id": "129",
+    "parent": "554",
+    "title": " 65.Yesu n’ibyishimo byanjye",
+    "content": "32E18961-7854-456D-837F-DF068C1E77E4.txt"
+  },
+  {
+    "id": "130",
+    "parent": "554",
+    "title": " 66.Nageze ku Mwami Yesu",
+    "content": "D86C804B-492F-4E90-8E2F-BE6D92E4F60A.txt"
+  },
+  {
+    "id": "131",
+    "parent": "554",
+    "title": " 67.Ba bakobwa cumi biteguye",
+    "content": "0D2E60D6-DE38-4879-BE5E-37D44330241B.txt"
+  },
+  {
+    "id": "132",
+    "parent": "554",
+    "title": " 68.Nta bwo nkwiye kujya  kujya niganyira",
+    "content": "5FC2397A-D30B-412C-A47D-FC4B49BFBB58.txt"
+  },
+  {
+    "id": "133",
+    "parent": "554",
+    "title": " 69.Igihugu cyiza kiradutegereje",
+    "content": "928AC859-00D3-4A56-87F1-18B59B28420A.txt"
+  },
+  {
+    "id": "134",
+    "parent": "554",
+    "title": " 70.Reka  gutiny’ibizakubaho",
+    "content": "1A17B15B-944C-444A-923C-3CD6267792A2.txt"
+  },
+  {
+    "id": "135",
+    "parent": "554",
+    "title": " 71.Muri Betesida marayik’agezemo",
+    "content": "E30CAD1A-E511-40DA-A753-84482BB4B7F5.txt"
+  },
+  {
+    "id": "136",
+    "parent": "554",
+    "title": " 72.Iman’iri hamwe  natwe",
+    "content": "B57D2E73-C8BC-47EC-B387-0B864A3DBB7E.txt"
+  },
+  {
+    "id": "137",
+    "parent": "554",
+    "title": " 73.Nshut’iby’ushidikanyamo",
+    "content": "8DF191D6-1FEA-4A82-8324-41E0F395D0D3.txt"
+  },
+  {
+    "id": "138",
+    "parent": "554",
+    "title": " 74.Harihw igihugu  cyiza",
+    "content": "57034954-0CF3-4B82-AE30-A01EF4BF1585.txt"
+  },
+  {
+    "id": "139",
+    "parent": "554",
+    "title": " 75.Umv’iri jambo n’iryo kwizerwa",
+    "content": "887666E8-9685-4F09-A867-B9F1B2F9318E.txt"
+  },
+  {
+    "id": "140",
+    "parent": "554",
+    "title": " 76.Yemwe mwa bushyo  bw’Imana",
+    "content": "603E0741-1785-41BC-BAF5-3D0C7535F2BA.txt"
+  },
+  {
+    "id": "141",
+    "parent": "554",
+    "title": " 77.Mureb’urukundo rukomeye",
+    "content": "878A1C95-4D9C-440F-BD94-265047E0ED97.txt"
+  },
+  {
+    "id": "142",
+    "parent": "554",
+    "title": " 78.Uhamagarwa na Yesu",
+    "content": "F6E0D242-DD7B-4895-B17D-8B511FDE4EE7.txt"
+  },
+  {
+    "id": "143",
+    "parent": "554",
+    "title": " 79.Kubw’Umwami Yesu",
+    "content": "12387B37-E3C1-4B66-94F2-95CF255567A5.txt"
+  },
+  {
+    "id": "144",
+    "parent": "554",
+    "title": " 80.Nifuza kuzagera muri wa murwa",
+    "content": "1B35D370-00D2-4BD5-8892-782C71D79E92.txt"
+  },
+  {
+    "id": "145",
+    "parent": "554",
+    "title": " 81.Nkunda kumv’amakuru y’umurwa",
+    "content": "FCD2B98F-37F2-4F5B-BCF7-0130FD98A5E5.txt"
+  },
+  {
+    "id": "146",
+    "parent": "554",
+    "title": " 82.Tuzajyanwa  kuri  wa munsi",
+    "content": "486BE947-DFFC-469D-8578-DFCDD92F9E87.txt"
+  },
+  {
+    "id": "147",
+    "parent": "554",
+    "title": " 83.Amaraso yawe,Mukiza",
+    "content": "6B64ADAE-4156-46B1-8C6E-6A71C0609C16.txt"
+  },
+  {
+    "id": "148",
+    "parent": "554",
+    "title": " 84.Mbes’aho wamenye rya zina",
+    "content": "A63A7F8A-4768-4D3E-A08E-F971B9688094.txt"
+  },
+  {
+    "id": "149",
+    "parent": "554",
+    "title": " 85.Urukundo rw’Umukiza",
+    "content": "C6FC3441-DE8E-4583-8207-C6651C5417A7.txt"
+  },
+  {
+    "id": "150",
+    "parent": "554",
+    "title": " 86.Uduh’Umwuka wawe",
+    "content": "9636C5BC-42E4-45F4-94AA-961031C1B5F9.txt"
+  },
+  {
+    "id": "151",
+    "parent": "554",
+    "title": " 87.Umugisha w’Imana",
+    "content": "561DF20F-A92C-4A5F-9F58-86D549DFD4FA.txt"
+  },
+  {
+    "id": "152",
+    "parent": "554",
+    "title": " 88.Hazabahw igihe cy’imperuka",
+    "content": "7658D709-C773-4860-A90A-6A28F724176C.txt"
+  },
+  {
+    "id": "153",
+    "parent": "554",
+    "title": " 89.Icyubahiro n’icyawe",
+    "content": "A98733A0-C7D0-4069-9A82-BF44C15E4F94.txt"
+  },
+  {
+    "id": "154",
+    "parent": "554",
+    "title": " 90.Ai Mana  y’ukuri",
+    "content": "30033B8B-3BD7-493B-868A-C25768D413AE.txt"
+  },
+  {
+    "id": "155",
+    "parent": "554",
+    "title": " 91.Namaze  kumeny’ibyiza",
+    "content": "5C20837D-F4B2-4CD0-98D8-437AD6CC2B66.txt"
+  },
+  {
+    "id": "156",
+    "parent": "554",
+    "title": " 92.Mw ijuru ni heza cyane",
+    "content": "D4534989-A734-4C96-9F9B-A63E5CBA9AEA.txt"
+  },
+  {
+    "id": "157",
+    "parent": "554",
+    "title": " 93.Yesu Mukiza ni we wanshunguye",
+    "content": "6417E91F-EE02-4A15-A050-AE0446431B7A.txt"
+  },
+  {
+    "id": "158",
+    "parent": "554",
+    "title": " 94.Nezerwa, mutima wanjye",
+    "content": "DF29C6EF-746A-4FE0-B712-51187208CCD9.txt"
+  },
+  {
+    "id": "159",
+    "parent": "554",
+    "title": " 95.Ndashaka kuririmbira Yesu",
+    "content": "046E4E37-C167-49A2-9CA5-BF21AA5B57AF.txt"
+  },
+  {
+    "id": "160",
+    "parent": "554",
+    "title": " 96.Mukiza  wanjye  wagiye mw ijuru",
+    "content": "401007DD-02B5-469F-B734-E1CEC19CB099.txt"
+  },
+  {
+    "id": "161",
+    "parent": "554",
+    "title": " 97.Ifeza n’izahabu ",
+    "content": "B959DDBA-5BC1-4EB9-8CEB-DEB09A426A7C.txt"
+  },
+  {
+    "id": "162",
+    "parent": "554",
+    "title": " 98.Abazaba bakijijwe bazateranira hamwe",
+    "content": "B3637101-16D6-4ABA-ACC5-98098CB4DBDF.txt"
+  },
+  {
+    "id": "163",
+    "parent": "554",
+    "title": " 99.Nshatse kugukurira buri munsi",
+    "content": "2D2E2527-9D46-41FD-B73B-83AF45A02B32.txt"
+  },
+  {
+    "id": "164",
+    "parent": "554",
+    "title": " 100.Abahoze  mu mwijima",
+    "content": "B1BFD6CE-73FF-45C9-8D58-6AD13DFCD574.txt"
+  },
+  {
+    "id": "165",
+    "parent": "554",
+    "title": " 101.Habayeh’umusozi warih’umusaraba",
+    "content": "87594A3F-AE1D-41AE-AA07-0A2640018F79.txt"
+  },
+  {
+    "id": "166",
+    "parent": "554",
+    "title": " 102.Ump’akanya,Yesu,nze  nkwegera",
+    "content": "74690027-560E-4B71-A0DD-B70C87CD4339.txt"
+  },
+  {
+    "id": "167",
+    "parent": "554",
+    "title": " 103.Yesu yazutse n’ukuri",
+    "content": "F498B6D6-DE87-4BC5-B7A8-5D1AAB37ECAA.txt"
+  },
+  {
+    "id": "168",
+    "parent": "554",
+    "title": " 104.Yesu,ni  wowe mucyo",
+    "content": "FBDD4CB3-2945-49EB-B67F-BE3FA8E58B84.txt"
+  },
+  {
+    "id": "169",
+    "parent": "554",
+    "title": " 105.Narimboshwe rwose mu mwijima",
+    "content": "5E1FAC82-D0CD-4763-B0B5-43FDCA9BAD49.txt"
+  },
+  {
+    "id": "170",
+    "parent": "554",
+    "title": " 106.Abantu bose batuye mw’isi",
+    "content": "31E30EDF-D40A-4541-9AE8-43329D0F5080.txt"
+  },
+  {
+    "id": "171",
+    "parent": "554",
+    "title": " 107.Twemezwa n’ki ko tuzagera mw ijuru",
+    "content": "D6484561-E19E-4FA2-A354-D9013180D62D.txt"
+  },
+  {
+    "id": "172",
+    "parent": "554",
+    "title": " 108.Yew’usonzey’agakiza",
+    "content": "F4819680-EB59-455F-B401-1D7ED755682D.txt"
+  },
+  {
+    "id": "173",
+    "parent": "554",
+    "title": " 109.Pasaka yacu niy’itwibutsa",
+    "content": "C9695E50-1E99-42D9-99DE-7A319B95B7D7.txt"
+  },
+  {
+    "id": "174",
+    "parent": "554",
+    "title": " 110.N’utagir’umwete mu nzira y’Imana.",
+    "content": "C3379A55-3CD9-4DFF-B76A-C70FEDA12E00.txt"
+  },
+  {
+    "id": "1",
+    "parent": "0",
+    "title": "1.Ur'uwera",
+    "content": "DF86D04E-8C17-48E5-B480-B792D2983580.txt"
+  },
+  {
+    "id": "4",
+    "parent": "0",
+    "title": "2.Dushim'Imana",
+    "content": "04239CDC-394A-4B31-B579-51BB3761DC94.txt"
+  },
+  {
+    "id": "8",
+    "parent": "0",
+    "title": "3.Mwa bari mw’isi yose mwe",
+    "content": "5F067DC2-8116-4216-8A78-124EF327CBE1.txt"
+  },
+  {
+    "id": "9",
+    "parent": "0",
+    "title": "4.Dushime cyan’izina rye",
+    "content": "29303A9C-F77D-47B4-BD0F-E033228258E3.txt"
+  },
+  {
+    "id": "10",
+    "parent": "0",
+    "title": "5.Duhimbaz’Uwitek’Imana",
+    "content": "FD0AC002-FF0F-4E1F-B733-88E2A5F19410.txt"
+  },
+  {
+    "id": "11",
+    "parent": "0",
+    "title": "6.Nagir’ indim’igihumbi",
+    "content": "F4DF5926-CD2D-4074-9E1C-AD49E8EF1C49.txt"
+  },
+  {
+    "id": "12",
+    "parent": "0",
+    "title": "7.Dor’abera bo mw’ijuru",
+    "content": "220C9E9E-1777-4FF6-9209-336D5D958E8D.txt"
+  },
+  {
+    "id": "13",
+    "parent": "0",
+    "title": "8.Izina rya Yesu turaryubaha",
+    "content": "90739F97-4F88-477A-9F82-C31A83786A2A.txt"
+  },
+  {
+    "id": "14",
+    "parent": "0",
+    "title": "9.Yes’ashimwe,turamushim’Umukiza",
+    "content": "2D364BFB-296F-42D5-9E54-6F931DE35F33.txt"
+  },
+  {
+    "id": "15",
+    "parent": "0",
+    "title": "10.Nshim'Umwami wo mw'ijuru",
+    "content": "820B5C34-4692-459A-8191-8B92DBD7FB6B.txt"
+  },
+  {
+    "id": "16",
+    "parent": "0",
+    "title": "11.Mpimbariz’Iman’ibyo yankoreye",
+    "content": "1936D329-1950-466F-A74F-6AB003F107F5.txt"
+  },
+  {
+    "id": "17",
+    "parent": "0",
+    "title": "12.Tunezerewe k’Umukiza",
+    "content": "FB84188A-691B-46B1-AF58-A10E4FFAEC4A.txt"
+  },
+  {
+    "id": "18",
+    "parent": "0",
+    "title": "13.Uwambitswe ker’ikamba",
+    "content": "B58E8A5D-91B3-44B9-B598-C8C29A98DE8A.txt"
+  },
+  {
+    "id": "19",
+    "parent": "0",
+    "title": "14.Mana,turaguhimbaza",
+    "content": "B7D34A69-5657-4E12-87AB-22128FB95997.txt"
+  },
+  {
+    "id": "20",
+    "parent": "0",
+    "title": "15.Nimushim’izina ryiza",
+    "content": "99ECA88C-0560-423D-AA3F-120ADFA9F685.txt"
+  },
+  {
+    "id": "21",
+    "parent": "0",
+    "title": "16.Aba Yesu bishimira",
+    "content": "9DBBE323-3B0A-4B2C-8F0E-80D1848D8277.txt"
+  },
+  {
+    "id": "22",
+    "parent": "0",
+    "title": "17.Nshim’Umuremy’uhoraho",
+    "content": "58017CB5-8502-4567-8890-2E140A5D96B8.txt"
+  },
+  {
+    "id": "23",
+    "parent": "0",
+    "title": "18.Umwungeri wacu ni We",
+    "content": "138DD3D3-7F08-437D-BAE1-CABE6292C57E.txt"
+  },
+  {
+    "id": "24",
+    "parent": "0",
+    "title": "19.Ijuru ryawe ,Mana",
+    "content": "521A6CFC-F89A-43C8-8935-DA967D05CCA9.txt"
+  },
+  {
+    "id": "25",
+    "parent": "0",
+    "title": "20.Mbony’Umukiza mwiza",
+    "content": "077B345D-B809-4D01-B8C7-EF08D2E33B31.txt"
+  },
+  {
+    "id": "31",
+    "parent": "0",
+    "title": "21.Mwami,turagushima",
+    "content": "249161ED-C961-46AC-A428-C3B01AFCA789.txt"
+  },
+  {
+    "id": "32",
+    "parent": "0",
+    "title": "22.Mwami mwiza w’ijuru",
+    "content": "F0970684-8697-4ACB-8BD7-C02CAFFA0610.txt"
+  },
+  {
+    "id": "33",
+    "parent": "0",
+    "title": "23.Mana yo mw’ ijuru",
+    "content": "75E60019-593A-4DB3-8AAC-D74292810C8C.txt"
+  },
+  {
+    "id": "34",
+    "parent": "0",
+    "title": "24.Njya nshima,nshima",
+    "content": "4461E31E-7015-451E-8862-9827712F23F4.txt"
+  },
+  {
+    "id": "35",
+    "parent": "0",
+    "title": "25.Uwiteka n’umunyambabazi",
+    "content": "AC6595CE-0D36-4202-8C2E-C83CD714CB7F.txt"
+  },
+  {
+    "id": "49",
+    "parent": "0",
+    "title": "26.Mana Rurema,ndagushima",
+    "content": "4A9F15CE-2B73-4DD7-BDEA-35C67A77E8D2.txt"
+  },
+  {
+    "id": "50",
+    "parent": "0",
+    "title": "27.Mutabazi wacu Yesu",
+    "content": "CE13CC7E-6BB0-4514-B4CA-D42B4FC3D9E3.txt"
+  },
+  {
+    "id": "51",
+    "parent": "0",
+    "title": "28.Muganga wacu  ni Yesu",
+    "content": "ADBA6014-F982-43C5-BD09-98468CAD5DF6.txt"
+  },
+  {
+    "id": "52",
+    "parent": "0",
+    "title": "29.Uduhagarare hagati",
+    "content": "E9B8D795-1664-4C51-AF98-45ADE82D468F.txt"
+  },
+  {
+    "id": "53",
+    "parent": "0",
+    "title": "30.Ai Mukunzi  wanjye  we",
+    "content": "D4FAC906-CCC9-4974-9015-BC031446207C.txt"
+  },
+  {
+    "id": "54",
+    "parent": "0",
+    "title": "31.Mutabaz’ubuntu bwawe",
+    "content": "B5C55137-A1EE-4D5C-A666-64F0EAFDDFFB.txt"
+  },
+  {
+    "id": "55",
+    "parent": "0",
+    "title": "32.Mwam’utuvuburir’imvura",
+    "content": "48734BD2-CFB0-4CE2-B564-E0A6D22DF8CE.txt"
+  },
+  {
+    "id": "56",
+    "parent": "0",
+    "title": "33.Ndagushimiye,Mukiza",
+    "content": "6146B3E1-6425-4BC8-94F0-802E144EF921.txt"
+  },
+  {
+    "id": "57",
+    "parent": "0",
+    "title": "34.Ndusheho kukwegera",
+    "content": "0355E424-69BF-4A1C-A487-315E867EBD16.txt"
+  },
+  {
+    "id": "58",
+    "parent": "0",
+    "title": "35.Umpe kukwegera",
+    "content": "F59C079C-76AD-4424-BDAC-F2DD68C28D48.txt"
+  },
+  {
+    "id": "59",
+    "parent": "0",
+    "title": "36.Ntumpiteho  Mukiza ",
+    "content": "76D22E69-0F5E-42CC-BD84-AB1D153AED3E.txt"
+  },
+  {
+    "id": "60",
+    "parent": "0",
+    "title": "37.Tuguman’iteka",
+    "content": "8CF80E82-8A90-4F41-8FA1-F3B326F619C4.txt"
+  },
+  {
+    "id": "61",
+    "parent": "0",
+    "title": "38.Ai Mana ndondor’umenye",
+    "content": "E0C3B661-2756-4205-96D6-A4BB7D401D3D.txt"
+  },
+  {
+    "id": "62",
+    "parent": "0",
+    "title": "39.Ngwino,mutima wanjye",
+    "content": "E1F56421-94A0-4D20-BAD2-CF8F278A78A5.txt"
+  },
+  {
+    "id": "63",
+    "parent": "0",
+    "title": "40.Ndakwizeye,Yesu",
+    "content": "98F9D7EB-8134-4DB9-AC4A-F4F6836C4667.txt"
+  },
+  {
+    "id": "64",
+    "parent": "0",
+    "title": "41.Nasezeranije guhora",
+    "content": "9C5C11BA-9892-4058-B146-86915D2357D7.txt"
+  },
+  {
+    "id": "65",
+    "parent": "0",
+    "title": "42.Mwami wanjye,nshaka kuba",
+    "content": "6B6A32A5-A3E8-4EFC-BB9E-8263B8152391.txt"
+  },
+  {
+    "id": "66",
+    "parent": "0",
+    "title": "43.Ngwin’unyigishe ya nkuru",
+    "content": "7FC9D0E3-9BE1-468B-9DB4-7839067B4216.txt"
+  },
+  {
+    "id": "67",
+    "parent": "0",
+    "title": "44.Tubabarire,duh’umugisha",
+    "content": "1E94B531-D4B7-4C1E-9505-79089FBEFC3B.txt"
+  },
+  {
+    "id": "68",
+    "parent": "0",
+    "title": "45.Ndagushaka,Mwami Yesu",
+    "content": "858EA56D-B4CE-4C22-9EE0-98B277FE7A44.txt"
+  },
+  {
+    "id": "69",
+    "parent": "0",
+    "title": "46.Unjy’imbere,Man’isumba byose",
+    "content": "D957B185-E1A9-4163-A40F-4C5BFCFF5B38.txt"
+  },
+  {
+    "id": "70",
+    "parent": "0",
+    "title": "47.Ube maso, Mukristo",
+    "content": "340645B5-9415-4D67-B379-BD2BBDD6E751.txt"
+  },
+  {
+    "id": "71",
+    "parent": "0",
+    "title": "48.Ni jye,ni jye gusa",
+    "content": "21DFB510-7B58-4E5C-8900-46EC1E9FCC2A.txt"
+  },
+  {
+    "id": "72",
+    "parent": "0",
+    "title": "49.Ibihe nseng' Uwiteka",
+    "content": "ABD91733-9EC5-41F2-83FC-5FE573D0341E.txt"
+  },
+  {
+    "id": "73",
+    "parent": "0",
+    "title": "50.Muze mwenyine, twihererane",
+    "content": "2C6C9E8A-F9C8-4288-BA1F-9952219CD586.txt"
+  },
+  {
+    "id": "74",
+    "parent": "0",
+    "title": "51.Muze. musange Yes' ubakunda",
+    "content": "12D94DD6-0DEC-4B0A-9C3F-8AA86E8DD384.txt"
+  },
+  {
+    "id": "75",
+    "parent": "0",
+    "title": "52.Utahe ! Utahe !",
+    "content": "42BECA12-B1B6-454A-9D8C-0D8AF834C000.txt"
+  },
+  {
+    "id": "76",
+    "parent": "0",
+    "title": "53.Nimusang’ Umwami Yesu",
+    "content": "4218C83C-3037-476B-85C9-4116D5058F89.txt"
+  },
+  {
+    "id": "77",
+    "parent": "0",
+    "title": "54.Yemwe mwes' abananiwe",
+    "content": "7DA3FCF0-8219-4106-8E99-E753D003E12A.txt"
+  },
+  {
+    "id": "78",
+    "parent": "0",
+    "title": "55.Yes' araduhamagara",
+    "content": "E48AE921-EA44-49DB-81D9-92E9F3EC9739.txt"
+  },
+  {
+    "id": "79",
+    "parent": "0",
+    "title": "56.Yes' aragutegereza",
+    "content": "13BDCC42-85E0-4B48-98AD-7A504B93F4A5.txt"
+  },
+  {
+    "id": "80",
+    "parent": "0",
+    "title": "57.Yes' araguhamagara ",
+    "content": "A4E0E1DA-79B9-4E49-B513-2FFEAD3D9641.txt"
+  },
+  {
+    "id": "81",
+    "parent": "0",
+    "title": "58.Shobuj' uguhamagara",
+    "content": "093630D7-B13D-444D-9AC1-F67C65EA13B2.txt"
+  },
+  {
+    "id": "82",
+    "parent": "0",
+    "title": "59.Nimuze, mwa ndushyi mwe",
+    "content": "FA365F53-D47F-4CBF-962D-F77787A907D7.txt"
+  },
+  {
+    "id": "83",
+    "parent": "0",
+    "title": "60.We,mutim’urira",
+    "content": "7EE8D7E0-A1B7-408A-9A19-18E8C7A35555.txt"
+  },
+  {
+    "id": "175",
+    "parent": "0",
+    "title": "61. Umwuk' ukubwira",
+    "content": "FED73DBE-C066-4AA7-87FB-E798918E9EC6.txt"
+  },
+  {
+    "id": "176",
+    "parent": "0",
+    "title": "62.Ntumwa  za Yesu",
+    "content": "2B4DA8F0-0474-4030-9432-760501D2CC54.txt"
+  },
+  {
+    "id": "177",
+    "parent": "0",
+    "title": "63.Yemwe,banyabyaha mwe",
+    "content": "7A456FB0-0531-464F-B980-056C01228E2E.txt"
+  },
+  {
+    "id": "178",
+    "parent": "0",
+    "title": "64.Muze ku Mwami  w’ubugingo",
+    "content": "3E93D59C-FFBF-44C2-89BB-6F6F2023FC4F.txt"
+  },
+  {
+    "id": "179",
+    "parent": "0",
+    "title": "65.Musang’Umwami ugir’ubuntu",
+    "content": "BCD1D832-ACC3-4CE8-862C-6CE0A05BEF28.txt"
+  },
+  {
+    "id": "180",
+    "parent": "0",
+    "title": "66.Ngwino,ngukize,mwangizi",
+    "content": "E18E0DEE-08C3-47E2-B1C6-F152330C5579.txt"
+  },
+  {
+    "id": "181",
+    "parent": "0",
+    "title": "67.Uhagaze,Mukiza",
+    "content": "3779F069-6632-44AD-AE13-A3BCB6729CDF.txt"
+  },
+  {
+    "id": "182",
+    "parent": "0",
+    "title": "68.Ntakindi  gihesha gukiranuka",
+    "content": "C6FE3035-FFAD-484E-A2C1-C8BB765CAC1E.txt"
+  },
+  {
+    "id": "183",
+    "parent": "0",
+    "title": "69.Nkuko  Mose yamanits’inzoka",
+    "content": "05C693AC-D9FA-42AD-AB09-BE7E0A2512B6.txt"
+  },
+  {
+    "id": "184",
+    "parent": "0",
+    "title": "70.Nimuze mwese kumv’inkuru",
+    "content": "2D2CE6EC-88D9-41E8-AC1C-82E4794A0576.txt"
+  },
+  {
+    "id": "185",
+    "parent": "0",
+    "title": "71.Hagarara,munyabyaha",
+    "content": "D4E31847-21C0-45BB-8FF3-6B70581ABB1D.txt"
+  },
+  {
+    "id": "186",
+    "parent": "0",
+    "title": "72.Twaheze mu mwijima",
+    "content": "66010971-FFCD-4066-9BA6-226853209B29.txt"
+  },
+  {
+    "id": "187",
+    "parent": "0",
+    "title": "73.Ngwino zana ibyaha byawe",
+    "content": "286DA844-86BA-4BC5-9B78-82D222D811FC.txt"
+  },
+  {
+    "id": "188",
+    "parent": "0",
+    "title": "74.Jye mfit’Umukiz’ujy’umvugira",
+    "content": "ABE82F36-5525-42E0-86CB-4917902D34BC.txt"
+  },
+  {
+    "id": "189",
+    "parent": "0",
+    "title": "75.Yesu ni we  Nshuti yacu",
+    "content": "235DDECA-23F2-4130-885F-62286F6D0456.txt"
+  },
+  {
+    "id": "190",
+    "parent": "0",
+    "title": "76.Bene wacu bo mw isi",
+    "content": "F61942BF-D8A5-4334-B92C-0C0874E88824.txt"
+  },
+  {
+    "id": "191",
+    "parent": "0",
+    "title": "77.Umva,munyabyaha  we",
+    "content": "F4F2BAC9-8024-465F-8145-5E7CBCA3C725.txt"
+  },
+  {
+    "id": "192",
+    "parent": "0",
+    "title": "78.Kera har’umubibyi",
+    "content": "C16472C0-55B2-46B1-ADDE-AFA2FEE40255.txt"
+  },
+  {
+    "id": "193",
+    "parent": "0",
+    "title": "79.Jy’uhor’undinganyirije",
+    "content": "C08E229C-FFFD-482E-99E0-0D549311898A.txt"
+  },
+  {
+    "id": "194",
+    "parent": "0",
+    "title": "80.Mwa bitang’igicuri mwe",
+    "content": "BABF6CEA-435C-4263-8F79-D506AF762D0C.txt"
+  },
+  {
+    "id": "195",
+    "parent": "0",
+    "title": "81.Teg’ amatwi, wumve",
+    "content": "FCD64F4A-454A-4C65-8DC2-BCD28D8434E7.txt"
+  },
+  {
+    "id": "196",
+    "parent": "0",
+    "title": "82.Mwami wakomeretse",
+    "content": "DDE50FE7-1EB6-4B95-9195-9073A7BFDAC1.txt"
+  },
+  {
+    "id": "197",
+    "parent": "0",
+    "title": "83.Umutwaro  wanjye  krisito",
+    "content": "008F5082-7967-4682-8261-C75BD83096FE.txt"
+  },
+  {
+    "id": "198",
+    "parent": "0",
+    "title": "84.N’iki cyankiz’ibyaha",
+    "content": "70C5D4CA-34CC-4CD8-B880-DA34B3745E04.txt"
+  },
+  {
+    "id": "199",
+    "parent": "0",
+    "title": "85.Amaraso  y’Umucunguzi",
+    "content": "001E0956-D703-47A8-AA1F-F41007F797F0.txt"
+  },
+  {
+    "id": "200",
+    "parent": "0",
+    "title": "86.Amaraso y’Umukiza",
+    "content": "CAF90E1E-D597-4F8D-9201-8950B9972CFA.txt"
+  },
+  {
+    "id": "201",
+    "parent": "0",
+    "title": "87.Mbe,ntiwaturw’ibyo byaha",
+    "content": "5922C96F-95F7-4E94-BEFE-B25A9EB995AA.txt"
+  },
+  {
+    "id": "202",
+    "parent": "0",
+    "title": "88.Numva Yes’anyemeza",
+    "content": "06CF7001-42A3-46C9-B8E0-64A34D2E49E9.txt"
+  },
+  {
+    "id": "203",
+    "parent": "0",
+    "title": "89.Yesu yaje kunshaka",
+    "content": "E7DB6557-D4E7-47B0-8A36-B924660EFDD2.txt"
+  },
+  {
+    "id": "204",
+    "parent": "0",
+    "title": "90.Nari kure y’Imana mu ngoyi",
+    "content": "D6F6F35C-6082-446F-A387-0DEE00493015.txt"
+  },
+  {
+    "id": "205",
+    "parent": "0",
+    "title": "91.Ai Gitare cy’Imana",
+    "content": "DFEA70F6-1850-4B47-AC91-3316F9EA881E.txt"
+  },
+  {
+    "id": "206",
+    "parent": "0",
+    "title": "92.Ushimwe, Mana",
+    "content": "5CDC276C-E025-4068-B167-D35E4565E8AA.txt"
+  },
+  {
+    "id": "207",
+    "parent": "0",
+    "title": "93.Umunsi mwiza nibuka",
+    "content": "93BC3963-D4C7-49F3-8A09-260431235AE7.txt"
+  },
+  {
+    "id": "208",
+    "parent": "0",
+    "title": "94.Ubugingo  bwanjye  bwa",
+    "content": "DD5BEFBE-86BD-4FC1-A897-DC0118888124.txt"
+  },
+  {
+    "id": "209",
+    "parent": "0",
+    "title": "95.Ibyaha byanjye,Yesu yarabyikoreye",
+    "content": "FEE7CD80-86E4-4B71-B753-0F9C53A716D8.txt"
+  },
+  {
+    "id": "210",
+    "parent": "0",
+    "title": "96.Iby’Iman’ijy’inkorera",
+    "content": "228B8950-3F42-4974-BD03-683183BEE3DF.txt"
+  },
+  {
+    "id": "211",
+    "parent": "0",
+    "title": "97.Nishimiye ko menye rwose Yesu",
+    "content": "70126F37-4518-4EF3-9985-FF9E66D76F2A.txt"
+  },
+  {
+    "id": "212",
+    "parent": "0",
+    "title": "98.Ndumva k’umutim’ukeye",
+    "content": "E1E32CF1-B7FF-44C5-94B2-A710359BB983.txt"
+  },
+  {
+    "id": "213",
+    "parent": "0",
+    "title": "99.Unkunda n’Umwana w’Imana",
+    "content": "AA42E224-60BF-408E-AD9E-2A58B8F4E9B8.txt"
+  },
+  {
+    "id": "214",
+    "parent": "0",
+    "title": "100.Nzaririmb’igitangaza",
+    "content": "AF68C1D4-791B-4079-900D-95CAB12577A3.txt"
+  },
+  {
+    "id": "215",
+    "parent": "0",
+    "title": "101.Nabony’uburuhukiro",
+    "content": "5ECAF109-45E5-4D41-AAB9-3DA75FD1ECA1.txt"
+  },
+  {
+    "id": "216",
+    "parent": "0",
+    "title": "102.Iby’isi Yesu yabinkuyemo",
+    "content": "BB74CA4C-D969-4330-9D7E-51701D1FF6CE.txt"
+  },
+  {
+    "id": "217",
+    "parent": "0",
+    "title": "103.Kera nari mw’isayo",
+    "content": "D2AA251C-3811-4292-98BC-E88F084358A5.txt"
+  },
+  {
+    "id": "218",
+    "parent": "0",
+    "title": "104.Imbabazi  z’Umukiza",
+    "content": "69C9638B-527F-4E6E-88E4-39A3510B96E2.txt"
+  },
+  {
+    "id": "219",
+    "parent": "0",
+    "title": "105.Ubuntu bw’Imana",
+    "content": "3663E9A1-19D7-4193-8DBC-49ED9CA9FAFC.txt"
+  },
+  {
+    "id": "220",
+    "parent": "0",
+    "title": "106.Sintew’isoni na Yesu",
+    "content": "0C4320D0-E39F-44F1-818E-A867AB4046E2.txt"
+  },
+  {
+    "id": "221",
+    "parent": "0",
+    "title": "107.Nkomeze njye niringira",
+    "content": "55B34706-D9BF-46A7-B13E-95C3561B057A.txt"
+  },
+  {
+    "id": "222",
+    "parent": "0",
+    "title": "108.jye nd’umukristo",
+    "content": "B6F4D95B-997C-42D0-A3D1-C356EDE8A400.txt"
+  },
+  {
+    "id": "223",
+    "parent": "0",
+    "title": "109.Nyuzwe n’ubucuti bwo mw ijuru",
+    "content": "246415E8-B4C6-4BB6-BD1C-6A83ECAD2870.txt"
+  },
+  {
+    "id": "224",
+    "parent": "0",
+    "title": "110.Igituma nkunda Yesu",
+    "content": "EFAA287D-3CA6-4E42-B146-6C49B7A3AB08.txt"
+  },
+  {
+    "id": "225",
+    "parent": "0",
+    "title": "111.Izina  ryiza rihebuje",
+    "content": "5D9347F7-07BF-403E-9E48-7F05EC5F77AD.txt"
+  },
+  {
+    "id": "226",
+    "parent": "0",
+    "title": "112.Nzi k'Umukiz'ankunda",
+    "content": "AEA280A5-8BEF-4410-B156-750E34D66BE1.txt"
+  },
+  {
+    "id": "227",
+    "parent": "0",
+    "title": "113.Nkunda kwizigira Yesu",
+    "content": "8BF8E1C5-7748-4CED-85FC-DFCDF652644B.txt"
+  },
+  {
+    "id": "228",
+    "parent": "0",
+    "title": "114.Kuv’ubu, sintiny’ibizaba",
+    "content": "FE912ABB-24DA-403E-9862-1420E8DFDBAE.txt"
+  },
+  {
+    "id": "229",
+    "parent": "0",
+    "title": "115.Nabony’Umukunzi mwiza",
+    "content": "6A6287BA-5FD3-4DCF-86A8-0395BAC6D057.txt"
+  },
+  {
+    "id": "230",
+    "parent": "0",
+    "title": "116.Numva Yes’ ampamagara",
+    "content": "E7A0545A-03A6-4BC6-9175-1E50C8C6A44D.txt"
+  },
+  {
+    "id": "231",
+    "parent": "0",
+    "title": "117.Numvise Yes’ambwira",
+    "content": "336A0403-6A6B-4E6C-8005-B38E9664D986.txt"
+  },
+  {
+    "id": "232",
+    "parent": "0",
+    "title": "118.Ibyaha byanjye byose",
+    "content": "614500A5-E98A-4937-A3E8-C2AAC42F75DD.txt"
+  },
+  {
+    "id": "233",
+    "parent": "0",
+    "title": "119.Yesu murutisha byose",
+    "content": "92ECB328-B7DE-490B-ACB6-8D2D17E07815.txt"
+  },
+  {
+    "id": "234",
+    "parent": "0",
+    "title": "120.Mw ijur’imbere  y’Imana",
+    "content": "2451DA62-9C03-4F3D-8415-4217C1AE5196.txt"
+  },
+  {
+    "id": "235",
+    "parent": "0",
+    "title": "121.Yesu ni We mucyo wanjye",
+    "content": "ED2F62A3-99C5-46F2-90FA-24F398B22600.txt"
+  },
+  {
+    "id": "236",
+    "parent": "0",
+    "title": "122.Ukunda kujy’umbabarira",
+    "content": "E37A2801-B017-4963-89E1-34EE06B0157D.txt"
+  },
+  {
+    "id": "237",
+    "parent": "0",
+    "title": "123.Yesu ni Wowe  musa",
+    "content": "A6B1DF7F-DEDF-439F-AB65-500C7284EFFD.txt"
+  },
+  {
+    "id": "238",
+    "parent": "0",
+    "title": "124.Yes'amp'amahoro",
+    "content": "E0E65773-6169-4C6E-B28E-76C185E10427.txt"
+  },
+  {
+    "id": "239",
+    "parent": "0",
+    "title": "125.Ubw’Umwami  Yes’ankunda",
+    "content": "EA8AE4FA-BF57-462B-855D-73FBA7626EA9.txt"
+  },
+  {
+    "id": "240",
+    "parent": "0",
+    "title": "126.Yesu tuguhungiyeho",
+    "content": "CC2DA2B1-E986-45B4-B887-ACF2D47F364C.txt"
+  },
+  {
+    "id": "241",
+    "parent": "0",
+    "title": "127.Mukiza,numvis’ijwi",
+    "content": "0810DEBD-57C9-456E-BFEA-234413739748.txt"
+  },
+  {
+    "id": "242",
+    "parent": "0",
+    "title": "128.Ubu nj’uko ndi",
+    "content": "C6AE9B54-9577-44B2-9B32-57D41ACCF034.txt"
+  },
+  {
+    "id": "243",
+    "parent": "0",
+    "title": "129.Ndeger’Umusaraba",
+    "content": "C0E6A610-2BB7-4C4D-82E3-CBA3EA3EED04.txt"
+  },
+  {
+    "id": "244",
+    "parent": "0",
+    "title": "130.Nazimiriye kure yawe",
+    "content": "F3B4421A-BD1D-43E9-8B66-4CA2F42608B6.txt"
+  },
+  {
+    "id": "245",
+    "parent": "0",
+    "title": "131.Mwumv’imbabazi z’Imana",
+    "content": "9724A59B-B1FC-453A-8419-6E30275F03B4.txt"
+  },
+  {
+    "id": "246",
+    "parent": "0",
+    "title": "132.Nsinz’ububata n’umwijima",
+    "content": "2E15334F-103E-4592-B47D-A3E8F4D91C60.txt"
+  },
+  {
+    "id": "247",
+    "parent": "0",
+    "title": "133.Ndagukurikira, Yesu",
+    "content": "BBC1BB3C-768E-46E7-B4B3-875F8DFA02D0.txt"
+  },
+  {
+    "id": "248",
+    "parent": "0",
+    "title": "134.Nshaka Yesu",
+    "content": "8CE05356-60A2-451B-998B-0CB0185F702C.txt"
+  },
+  {
+    "id": "249",
+    "parent": "0",
+    "title": "135.Mukiz’ utubonez’iminsi yose",
+    "content": "8F06B794-78B9-4F67-B886-40D543E27F19.txt"
+  },
+  {
+    "id": "250",
+    "parent": "0",
+    "title": "136.Ubugingo bwanjye bwose",
+    "content": "C618C24A-9E30-4933-9F0A-AE863F181570.txt"
+  },
+  {
+    "id": "251",
+    "parent": "0",
+    "title": "137.Wowe,Mana,ndaguhimbaza",
+    "content": "3A0595F1-772E-4E09-B196-02C8237DEBDE.txt"
+  },
+  {
+    "id": "252",
+    "parent": "0",
+    "title": "138.Yesu, mukiza wanjye",
+    "content": "EC6BDCA5-38A5-40D0-8291-C99DCF3FD069.txt"
+  },
+  {
+    "id": "253",
+    "parent": "0",
+    "title": "139.Mukiza  Yesu ,ntabara",
+    "content": "D0394F52-2A6A-4412-A358-405E7E4B415A.txt"
+  },
+  {
+    "id": "254",
+    "parent": "0",
+    "title": "140.Mwami, ndakwimitse",
+    "content": "E17898E1-C3D2-4C5D-94EE-D5DC18672D0B.txt"
+  },
+  {
+    "id": "255",
+    "parent": "0",
+    "title": "141.Mwami Yesu ndagukunda",
+    "content": "CF8E1B81-4814-4DFA-A9C9-3CB2B506B7A8.txt"
+  },
+  {
+    "id": "256",
+    "parent": "0",
+    "title": "142.Untwar’untwar’untware",
+    "content": "3CDFB619-381B-41A6-B29F-F422C1DFA949.txt"
+  },
+  {
+    "id": "257",
+    "parent": "0",
+    "title": "143.Yesu, ko wankunze",
+    "content": "5B54B395-0D65-4EA8-BD3D-C4819F3D7467.txt"
+  },
+  {
+    "id": "258",
+    "parent": "0",
+    "title": "144.Yesu ndagukunda cyane",
+    "content": "3A73BA66-32F9-4D6E-8DD6-F47072265B6F.txt"
+  },
+  {
+    "id": "259",
+    "parent": "0",
+    "title": "145.Kugukorera ni byiza",
+    "content": "510C6859-1722-43CD-A4A2-16AB2610A989.txt"
+  },
+  {
+    "id": "260",
+    "parent": "0",
+    "title": "146.Kugukunda,Mwami Yesu",
+    "content": "A55B28E4-47DE-4323-9C56-37A7F9187BD3.txt"
+  },
+  {
+    "id": "261",
+    "parent": "0",
+    "title": "147.Uburyo Yes’ankunda",
+    "content": "A71F5185-1130-4C57-8D5B-C19E96BEBB54.txt"
+  },
+  {
+    "id": "262",
+    "parent": "0",
+    "title": "148.Nta rukundo rusa n'urwa Yesu",
+    "content": "E9F1D06D-4010-4653-A607-ED08DF85DC7D.txt"
+  },
+  {
+    "id": "263",
+    "parent": "0",
+    "title": "149.Mbeg’urukundo rw’Imana",
+    "content": "BCD0C0E4-F162-4FBD-9A92-92F9DACF62A4.txt"
+  },
+  {
+    "id": "264",
+    "parent": "0",
+    "title": "150.Nishimiye ko Data wa twese",
+    "content": "4117BDB1-BC9F-489D-A177-F18EB9BADC0B.txt"
+  },
+  {
+    "id": "265",
+    "parent": "0",
+    "title": "151.Yes’arush’abandi bose",
+    "content": "20415531-5298-4DDD-B93A-A2445726A42D.txt"
+  },
+  {
+    "id": "266",
+    "parent": "0",
+    "title": "152.Har’ umukunzi  nka Yesu",
+    "content": "E49B0214-B77F-4C8C-A43D-7F1946CF4863.txt"
+  },
+  {
+    "id": "267",
+    "parent": "0",
+    "title": "153.Yes’urankunda,Mukiza",
+    "content": "85183113-708E-448A-9BB4-0EE56FB83879.txt"
+  },
+  {
+    "id": "268",
+    "parent": "0",
+    "title": "154.Ndabaririmbira iby’uwamfiriye",
+    "content": "70F7BF65-81DA-490C-BE8A-0782FAB1F904.txt"
+  },
+  {
+    "id": "269",
+    "parent": "0",
+    "title": "155.Yesu, nguhagaz’imbere",
+    "content": "42EDE1ED-B0D1-41F7-8B44-8E2353799117.txt"
+  },
+  {
+    "id": "270",
+    "parent": "0",
+    "title": "156.Ni jye,Yesu,witanze",
+    "content": "7BD042A7-2078-4399-80DD-F9355F5BEB25.txt"
+  },
+  {
+    "id": "271",
+    "parent": "0",
+    "title": "157.Mukiz’umpe kumenya",
+    "content": "94CED503-E942-474C-9830-874030CAF24C.txt"
+  },
+  {
+    "id": "272",
+    "parent": "0",
+    "title": "158.Umvir’ijwi rya Yesu",
+    "content": "F222ECBE-5F74-4754-8CF2-E7DEA1A5D6CE.txt"
+  },
+  {
+    "id": "273",
+    "parent": "0",
+    "title": "159.Jye nahoze ndengerwa",
+    "content": "97F30A5E-F8A6-4CA5-9453-81292301EDD9.txt"
+  },
+  {
+    "id": "274",
+    "parent": "0",
+    "title": "160.Mbeg’urukundo rwaw’umfitiye",
+    "content": "45E927CF-01BE-4D62-A817-D956D93218C5.txt"
+  },
+  {
+    "id": "275",
+    "parent": "0",
+    "title": "161.Mbwir’amagambo ya Yesu",
+    "content": "81F0FED9-32DE-435D-B84D-E59DB9CE277A.txt"
+  },
+  {
+    "id": "276",
+    "parent": "0",
+    "title": "162.Nganirir’ibya Yesu",
+    "content": "1989EEC5-37D2-41C0-A0E5-54F2C2135709.txt"
+  },
+  {
+    "id": "277",
+    "parent": "0",
+    "title": "163.Uhereye kera kose",
+    "content": "C3DF3A8E-792B-416D-8FB9-6E2B42679028.txt"
+  },
+  {
+    "id": "278",
+    "parent": "0",
+    "title": "164.Yes’ avukir’i  Beterehemu",
+    "content": "56363F2F-0C67-4680-8FC7-4DA079EF76B1.txt"
+  },
+  {
+    "id": "279",
+    "parent": "0",
+    "title": "165.Hosanna,singizwa",
+    "content": "E9DBAAA9-8D2F-4C36-BFF5-1F5F78A444A1.txt"
+  },
+  {
+    "id": "280",
+    "parent": "0",
+    "title": "166.Ngwino soko y’umugisha",
+    "content": "2777E26C-0480-4688-8805-9094445BFF5E.txt"
+  },
+  {
+    "id": "281",
+    "parent": "0",
+    "title": "167.Yesu ni we nihishemo",
+    "content": "A2F72E74-07F8-4A0F-82D0-04A90D341B7F.txt"
+  },
+  {
+    "id": "282",
+    "parent": "0",
+    "title": "168.Mbumbatiwe nawe,Yesu",
+    "content": "85184724-770B-4902-B03C-EEF0FEE1D381.txt"
+  },
+  {
+    "id": "283",
+    "parent": "0",
+    "title": "169.Mana,nkuko wafashaga ba sogukuruza",
+    "content": "D1D29FA7-B184-45C0-9E91-2128454CB67D.txt"
+  },
+  {
+    "id": "284",
+    "parent": "0",
+    "title": "170.Utinyuke kuyoborwa",
+    "content": "7BE7C9A6-2BCF-479C-B027-5F5789A3FC0B.txt"
+  },
+  {
+    "id": "285",
+    "parent": "0",
+    "title": "171.Amahoro Yesu",
+    "content": "58E7180B-3313-4160-8DF6-36B4E85BACBE.txt"
+  },
+  {
+    "id": "286",
+    "parent": "0",
+    "title": "172.Mwemere kw’Iman’ibaha",
+    "content": "A43F9FA8-FE9D-4000-83C4-1A367AF24983.txt"
+  },
+  {
+    "id": "287",
+    "parent": "0",
+    "title": "173.Imana ni yo mwungeri",
+    "content": "5C20A5DE-057D-4FDA-AA80-1991FFBE17A8.txt"
+  },
+  {
+    "id": "288",
+    "parent": "0",
+    "title": "174.Jy’uba maso,wowe muntu wizeye",
+    "content": "767DF086-E900-4EE3-929F-684EC2D0C1CB.txt"
+  },
+  {
+    "id": "289",
+    "parent": "0",
+    "title": "175.Mwunger’udukunda",
+    "content": "4B49BEBB-4A1B-41DE-B960-16A474F11FFC.txt"
+  },
+  {
+    "id": "290",
+    "parent": "0",
+    "title": "176.We kumvir’Umubi ",
+    "content": "A459AF4E-4714-47DC-B3A4-2651DF3E7D29.txt"
+  },
+  {
+    "id": "291",
+    "parent": "0",
+    "title": "177.Mwen’Imana yizerwa",
+    "content": "39224FDA-C820-423C-9E6C-725F38E738E7.txt"
+  },
+  {
+    "id": "292",
+    "parent": "0",
+    "title": "178.Iy’utewe n’amakub’akomeye",
+    "content": "14AA626A-9FA6-4475-9827-E7EB6C2F4712.txt"
+  },
+  {
+    "id": "293",
+    "parent": "0",
+    "title": "179.Iy’urushye,iy’uremerewe",
+    "content": "3503EF8D-4A3D-4AA9-82D2-7BEE6011F4E2.txt"
+  },
+  {
+    "id": "294",
+    "parent": "0",
+    "title": "180.Impara yaguye umwuma",
+    "content": "5D4DAC64-7EDB-4FCD-A623-C2642CF1CAEB.txt"
+  },
+  {
+    "id": "295",
+    "parent": "0",
+    "title": "181.Mwa nshuti za Yesu mwe",
+    "content": "E6D01398-A49B-43E2-A5BB-3CF91E46FE8B.txt"
+  },
+  {
+    "id": "296",
+    "parent": "0",
+    "title": "182.Mur’iyo nzir’iruhije",
+    "content": "788B2F67-030F-4506-82F7-F672EC46D71D.txt"
+  },
+  {
+    "id": "297",
+    "parent": "0",
+    "title": "183.Tugiy’i wacu mw ijuru",
+    "content": "8E76DDBE-D937-4ECF-B0EE-5979B5EF2A7F.txt"
+  },
+  {
+    "id": "298",
+    "parent": "0",
+    "title": "184.Dor’inzira ijya mu ijuru ni imwe",
+    "content": "8C878392-3CE0-41F3-9900-D81B7E27ABAB.txt"
+  },
+  {
+    "id": "299",
+    "parent": "0",
+    "title": "185.Genda mu mucyo wa Yesu",
+    "content": "8C15B485-0763-4311-A44F-12CF8D8A1BE3.txt"
+  },
+  {
+    "id": "300",
+    "parent": "0",
+    "title": "186.Mu isi yacu no mu ijuru",
+    "content": "9EADF4D7-C8F6-48F6-92CB-6BC9A5771395.txt"
+  },
+  {
+    "id": "301",
+    "parent": "0",
+    "title": "187.Ngwino Mwami Yesu",
+    "content": "1EE69FD5-2CD1-4148-B4C1-F32FFCE8BCF1.txt"
+  },
+  {
+    "id": "302",
+    "parent": "0",
+    "title": "188.Ndashaka gusa nawe",
+    "content": "75855D17-4069-4823-AE2E-E0061901E4D5.txt"
+  },
+  {
+    "id": "303",
+    "parent": "0",
+    "title": "189.Mugenzi ugana mu ijuru",
+    "content": "C4B381EA-4522-4475-98CA-EEF53E367499.txt"
+  },
+  {
+    "id": "304",
+    "parent": "0",
+    "title": "190.Iyo turi hamwe n’Umukiza wacu",
+    "content": "0CE53B08-FF58-4807-BC1C-44CB36917419.txt"
+  },
+  {
+    "id": "305",
+    "parent": "0",
+    "title": "191.Nunguk’ubuntu bwa Yesu",
+    "content": "F48D80BC-9D4B-4CC9-AFCA-0A90FFDB50AE.txt"
+  },
+  {
+    "id": "306",
+    "parent": "0",
+    "title": "192.Mwam’ujy’imbere mu nzira yacu",
+    "content": "5362DF36-05C0-42E6-8A93-7741C79150CD.txt"
+  },
+  {
+    "id": "307",
+    "parent": "0",
+    "title": "193.Kora ugifite uburyo",
+    "content": "A4B2D5A9-A65E-4454-9AE6-E855CDC7458A.txt"
+  },
+  {
+    "id": "308",
+    "parent": "0",
+    "title": "194.Mana,nduburira amaso yanjye ku misozi",
+    "content": "34211AD1-092F-4989-9ED4-E36B9D4D435B.txt"
+  },
+  {
+    "id": "309",
+    "parent": "0",
+    "title": "195.Yesu yatwise amatabaza ye",
+    "content": "86B0251B-26BD-461B-82A1-606340FFAB72.txt"
+  },
+  {
+    "id": "310",
+    "parent": "0",
+    "title": "196.Ni Yesu ufite urufunguzo",
+    "content": "0637354B-5047-4214-B01E-C8F27F0215F5.txt"
+  },
+  {
+    "id": "311",
+    "parent": "0",
+    "title": "197.Uwishinze ku byasezeranyijwe",
+    "content": "AB89BF91-59A1-4328-9D80-85120AE02809.txt"
+  },
+  {
+    "id": "312",
+    "parent": "0",
+    "title": "198.Umwami wacu, Yesu",
+    "content": "83D0609F-38E6-47B0-9B4E-713219D5A379.txt"
+  },
+  {
+    "id": "313",
+    "parent": "0",
+    "title": "199.Ni nd’uzarwanana  n’Umwami wacu",
+    "content": "B477D06F-A561-4AA6-AC9E-A2CB0DE3FB1E.txt"
+  },
+  {
+    "id": "314",
+    "parent": "0",
+    "title": "200.Umwami agabye ingabo ze",
+    "content": "A3917414-CAB7-4D83-8122-3629C0B31924.txt"
+  },
+  {
+    "id": "315",
+    "parent": "0",
+    "title": "201.Bayoboke, mu byuke",
+    "content": "84BF719A-F076-4938-A71C-764A6DA70A23.txt"
+  },
+  {
+    "id": "316",
+    "parent": "0",
+    "title": "202.Turi abasirikare ba Kritso Yesu",
+    "content": "7A396871-2D42-4C83-92FB-529A5D624DCA.txt"
+  },
+  {
+    "id": "317",
+    "parent": "0",
+    "title": "203.Mwa ngabo z’Umwami mwe",
+    "content": "E4A5A8E1-8510-47A6-B597-6DC4BA8C359E.txt"
+  },
+  {
+    "id": "318",
+    "parent": "0",
+    "title": "204.Dor' ibendera ya Yesu",
+    "content": "E2479EC4-B6F8-4BB0-B128-F49BD64B17FF.txt"
+  },
+  {
+    "id": "319",
+    "parent": "0",
+    "title": "205.Urwan’intambara nziza",
+    "content": "D8472562-03CD-493A-AE22-3429D20C4FC3.txt"
+  },
+  {
+    "id": "320",
+    "parent": "0",
+    "title": "206.Har’uwitwa Danyeli",
+    "content": "A55265D2-0192-47F9-AF7C-BA00DCB799C9.txt"
+  },
+  {
+    "id": "321",
+    "parent": "0",
+    "title": "207.Uwab’atinyutse ibyago byose",
+    "content": "F3EBC2DF-92BF-489A-A7D7-86F51CF3F181.txt"
+  },
+  {
+    "id": "322",
+    "parent": "0",
+    "title": "208.Imana n’ubuhungiro",
+    "content": "82A80B68-7BF2-4FFE-B6C0-8B70D4335686.txt"
+  },
+  {
+    "id": "323",
+    "parent": "0",
+    "title": "209.Yemw’abari kuri Yesu",
+    "content": "8658F309-FE64-44F9-8097-23DDA678028A.txt"
+  },
+  {
+    "id": "324",
+    "parent": "0",
+    "title": "210.Nimuze ngabo za Yesu",
+    "content": "C00A9239-4D7E-4282-998C-C096F1C76974.txt"
+  },
+  {
+    "id": "325",
+    "parent": "0",
+    "title": "211.Hariho indi  si nziza cyane",
+    "content": "17E1CEC7-B182-4548-8D9A-5EA7DAD53DA1.txt"
+  },
+  {
+    "id": "326",
+    "parent": "0",
+    "title": "212.Mw’ ijuru,hariho isi nziza",
+    "content": "BA8DA167-2454-48BD-8EF6-F38D46648B50.txt"
+  },
+  {
+    "id": "327",
+    "parent": "0",
+    "title": "213.Hariho indi si irut’iyi cyane",
+    "content": "2CBE92EE-773D-4373-A926-8F1BA9C8E934.txt"
+  },
+  {
+    "id": "328",
+    "parent": "0",
+    "title": "214.Hari umurwa mwiza  w’abera b’Imana",
+    "content": "51D629F5-DA6D-446C-852B-8298F0432691.txt"
+  },
+  {
+    "id": "329",
+    "parent": "0",
+    "title": "215.Tujye duhimbaza iteka",
+    "content": "01365B0C-1A3C-48B7-9F3A-1FB035AEA909.txt"
+  },
+  {
+    "id": "330",
+    "parent": "0",
+    "title": "216.Singishaka ubutunzi",
+    "content": "B1DFD06C-4265-4E86-A86A-E47ECE2DA5F5.txt"
+  },
+  {
+    "id": "331",
+    "parent": "0",
+    "title": "217.Mu isi ndi umushyitsi",
+    "content": "56C3D016-1F7E-45EA-AF9C-F59E0E40940C.txt"
+  },
+  {
+    "id": "332",
+    "parent": "0",
+    "title": "218.Kubana na Yesu",
+    "content": "7BFA6056-9AA2-4267-8025-489DA643F12D.txt"
+  },
+  {
+    "id": "333",
+    "parent": "0",
+    "title": "219.Ubwo nzamara imirimo",
+    "content": "A1364EE6-A383-4F40-95C7-4BDF8BCE3DE0.txt"
+  },
+  {
+    "id": "334",
+    "parent": "0",
+    "title": "220.Ubwo nzabona Umukiza",
+    "content": "B2AE8978-68EB-40C4-A451-A25A1C07155F.txt"
+  },
+  {
+    "id": "335",
+    "parent": "0",
+    "title": "221.Bana,mw ijur' abiringiy’Umucunguzi",
+    "content": "396B6E8F-08A5-4675-96F0-B6C0D637E5A0.txt"
+  },
+  {
+    "id": "336",
+    "parent": "0",
+    "title": "222.Mbese,tuzahurirayo",
+    "content": "CF3A448E-EC58-4397-BE51-093233C54A21.txt"
+  },
+  {
+    "id": "337",
+    "parent": "0",
+    "title": "223.Rya Joro Ryatowe  Rubanda",
+    "content": "4848C12B-DE6D-46F0-9024-52064F6EEA22.txt"
+  },
+  {
+    "id": "339",
+    "parent": "0",
+    "title": "224.Wasize ubwiza war’ufite mu ijuru",
+    "content": "3A7EA372-B3B2-46ED-80FE-59BF4DBCFEA8.txt"
+  },
+  {
+    "id": "340",
+    "parent": "0",
+    "title": "225.Mw ivuka ryawe, Yesu",
+    "content": "944ADF43-DB49-4035-92D6-466ADE224A31.txt"
+  },
+  {
+    "id": "341",
+    "parent": "0",
+    "title": "226.Mukiza wacu Yesu",
+    "content": "3E9AC929-360C-4D9F-B3BE-BCD708BD237A.txt"
+  },
+  {
+    "id": "342",
+    "parent": "0",
+    "title": "227.Ku rurembo rwa Dawid’Umwami",
+    "content": "F27F4E3E-FE53-44E6-95A7-350C2571212F.txt"
+  },
+  {
+    "id": "343",
+    "parent": "0",
+    "title": "228.Bahungu,bakobwa,nimuze mwese",
+    "content": "043F2E95-BA91-44AA-A0DB-1F877101FFB4.txt"
+  },
+  {
+    "id": "344",
+    "parent": "0",
+    "title": "229.Abungeri barindaga",
+    "content": "C80642B8-B508-468A-91ED-061A073DDC58.txt"
+  },
+  {
+    "id": "345",
+    "parent": "0",
+    "title": "230.Umv’intumwa zo mu ijuru",
+    "content": "88458536-25F7-49AB-8111-484437A25F5E.txt"
+  },
+  {
+    "id": "346",
+    "parent": "0",
+    "title": "231.Umwana yavukiye mu murwa",
+    "content": "2935917F-2140-43A1-9024-8374D443205E.txt"
+  },
+  {
+    "id": "347",
+    "parent": "0",
+    "title": "232.Munezero,munezero",
+    "content": "94FC64D6-C3B7-4252-97B6-BC71A6D5EB93.txt"
+  },
+  {
+    "id": "348",
+    "parent": "0",
+    "title": "233.Yemwe bungeri ba kera",
+    "content": "03598404-0B2E-4FD2-A718-4E893C0E1DFE.txt"
+  },
+  {
+    "id": "349",
+    "parent": "0",
+    "title": "234.Inkuru nziza yavuye mw  ijuru",
+    "content": "11DE9458-818C-42B3-9896-B9F3A1CD9885.txt"
+  },
+  {
+    "id": "350",
+    "parent": "0",
+    "title": "235.Bakritso,nimuze,munezerwe",
+    "content": "F6FA6FCF-4483-47FA-8E61-EF6444F5F896.txt"
+  },
+  {
+    "id": "351",
+    "parent": "0",
+    "title": "236.Umukiza wac'ubwo yavukaga",
+    "content": "156C9E0C-3247-48D2-8BCA-744ABD024AD6.txt"
+  },
+  {
+    "id": "352",
+    "parent": "0",
+    "title": "237.Tur'abami bayobotse",
+    "content": "E7DCAAB0-D12C-4DBB-9C77-38F77136860E.txt"
+  },
+  {
+    "id": "353",
+    "parent": "0",
+    "title": "238.Kera har'abungeri mu gihugu",
+    "content": "D531E800-B63F-4B8F-9C84-CC92BC0DFF33.txt"
+  },
+  {
+    "id": "354",
+    "parent": "0",
+    "title": "239.Nkuko ba banyabwemge",
+    "content": "1398CE50-4C8F-4D4C-A4CE-041021BB76DA.txt"
+  },
+  {
+    "id": "355",
+    "parent": "0",
+    "title": "240.Wa mwanya mu Getsemani",
+    "content": "5589D415-4DC6-4C76-BA68-27917881E2C1.txt"
+  },
+  {
+    "id": "356",
+    "parent": "0",
+    "title": "241.Mbes'uriy'ubabaye",
+    "content": "1D469FBF-6585-4A30-AEEB-38B7AFDF6A2C.txt"
+  },
+  {
+    "id": "357",
+    "parent": "0",
+    "title": "242.Mwana w'Imana",
+    "content": "0A42D197-AA58-4116-98AF-DBBD47D64D32.txt"
+  },
+  {
+    "id": "358",
+    "parent": "0",
+    "title": "243.Umunyamibabaro",
+    "content": "53CA085C-A7CD-485D-AA23-391A037048A6.txt"
+  },
+  {
+    "id": "359",
+    "parent": "0",
+    "title": "244.Har'umusozi wakure",
+    "content": "35CDD968-4754-48DF-A4BC-E172280147F1.txt"
+  },
+  {
+    "id": "360",
+    "parent": "0",
+    "title": "245.Iyo nibwiye mu mutima",
+    "content": "6B61A6C1-E247-4369-95D2-03939B226A58.txt"
+  },
+  {
+    "id": "361",
+    "parent": "0",
+    "title": "246.I Gologota,ku giti",
+    "content": "CE4B6594-6554-4E61-AD0C-8B5A64610513.txt"
+  },
+  {
+    "id": "362",
+    "parent": "0",
+    "title": "247.Unyigishe Mukiza",
+    "content": "20D2FAB0-F48F-4B90-B309-77BF5C0FE99F.txt"
+  },
+  {
+    "id": "363",
+    "parent": "0",
+    "title": "248.Hafi y'umusaraba",
+    "content": "7ED89C71-9A1E-4A84-8B63-ACFBF2F40D78.txt"
+  },
+  {
+    "id": "364",
+    "parent": "0",
+    "title": "249.Nitegerej'umusaraba",
+    "content": "600C409D-87F2-4F6A-BB5D-CB9BF97F0C1C.txt"
+  },
+  {
+    "id": "365",
+    "parent": "0",
+    "title": "250.Shimwa,Mwami Yesu",
+    "content": "6E0634E1-560A-4DB2-B71E-439E43C19B17.txt"
+  },
+  {
+    "id": "366",
+    "parent": "0",
+    "title": "251.Munsi y'umusaraba",
+    "content": "346B049E-3B94-473A-8B75-EFCB5D428C53.txt"
+  },
+  {
+    "id": "367",
+    "parent": "0",
+    "title": "252.Yes'Umucunguzi",
+    "content": "23C93787-2CDF-41AA-8B3F-F915C64FD487.txt"
+  },
+  {
+    "id": "368",
+    "parent": "0",
+    "title": "253.Haleluya!Haleluya!",
+    "content": "DBF3DB64-92F9-4950-8BAD-68BEB1CA5B5F.txt"
+  },
+  {
+    "id": "369",
+    "parent": "0",
+    "title": "254.Nimureb'igitangaza",
+    "content": "29CA32DF-D7E9-4DFC-9D14-8A33BA09C1C7.txt"
+  },
+  {
+    "id": "370",
+    "parent": "0",
+    "title": "255.Yesu Kristo yarazutse",
+    "content": "0737DF13-15A4-46DD-931D-2FE138BCD5AE.txt"
+  },
+  {
+    "id": "371",
+    "parent": "0",
+    "title": "256.Yesu Krist'arazutse",
+    "content": "389CE2F2-DB71-4CDC-B35F-54D78873523D.txt"
+  },
+  {
+    "id": "372",
+    "parent": "0",
+    "title": "257.Shimwa,Mukiza",
+    "content": "8E0B21BE-469F-4837-9F4B-0C35E2F88488.txt"
+  },
+  {
+    "id": "373",
+    "parent": "0",
+    "title": "258.Umwami yazutse",
+    "content": "ADD4E1E3-AAAA-4C3C-97F1-9E35BAFEAE06.txt"
+  },
+  {
+    "id": "374",
+    "parent": "0",
+    "title": "259.ubu tunezerwe",
+    "content": "50C2CC5E-21FA-42AC-A2CA-CA50AAEDF619.txt"
+  },
+  {
+    "id": "375",
+    "parent": "0",
+    "title": "260.kuri wa munsi tuzazukaho",
+    "content": "240134B2-D629-487C-876F-0EE0B9640876.txt"
+  },
+  {
+    "id": "376",
+    "parent": "0",
+    "title": "261.bene data mwese",
+    "content": "39911BEF-2509-4A54-A819-8E320B1B2D0D.txt"
+  },
+  {
+    "id": "377",
+    "parent": "0",
+    "title": "262.umva gusaba  kwanjye",
+    "content": "77691B33-B3A2-4C75-A7D1-CF7DF1065AD6.txt"
+  },
+  {
+    "id": "378",
+    "parent": "0",
+    "title": "263.Mwuka wer'udukunda",
+    "content": "C7F7BCA9-624D-48E1-AF1A-A4A6C1659C27.txt"
+  },
+  {
+    "id": "553",
+    "parent": "0",
+    "title": "264.Mwuka wera wo mu ijuru",
+    "content": "35F7C784-CE70-4FC5-A605-24910BA4FB2A.txt"
+  },
+  {
+    "id": "379",
+    "parent": "0",
+    "title": "265.ubwo Yesu yaragiye gusig'abantu be",
+    "content": "79CEA0FF-F9F4-4FBC-8AD4-EF8EC1E41C95.txt"
+  },
+  {
+    "id": "380",
+    "parent": "0",
+    "title": "266.Man'ubwami bwawe",
+    "content": "924C5FC4-A8E9-4C2E-9FBE-83FC78545E3F.txt"
+  },
+  {
+    "id": "381",
+    "parent": "0",
+    "title": "267.Imitim'ikomezwano kwiringira",
+    "content": "F1FC5B12-35CA-4E3E-9ADA-DCE2BA9E7910.txt"
+  },
+  {
+    "id": "382",
+    "parent": "0",
+    "title": "268.Ubw'umwami Yes'azaza",
+    "content": "2F3FC038-7C45-426F-AD7B-BC4EC6977501.txt"
+  },
+  {
+    "id": "383",
+    "parent": "0",
+    "title": "269.Yesu n'az'umwijim'uzahunga",
+    "content": "9F24409B-BB03-43CC-9F83-8B820873DC06.txt"
+  },
+  {
+    "id": "384",
+    "parent": "0",
+    "title": "270.uwadupfiriye kera",
+    "content": "ADC50883-4859-401D-BC03-C9E8F0D5CADE.txt"
+  },
+  {
+    "id": "385",
+    "parent": "0",
+    "title": "271.ubw'impanda z'Uwiteka zizavuzwa",
+    "content": "9F1CE52D-8E3D-4D83-BFF0-D4B41D2FBDE3.txt"
+  },
+  {
+    "id": "386",
+    "parent": "0",
+    "title": "272.Umwam'ageze kw irembo",
+    "content": "3E7EFBBD-53D1-4B68-9A55-3A1811DD1EE0.txt"
+  },
+  {
+    "id": "387",
+    "parent": "0",
+    "title": "273.dukanguke,dukanguke",
+    "content": "7DF9E4AA-53B3-47E7-A116-50A7C5898287.txt"
+  },
+  {
+    "id": "388",
+    "parent": "0",
+    "title": "274.Mukiza,tuguhaye uyu munsi",
+    "content": "31878195-85A3-4353-B7F7-0271384AA58F.txt"
+  },
+  {
+    "id": "389",
+    "parent": "0",
+    "title": "275.iri joro Mana yanjye",
+    "content": "80827359-231C-4340-8A46-077BD9E5818F.txt"
+  },
+  {
+    "id": "390",
+    "parent": "0",
+    "title": "276.Data ngiye gusinzira",
+    "content": "BB1D045C-A2F6-40EE-86C1-73E437FD0F19.txt"
+  },
+  {
+    "id": "391",
+    "parent": "0",
+    "title": "277.Mwam'ubugingo bwacu ni nk'umunsi",
+    "content": "022BA13B-319C-4C3B-8719-23B052239A87.txt"
+  },
+  {
+    "id": "392",
+    "parent": "0",
+    "title": "278.Mukiza ,ni wowe zuba ryanjye",
+    "content": "2535ADCE-2592-48D2-9AFC-984C2EDC1B6C.txt"
+  },
+  {
+    "id": "393",
+    "parent": "0",
+    "title": "279.dor'umuns'urakuze",
+    "content": "83221BF4-5898-4609-9A9C-3BC71704BB96.txt"
+  },
+  {
+    "id": "394",
+    "parent": "0",
+    "title": "280.imins'irahita vuba",
+    "content": "D7A1826A-E9AF-4508-B242-32510BBFDB60.txt"
+  },
+  {
+    "id": "395",
+    "parent": "0",
+    "title": "281.ngiy'inkuru twumvise",
+    "content": "9F1AAFB5-BDD1-4614-805E-E4CB7145AAB4.txt"
+  },
+  {
+    "id": "396",
+    "parent": "0",
+    "title": "282.Abantu benshi cyane batay'Uwiteka",
+    "content": "272B4AD2-0925-41C8-8075-72ECB2BC05F0.txt"
+  },
+  {
+    "id": "397",
+    "parent": "0",
+    "title": "283.N'ijwi ry'umwengeri twumva",
+    "content": "C5757617-CC97-460C-93EC-6DA6E9A1C673.txt"
+  },
+  {
+    "id": "398",
+    "parent": "0",
+    "title": "284.har'intama urwenda n'icyenda",
+    "content": "BE48353F-A936-44A1-B659-F4B615A07221.txt"
+  },
+  {
+    "id": "399",
+    "parent": "0",
+    "title": "285.kiz'abarimbuka",
+    "content": "89CAE004-0F97-4EC6-A42A-A53780A1C10D.txt"
+  },
+  {
+    "id": "400",
+    "parent": "0",
+    "title": "286.biba mu gitondo imbuto z'ineza",
+    "content": "202E0E8A-39A3-4D97-AF39-D8050E156295.txt"
+  },
+  {
+    "id": "401",
+    "parent": "0",
+    "title": "287.Yes'azaganz'ibihugu byose",
+    "content": "3DB066FF-4280-42E9-9030-C7F4CA59B1F3.txt"
+  },
+  {
+    "id": "402",
+    "parent": "0",
+    "title": "288.urukundo rwa Yesu",
+    "content": "82E60DCB-46DA-4833-B72E-E4793ED26690.txt"
+  },
+  {
+    "id": "403",
+    "parent": "0",
+    "title": "289.igitabo cy'Imana",
+    "content": "D52B780F-C5B4-4094-9093-041F52708EF3.txt"
+  },
+  {
+    "id": "404",
+    "parent": "0",
+    "title": "290.ijambo ryaw'urimfungurire",
+    "content": "BAA32D4C-76C9-4BCE-B393-40886372CF2C.txt"
+  },
+  {
+    "id": "405",
+    "parent": "0",
+    "title": "291.nubwo nd'umwana muto bwose",
+    "content": "D50C9356-7F6F-4E63-A877-72E270D4C8D0.txt"
+  },
+  {
+    "id": "406",
+    "parent": "0",
+    "title": "292.tugiye gutaha",
+    "content": "018F1A67-06F5-436D-B96F-EB2768CA6C92.txt"
+  },
+  {
+    "id": "407",
+    "parent": "0",
+    "title": "293.uko njya mbona mw'ijuru",
+    "content": "DB056B7B-45A6-4B54-88C0-027E5DDE1C79.txt"
+  },
+  {
+    "id": "408",
+    "parent": "0",
+    "title": "294.har'ubw'abagore bazany'abana babo",
+    "content": "49232242-CD61-417C-9C56-5360F0FA3BD9.txt"
+  },
+  {
+    "id": "409",
+    "parent": "0",
+    "title": "295.Mumushime,bana bato mwese",
+    "content": "402334DB-DF61-4DA5-9545-5422BD5E502A.txt"
+  },
+  {
+    "id": "410",
+    "parent": "0",
+    "title": "296.tuzany'amaturo",
+    "content": "4F7F46E3-1C49-4099-97BA-E451A7C9DA73.txt"
+  },
+  {
+    "id": "411",
+    "parent": "0",
+    "title": "297.Yesu ntahinduka",
+    "content": "67F5C2B2-70E6-4EAB-ABE8-284F853927F0.txt"
+  },
+  {
+    "id": "412",
+    "parent": "0",
+    "title": "298.mbe nk'umurase w'izuba",
+    "content": "D8ADCDD2-F0A6-4BA0-93B1-0E208CB56E5D.txt"
+  },
+  {
+    "id": "413",
+    "parent": "0",
+    "title": "299.amaboko yawe",
+    "content": "3EF00627-E7EE-46ED-A130-1A1B696AF50C.txt"
+  },
+  {
+    "id": "414",
+    "parent": "0",
+    "title": "300.bana,ntimugire icyaha mukora",
+    "content": "787EEF30-BBA0-4D00-BA40-A0E4FDB41C9F.txt"
+  },
+  {
+    "id": "415",
+    "parent": "0",
+    "title": "301.ndi agatama ka Yesu",
+    "content": "956236F9-6D4B-4F8A-B552-DCAFBEEDB1E0.txt"
+  },
+  {
+    "id": "416",
+    "parent": "0",
+    "title": "302.Mukiza,mwungeri mwiza",
+    "content": "FE2F70AC-B585-4B13-865F-53540C052C10.txt"
+  },
+  {
+    "id": "417",
+    "parent": "0",
+    "title": "303.Yesu,mwungeri wamjye",
+    "content": "22B3BB0B-56E4-42B7-8B82-2CDD27659F37.txt"
+  },
+  {
+    "id": "418",
+    "parent": "0",
+    "title": "304.harihw' inshuti y'abana",
+    "content": "4A9D1EF3-8BC6-470A-B1E2-2B76F556015F.txt"
+  },
+  {
+    "id": "419",
+    "parent": "0",
+    "title": "305.uwo ni nde",
+    "content": "C4B4B6CA-7781-4168-8ABF-EB9B35433896.txt"
+  },
+  {
+    "id": "420",
+    "parent": "0",
+    "title": "306.twishimir'umunsi w'Imana",
+    "content": "FED08D4D-AD97-4B39-8DA0-64A3B078E612.txt"
+  },
+  {
+    "id": "421",
+    "parent": "0",
+    "title": "307.haleluya!haj'umunsi",
+    "content": "054D1FD2-B48A-4C98-8F52-FC6C4AD0AFC2.txt"
+  },
+  {
+    "id": "422",
+    "parent": "0",
+    "title": "308.Mwami Yesu",
+    "content": "E1663AC3-9D70-4618-A06A-C36744AAAB52.txt"
+  },
+  {
+    "id": "423",
+    "parent": "0",
+    "title": "309.inzu yawe,Mana",
+    "content": "CC61B253-DC3F-4769-B68C-8A0EEA0D39D6.txt"
+  },
+  {
+    "id": "424",
+    "parent": "0",
+    "title": "310.Iki gihe twamaranye",
+    "content": "093E0C45-78A9-4E0C-8E0C-7392C85973BD.txt"
+  },
+  {
+    "id": "425",
+    "parent": "0",
+    "title": "311.yemwe nshuti twabanye",
+    "content": "D4EC6C96-8B97-4944-A7F4-C044A4B4AAD5.txt"
+  },
+  {
+    "id": "426",
+    "parent": "0",
+    "title": "312.abakund'Imana mwese",
+    "content": "698FF7EF-CA47-47C0-AF6F-26C585722307.txt"
+  },
+  {
+    "id": "427",
+    "parent": "0",
+    "title": "313.Umukiza abe hamwe namwe",
+    "content": "62C3B819-9B06-412F-9275-7708CB984A8A.txt"
+  },
+  {
+    "id": "428",
+    "parent": "0",
+    "title": "314.gukundana kw'aba Yesu",
+    "content": "CE9B817F-FEA8-4784-8D4C-C69FF883A5ED.txt"
+  },
+  {
+    "id": "429",
+    "parent": "0",
+    "title": "315.Imana yakoze neza ibidutangaza",
+    "content": "9AC5B753-5BD8-41DB-8F70-83D45D269CA0.txt"
+  },
+  {
+    "id": "430",
+    "parent": "0",
+    "title": "316.Man'itang'itimana",
+    "content": "BA7FA266-7510-468D-9908-E3D2AED2850F.txt"
+  },
+  {
+    "id": "431",
+    "parent": "0",
+    "title": "317.Mukiza,wadutoreye kuba nk'umubir' umwe",
+    "content": "B6E5DBAE-9FC8-4E8B-B32F-D1348A5674BA.txt"
+  },
+  {
+    "id": "432",
+    "parent": "0",
+    "title": "318.hose habera heza",
+    "content": "E693D8E0-6C03-48AC-8331-6034157B9F81.txt"
+  },
+  {
+    "id": "433",
+    "parent": "0",
+    "title": "319.Aho mwumvis'ijwi",
+    "content": "0E6085A5-9C70-41C6-A8E2-716DE7FBE671.txt"
+  },
+  {
+    "id": "434",
+    "parent": "0",
+    "title": "320.Mwa bagore mwe b'i Rwanda.",
+    "content": "F7CD6CAC-3098-4BD3-AA46-A44B458760D4.txt"
+  },
+  {
+    "id": "435",
+    "parent": "0",
+    "title": "321.Mana Data wo mw ijuru",
+    "content": "38F3261A-BBC1-49A7-A60A-D55F638F3EF8.txt"
+  },
+  {
+    "id": "436",
+    "parent": "0",
+    "title": "322.Aba bombi, Mana Data",
+    "content": "61A1EA0D-21FB-4F27-8A45-B0135360349F.txt"
+  },
+  {
+    "id": "437",
+    "parent": "0",
+    "title": "323.Mana Data wa twese",
+    "content": "700B09A2-C2FB-4E6C-BBBD-6C52470B7E6D.txt"
+  },
+  {
+    "id": "438",
+    "parent": "0",
+    "title": "324.Mana Dat' ukiranuka",
+    "content": "28F3CBB2-6DD9-4FEE-BF5E-D77132638C95.txt"
+  },
+  {
+    "id": "439",
+    "parent": "0",
+    "title": "325.Ababatijwe none,Ubarinde",
+    "content": "5EF5F377-E892-452B-B5FA-CEAED6D24314.txt"
+  },
+  {
+    "id": "440",
+    "parent": "0",
+    "title": "326.Utuzanye hano gusangira Igaburo ryera",
+    "content": "59ED277A-BA03-4E10-90B2-A546E99657D9.txt"
+  },
+  {
+    "id": "441",
+    "parent": "0",
+    "title": "327.Ni byiza kureb' ab'Imana Baterana",
+    "content": "B4D12395-E6A3-44CE-B2D3-0DED22261B9F.txt"
+  },
+  {
+    "id": "442",
+    "parent": "0",
+    "title": "328. Yes’ ur' Umukiza wanjye",
+    "content": "0D995BFE-FC9E-442B-9017-C5C36258ECCD.txt"
+  },
+  {
+    "id": "443",
+    "parent": "0",
+    "title": "329.Nezerwa cyane",
+    "content": "D43B8A3D-3793-40A7-A774-B8CC84B71C97.txt"
+  },
+  {
+    "id": "444",
+    "parent": "0",
+    "title": "330. Wowe, Man' ikiranuka",
+    "content": "A1736B9E-2152-4FEB-835E-04A288B0F5D0.txt"
+  },
+  {
+    "id": "445",
+    "parent": "0",
+    "title": "331.Hoziyana ! Twese dushim' Uwaje",
+    "content": "1F0465CA-B7A0-409F-B967-B94268DAD0E7.txt"
+  },
+  {
+    "id": "446",
+    "parent": "0",
+    "title": "332.Turirimbe na none",
+    "content": "6BF2E052-D417-48A5-9F5A-9A86EFD7F8E7.txt"
+  },
+  {
+    "id": "447",
+    "parent": "0",
+    "title": "333.Nimuze, dusange Yesu",
+    "content": "E69F43D9-EA4E-40E9-911F-CD3703DA0069.txt"
+  },
+  {
+    "id": "448",
+    "parent": "0",
+    "title": "334.Wa mutima wanjye we",
+    "content": "98D0BFAA-38B0-4A34-AEA0-D91DCC67840F.txt"
+  },
+  {
+    "id": "449",
+    "parent": "0",
+    "title": "335.Umuhanuzi Yesaya Yeretsw' ibyiza kera",
+    "content": "A87534DE-C716-4155-9FC6-E0013CE371AE.txt"
+  },
+  {
+    "id": "450",
+    "parent": "0",
+    "title": "336.Mwuka Wera w'Imana",
+    "content": "346ACB1B-B73B-4BBD-AB02-F1460352FA00.txt"
+  },
+  {
+    "id": "451",
+    "parent": "0",
+    "title": "337.Imbabazi z'Umwami wacu Yesu",
+    "content": "DE785F98-425F-4DD3-99E8-ACADB90679BB.txt"
+  },
+  {
+    "id": "452",
+    "parent": "0",
+    "title": "338.Mwami, vuga",
+    "content": "BBB17726-2BCF-40C7-81BE-F2C06B5DD779.txt"
+  },
+  {
+    "id": "453",
+    "parent": "0",
+    "title": "339.Non' amaganya yawe yose",
+    "content": "0552135F-F090-43A7-B206-44C4D24CEA40.txt"
+  },
+  {
+    "id": "454",
+    "parent": "0",
+    "title": "340. Umutima wanjye wizera Kugusaba",
+    "content": "61AFC1B7-7F78-495D-9007-3DC45101CB7B.txt"
+  },
+  {
+    "id": "455",
+    "parent": "0",
+    "title": "341.Fat' ukuboko kwanjye",
+    "content": "7030A211-B8D7-404A-9456-1180EB470088.txt"
+  },
+  {
+    "id": "456",
+    "parent": "0",
+    "title": "342. Njye nsindagizwa",
+    "content": "DB857988-D06C-48A1-B50D-A04EDDA67506.txt"
+  },
+  {
+    "id": "457",
+    "parent": "0",
+    "title": "343. Munyabyaha, nturushye se ?",
+    "content": "059AA86B-0722-4AB9-945F-F561116EF4BB.txt"
+  },
+  {
+    "id": "458",
+    "parent": "0",
+    "title": "344.Muze mwese, muz' aho ndi",
+    "content": "BEDDA7A6-B073-40DB-A03C-583E63ED77B5.txt"
+  },
+  {
+    "id": "459",
+    "parent": "0",
+    "title": "345. Umv' iryo jwi rikwinginga",
+    "content": "EEF0F734-3D5C-4791-AA7F-B31E1F04D148.txt"
+  },
+  {
+    "id": "460",
+    "parent": "0",
+    "title": "346.Ngwino, witabe Yesu",
+    "content": "15392413-1D00-4B16-9933-E3D0CA151363.txt"
+  },
+  {
+    "id": "461",
+    "parent": "0",
+    "title": "347.Yesu nguriy' ahw ahagaze",
+    "content": "0D600C96-CE6F-4C0A-BADB-91CA42F4B84F.txt"
+  },
+  {
+    "id": "462",
+    "parent": "0",
+    "title": "348.Mbese, mu mutima wawe",
+    "content": "26138288-17B3-42A3-B06D-6AEF5C1C0733.txt"
+  },
+  {
+    "id": "463",
+    "parent": "0",
+    "title": "349.Reba Yesu ku Musaraba",
+    "content": "93C057C4-F445-459A-BCD8-AFEEAB376FC2.txt"
+  },
+  {
+    "id": "464",
+    "parent": "0",
+    "title": "350.Yemw’ abaguzwe n'amaraso",
+    "content": "9C1F60D5-DC51-4D22-9160-7608AE52429F.txt"
+  },
+  {
+    "id": "465",
+    "parent": "0",
+    "title": "351.Yemw' abahung' Umukiza",
+    "content": "29A8B5FA-C086-4F6B-8114-15A59B34BF75.txt"
+  },
+  {
+    "id": "466",
+    "parent": "0",
+    "title": "352.Muze kureb' i Gologota",
+    "content": "8CD9F2B6-EDB2-4E08-B426-92D32CF26948.txt"
+  },
+  {
+    "id": "467",
+    "parent": "0",
+    "title": "353.Amaraso yose y’intama",
+    "content": "560E0F6E-4677-422B-A5ED-8A34DBA3553E.txt"
+  },
+  {
+    "id": "468",
+    "parent": "0",
+    "title": "354.Man' ishobora byose",
+    "content": "759B36D7-0F18-49BC-A5B6-FC41FFB5A8F2.txt"
+  },
+  {
+    "id": "469",
+    "parent": "0",
+    "title": "355.Nejejwe n'uko nacunguwe",
+    "content": "0890C92C-8358-48B1-A2B4-1F1CAFF9F791.txt"
+  },
+  {
+    "id": "470",
+    "parent": "0",
+    "title": "356.Batoboy' ibiganza bye",
+    "content": "B9D3EA29-0CED-4E77-B1A2-76A31AE35875.txt"
+  },
+  {
+    "id": "471",
+    "parent": "0",
+    "title": "357. ubwo nari nshinjirijwe cyane Na Satani",
+    "content": "982428FC-A521-43FF-B145-6B955FCC5F08.txt"
+  },
+  {
+    "id": "472",
+    "parent": "0",
+    "title": "358.Twemere Yesu",
+    "content": "516D83F2-70B3-4B3C-AA5C-BAFC403C1A37.txt"
+  },
+  {
+    "id": "473",
+    "parent": "0",
+    "title": "359.Iyo ntinye ko kwizera Kwanjy' ari guke",
+    "content": "B9F54A8C-586E-4500-924A-756E73663EA2.txt"
+  },
+  {
+    "id": "474",
+    "parent": "0",
+    "title": "360. Rukundo rwinshi",
+    "content": "82460001-9957-4838-9DC6-899EB8350336.txt"
+  },
+  {
+    "id": "475",
+    "parent": "0",
+    "title": "361.Uwo njya nikomezaho",
+    "content": "6F9BBEEF-0477-4207-A315-0D2DBB21FA39.txt"
+  },
+  {
+    "id": "476",
+    "parent": "0",
+    "title": "362.iyi s’ izashira",
+    "content": "5E8ABB84-BAC2-4C21-BF90-9EB35D83FED1.txt"
+  },
+  {
+    "id": "477",
+    "parent": "0",
+    "title": "363.Jye mpisemo Yesu",
+    "content": "09C8BA5C-F760-4197-A775-C9F581302C1D.txt"
+  },
+  {
+    "id": "478",
+    "parent": "0",
+    "title": "364. Yes' Umwami ndamubonye",
+    "content": "1C0CCFA2-E127-4DB6-A52B-94685B9D1324.txt"
+  },
+  {
+    "id": "479",
+    "parent": "0",
+    "title": "365.Mwami, nubwo nd' umunyabyaha",
+    "content": "7502BABD-52A8-45B2-92E9-9955B8AA6F24.txt"
+  },
+  {
+    "id": "480",
+    "parent": "0",
+    "title": "366. Ngutuy' ubugingo bwanjye",
+    "content": "7D7AF033-AB76-4D6F-97E9-D9A0032F40B7.txt"
+  },
+  {
+    "id": "481",
+    "parent": "0",
+    "title": "367.Yesu ndakwitabye",
+    "content": "98761EC2-914E-407A-92B7-864DDC8A2D7A.txt"
+  },
+  {
+    "id": "482",
+    "parent": "0",
+    "title": "368.Bene Data bizeye Yesu",
+    "content": "8FF0E1C9-2F19-4470-BF67-EA75464E04C4.txt"
+  },
+  {
+    "id": "483",
+    "parent": "0",
+    "title": "369.Ngukunde Yesu",
+    "content": "EAB2ED65-EE1D-4F0A-9B64-E17F23F308C3.txt"
+  },
+  {
+    "id": "484",
+    "parent": "0",
+    "title": "370.Urampamagara, Yesu",
+    "content": "2FB1AD41-D2FD-466C-A924-046C27EA9E2A.txt"
+  },
+  {
+    "id": "485",
+    "parent": "0",
+    "title": "371.Yesu, nd' uwawe",
+    "content": "82A85289-86F1-4266-B074-F0FBAA5A4A1A.txt"
+  },
+  {
+    "id": "486",
+    "parent": "0",
+    "title": "372.Nyigiza hafi, Mwami Yesu",
+    "content": "C763A172-D389-4C02-B597-32371501D793.txt"
+  },
+  {
+    "id": "487",
+    "parent": "0",
+    "title": "373.Harihw’icyo nkwaka Mwami",
+    "content": "7A44FD8B-FC23-49B9-B9BE-406B1A50CE62.txt"
+  },
+  {
+    "id": "488",
+    "parent": "0",
+    "title": "374.Uyu mwana w'uruhinja ni nde",
+    "content": "3FDB08C1-13DB-4F69-8592-41F7D8340879.txt"
+  },
+  {
+    "id": "489",
+    "parent": "0",
+    "title": "375.Habay’umunsi w’ishimwe mw’ijuru",
+    "content": "A53D6721-4930-49A8-B532-F1A65C8A0201.txt"
+  },
+  {
+    "id": "490",
+    "parent": "0",
+    "title": "376. Mwami Yesu, Nyir'ubuntu",
+    "content": "8F867F04-D50A-46D0-BB57-33DF9F5942B3.txt"
+  },
+  {
+    "id": "491",
+    "parent": "0",
+    "title": "377. Reka twongere twishimire",
+    "content": "F2C78C08-6561-4587-AC7C-0E70959A228C.txt"
+  },
+  {
+    "id": "492",
+    "parent": "0",
+    "title": "378.Nuzuy' umunezero",
+    "content": "A2DE312A-CFFC-4AC1-B865-5E3F0F7F8A75.txt"
+  },
+  {
+    "id": "493",
+    "parent": "0",
+    "title": "379.Umutim' ukomerekejwe",
+    "content": "7BC565CE-4F40-4C15-8A0F-81CC20D08C83.txt"
+  },
+  {
+    "id": "494",
+    "parent": "0",
+    "title": "380 .Nubwo ntsizwe n'ibyaha",
+    "content": "E0A5A237-0D3B-44CC-8FCA-4DEC56A3B446.txt"
+  },
+  {
+    "id": "495",
+    "parent": "0",
+    "title": "381.Yes' avukiye mw isi",
+    "content": "523CB96C-56E0-4277-9788-75A53689E397.txt"
+  },
+  {
+    "id": "496",
+    "parent": "0",
+    "title": "382.Yes' aduh' amahoro",
+    "content": "37393F2A-C78F-4036-8167-2FEC132B0A9C.txt"
+  },
+  {
+    "id": "497",
+    "parent": "0",
+    "title": "383.Icyamp' ukanyikorerera",
+    "content": "1AF38BC4-6E70-402A-9B1C-F06DB7D1C72F.txt"
+  },
+  {
+    "id": "498",
+    "parent": "0",
+    "title": "384.Ben' Imana yizerwa",
+    "content": "55D1F8E9-8B13-4859-87FA-DFD1C9733E61.txt"
+  },
+  {
+    "id": "499",
+    "parent": "0",
+    "title": "385.Murinzi we menyesha inzira",
+    "content": "83FDC019-405A-484B-BB7D-E47F6AFDD5BE.txt"
+  },
+  {
+    "id": "500",
+    "parent": "0",
+    "title": "386.Ntukajy'urambirwa ku mwizera",
+    "content": "AFB1D3A2-90E4-48EE-B380-6154C07D566B.txt"
+  },
+  {
+    "id": "501",
+    "parent": "0",
+    "title": "387.Yesu n' ubugingo bwacu",
+    "content": "97AFEBE7-0517-4DBF-B83A-15EF0F7FFFA9.txt"
+  },
+  {
+    "id": "502",
+    "parent": "0",
+    "title": "388.Tunganir’Imana",
+    "content": "3D1E1F9C-12A1-4331-9D0B-FDC1E30BF009.txt"
+  },
+  {
+    "id": "503",
+    "parent": "0",
+    "title": "389.Wa Mukristo muto we",
+    "content": "EECACF5D-34DB-417F-8739-155374B8FFF0.txt"
+  },
+  {
+    "id": "504",
+    "parent": "0",
+    "title": "390. Ngabo z'umwete, mubyuke",
+    "content": "BDABB4E9-65BF-4893-9F0C-61773B43260C.txt"
+  },
+  {
+    "id": "505",
+    "parent": "0",
+    "title": "391.Kugeza gupfa, tuzakuyoboka",
+    "content": "1F99071B-3AE9-404F-9AC9-C04ADF53050F.txt"
+  },
+  {
+    "id": "506",
+    "parent": "0",
+    "title": "392.Basirikare ba Kristo",
+    "content": "C0D55795-DBB7-41F5-909B-62C76D503314.txt"
+  },
+  {
+    "id": "507",
+    "parent": "0",
+    "title": "393.Yesu, tugushimir' abera bawe",
+    "content": "03069C9A-F685-4793-8952-42B4688F635F.txt"
+  },
+  {
+    "id": "508",
+    "parent": "0",
+    "title": "394.Duhurure ngo twitabe",
+    "content": "DE3040FE-2E7B-48E1-AF7C-8826F5FF976A.txt"
+  },
+  {
+    "id": "509",
+    "parent": "0",
+    "title": "395.Tumeny' ubwami buri mw ijuru",
+    "content": "502900B8-5C92-4F90-AB9B-9D04EA4FDD23.txt"
+  },
+  {
+    "id": "510",
+    "parent": "0",
+    "title": "396.Ni heh' abizera bazajya kuba",
+    "content": "C919846E-F2C3-4588-B086-0580D9121B22.txt"
+  },
+  {
+    "id": "511",
+    "parent": "0",
+    "title": "397.Mw isi tubonana n'inshuti",
+    "content": "29B5FBA4-6CFD-4D88-8FF5-E50DD0740042.txt"
+  },
+  {
+    "id": "512",
+    "parent": "0",
+    "title": "398.Kwa Data mw ijuru",
+    "content": "0B60DDE2-EAC3-4241-9BBF-82F26B17C89F.txt"
+  },
+  {
+    "id": "513",
+    "parent": "0",
+    "title": "399.Iyi si turimo",
+    "content": "A6CDA5FE-E6C8-40AE-A45B-3A4890EA81F1.txt"
+  },
+  {
+    "id": "514",
+    "parent": "0",
+    "title": "400.Twebw' abasiganirwa aho dutegekwa",
+    "content": "A3BCB106-2C32-434A-96CA-B5C72398778B.txt"
+  },
+  {
+    "id": "515",
+    "parent": "0",
+    "title": "401.Iri  joro, yemwe bakristo",
+    "content": "5E28CC53-73D3-42FC-B556-1CD8753D37E4.txt"
+  },
+  {
+    "id": "516",
+    "parent": "0",
+    "title": "402.Ijwi ryumviswe",
+    "content": "C9A643BE-A6AF-457A-98D2-F925E31A4C9A.txt"
+  },
+  {
+    "id": "517",
+    "parent": "0",
+    "title": "403.Nyenyeri yo mu museke",
+    "content": "6599694C-AFA2-4F30-8433-3E6B2C34734B.txt"
+  },
+  {
+    "id": "518",
+    "parent": "0",
+    "title": "404.Yesu Krist' agiye kuza",
+    "content": "1A5FB0FD-EC2E-433A-9D61-081B1CAC649D.txt"
+  },
+  {
+    "id": "519",
+    "parent": "0",
+    "title": "405.Dor' is' ukunt' ikwifuza",
+    "content": "39EC5E8A-AA82-4334-A1B4-C510611F8453.txt"
+  },
+  {
+    "id": "520",
+    "parent": "0",
+    "title": "406.Jyan' umucyo mur'Afurika",
+    "content": "63D4AB46-7022-486F-BAB6-42D513F93039.txt"
+  },
+  {
+    "id": "521",
+    "parent": "0",
+    "title": "407.Umurimo wacu ni mwiza cyane",
+    "content": "4060A525-ED27-4BD9-A7E0-71FA8A30549D.txt"
+  },
+  {
+    "id": "522",
+    "parent": "0",
+    "title": "408.abakijijwe mwese",
+    "content": "A5BE8B0C-34B2-4504-AFAB-EB1EA4C9BB4E.txt"
+  },
+  {
+    "id": "523",
+    "parent": "0",
+    "title": "409.Yes' aradubamagara",
+    "content": "DE7273FB-E317-450E-89F0-EB13312C85C3.txt"
+  },
+  {
+    "id": "524",
+    "parent": "0",
+    "title": "410.Yesu, ni Wowe dushima",
+    "content": "6C4A8F59-7564-4F82-B3EE-8E1455352A80.txt"
+  },
+  {
+    "id": "525",
+    "parent": "0",
+    "title": "411.Ai Data wo mw ijuru",
+    "content": "573F44AE-C9FE-4AEB-A778-7A1D06BEF6D2.txt"
+  },
+  {
+    "id": "526",
+    "parent": "0",
+    "title": "412.Isi yos' iririmbe",
+    "content": "D3C03D5B-2086-48EE-8372-659347B5BDDB.txt"
+  },
+  {
+    "id": "527",
+    "parent": "0",
+    "title": "413. Intumwa z'Umwami Yesu",
+    "content": "4B453AEE-1A58-4A02-B3A2-61EDEE41C955.txt"
+  },
+  {
+    "id": "528",
+    "parent": "0",
+    "title": "414.Urutare rw'Imana",
+    "content": "39B43221-8B6D-493A-AEAE-E498FC7F3C6F.txt"
+  },
+  {
+    "id": "529",
+    "parent": "0",
+    "title": "415. Turashim' Imana",
+    "content": "EBD5B024-618B-48D0-89C9-13BCCC4058CD.txt"
+  },
+  {
+    "id": "530",
+    "parent": "0",
+    "title": "416.Gumy' ushime",
+    "content": "C9D93C48-A79A-442F-AD21-8FBFB547CDCE.txt"
+  },
+  {
+    "id": "531",
+    "parent": "0",
+    "title": "417.Yesu ni Umukiza",
+    "content": "54906E69-E465-4917-BE9B-F69BAE2AD1B7.txt"
+  },
+  {
+    "id": "532",
+    "parent": "0",
+    "title": "418. Wa gatabaza kanjye we",
+    "content": "63AAE10B-CF79-4E38-81D3-72B546437FE0.txt"
+  },
+  {
+    "id": "533",
+    "parent": "0",
+    "title": "419.Har' Umwami wa kera",
+    "content": "581749F6-CA02-43BE-BCB1-7E5731F85ED5.txt"
+  },
+  {
+    "id": "534",
+    "parent": "0",
+    "title": "420.Habay’ umuntu twizeho",
+    "content": "4E266659-9D7F-4FF0-81A8-CDBB4336BA9B.txt"
+  },
+  {
+    "id": "535",
+    "parent": "0",
+    "title": "421.Nguhaye, Data wera,Uyu mwaka wose",
+    "content": "D7300E51-0F20-47C5-9616-45C568F1FEA3.txt"
+  },
+  {
+    "id": "536",
+    "parent": "0",
+    "title": "422. Yesu yageze mu Rwanda",
+    "content": "15666AC1-C5F0-4507-B9D2-4DC3092A9E2E.txt"
+  },
+  {
+    "id": "537",
+    "parent": "0",
+    "title": "423.Reka nshim’ Umwami Yesu",
+    "content": "0E90E32C-2C2A-4732-B10F-B6AEB2D89F97.txt"
+  },
+  {
+    "id": "538",
+    "parent": "0",
+    "title": "424.Iteka Nagendaga ",
+    "content": "93F4E969-4F55-4296-BAD8-D97E0B7928A1.txt"
+  },
+  {
+    "id": "539",
+    "parent": "0",
+    "title": "425. Kera narabatijwe",
+    "content": "59FC90A1-C842-45CD-B736-1E906B132555.txt"
+  },
+  {
+    "id": "540",
+    "parent": "0",
+    "title": "426.Dukomeze gutambuka",
+    "content": "1391BC32-68A1-408C-B5C1-F5DA5343539B.txt"
+  },
+  {
+    "id": "541",
+    "parent": "0",
+    "title": "427. Urukundo rwa Yesu",
+    "content": "D86CFBD5-861A-4C93-BE21-DAD38DFA632E.txt"
+  },
+  {
+    "id": "542",
+    "parent": "0",
+    "title": "428.Bene Data b'abirabura",
+    "content": "9045A4CA-9FCD-4686-80F6-CBFB08B93999.txt"
+  },
+  {
+    "id": "543",
+    "parent": "0",
+    "title": "429 .Dor' inzira nziz' ijya mw ijuru",
+    "content": "A9648DC0-E91A-41AD-866F-1F5462373C8B.txt"
+  },
+  {
+    "id": "544",
+    "parent": "0",
+    "title": "430.Kera nar' umwangizi",
+    "content": "FED300D3-6DCC-445D-BD5E-D0BDF322DBFA.txt"
+  },
+  {
+    "id": "545",
+    "parent": "0",
+    "title": "431.Abakund' iby'isi",
+    "content": "8CDABFC3-6797-488B-8D37-2E10CD7C80E1.txt"
+  },
+  {
+    "id": "546",
+    "parent": "0",
+    "title": "432.Abo mur'iyi si",
+    "content": "DE76B47B-6AF7-4BA5-8562-5CF0942BECD7.txt"
+  },
+  {
+    "id": "547",
+    "parent": "0",
+    "title": "433.Yemw' abasubir' iyo muva",
+    "content": "A8FDE00C-C1D4-475D-8299-EEF2813EDF33.txt"
+  },
+  {
+    "id": "548",
+    "parent": "0",
+    "title": "434.Abo mur'iyi si mbi",
+    "content": "046CDB70-B91D-4975-9D4C-4CD84C971FDC.txt"
+  },
+  {
+    "id": "549",
+    "parent": "0",
+    "title": "435.Muze mwes' abakijijwe",
+    "content": "C023B391-1BB4-439A-BB2E-15837ED4106C.txt"
+  },
+  {
+    "id": "550",
+    "parent": "0",
+    "title": "436. Ubwo nagendaga ndemerewe",
+    "content": "7853620C-D00E-41F2-9E2D-2208487E8123.txt"
+  },
+  {
+    "id": "551",
+    "parent": "0",
+    "title": "437.Mp' amavuta, Yesu, mbone kwaka",
+    "content": "6BBC3E2B-00B5-4B1F-BB92-263530163C95.txt"
+  }
+]
