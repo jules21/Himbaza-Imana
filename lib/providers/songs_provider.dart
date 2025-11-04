@@ -33,35 +33,12 @@ class SongCollectionProvider extends ChangeNotifier{
           .map((json) => hymnPraiseSong.fromJson(json))
           .toList();
 
-      // Load lyrics for hymns songs collection
-      await _loadHymnsLyrics(context);
-
       isLoading = false;
       notifyListeners();
     } catch (e) {
       error = e.toString();
       isLoading = false;
       notifyListeners();
-    }
-  }
-
-  Future<void> _loadHymnsLyrics(BuildContext context) async {
-    final hymnSongs = hymnPraiseSongs.where((song) => !song.isCategory());
-
-    for (var song in hymnSongs) {
-      if (song.contentFile.isNotEmpty) {
-        try {
-          if (!_lyricsCache.containsKey(song.contentFile)) {
-            final lyrics = await DefaultAssetBundle.of(context)
-                .loadString('assets/hymns_songs/${song.contentFile}');
-            _lyricsCache[song.contentFile] = lyrics;
-          }
-          song.lyrics = _lyricsCache[song.contentFile] ?? '';
-        } catch (e) {
-          print('Error loading lyrics for song ${song.title}: $e');
-          song.lyrics = 'Error loading lyrics';
-        }
-      }
     }
   }
 

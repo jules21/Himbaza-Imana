@@ -1,6 +1,6 @@
 import 'package:indirimbo/models/searchable_song.dart';
 
-class hymnPraiseSong{
+class hymnPraiseSong implements SearchableSong{
   final String id;
   final String parent;
   final String title;
@@ -21,7 +21,7 @@ class hymnPraiseSong{
       parent: json['parent'],
       title: json['title'],
       contentFile: json['content'] ?? '',
-      lyrics: '', // Will be loaded later
+      lyrics: json['lyrics'],
     );
   }
 

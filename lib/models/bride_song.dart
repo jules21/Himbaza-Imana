@@ -1,6 +1,6 @@
 import 'package:indirimbo/models/searchable_song.dart';
 
-class BrideSong{
+class BrideSong implements SearchableSong{
 
   late String id;
   late String title;
@@ -25,6 +25,10 @@ class BrideSong{
       'page':page,
     };
   }
+
+  @override
+  // TODO: implement parent
+  String get parent => "21";
 
 
 }

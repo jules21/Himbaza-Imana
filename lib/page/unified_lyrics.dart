@@ -1,11 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:indirimbo/models/bride_song.dart';
+import 'package:indirimbo/models/searchable_song.dart';
 
-import '../models/searchable_song.dart';
-
-class BrideLyrics extends StatelessWidget {
-  const BrideLyrics({super.key});
-
+class UnifiedLyrics extends StatelessWidget {
+  const UnifiedLyrics({super.key});
   @override
   Widget build(BuildContext context) {
     final song  = ModalRoute.of(context)!.settings.arguments as SearchableSong;
@@ -13,10 +10,10 @@ class BrideLyrics extends StatelessWidget {
       appBar: AppBar(
         leading: const BackButton(color: Colors.white,),
         backgroundColor: Colors.blueGrey[800],
-        title: Text('${song.id}. ${song.title}', style:
+        title: Text('${song.title}', style:
         const TextStyle(
-          color: Colors.white,
-          fontSize: 14
+            color: Colors.white,
+            fontSize: 14
         ),),
         centerTitle: true,
       ),
@@ -33,7 +30,7 @@ class BrideLyrics extends StatelessWidget {
                   textAlign: TextAlign.center,
                   style: const TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
                 ),
-                const SizedBox(height: 10),
+                const SizedBox(height: 8),
                 // Formatted Lyrics
                 ..._formatLyrics(song.lyrics),
               ],
@@ -48,15 +45,6 @@ class BrideLyrics extends StatelessWidget {
 // Function to format lyrics correctly
   List<Widget> _formatLyrics(String lyrics) {
     List<String> lines = lyrics.split("\n");
-
-    // Remove last line (page number)
-    if (lines.isNotEmpty) {
-      //if first line start with character, delete it
-      if(!lines.first.startsWith(RegExp(r'^\d'))) lines.remove(lines.first);
-
-      lines.remove(lines.first);
-      lines.removeLast();
-    }
 
     List<Widget> formattedLines = [];
     bool isChorus = false; // Flag to track chorus lines
@@ -73,10 +61,10 @@ class BrideLyrics extends StatelessWidget {
           Text(
             textAlign: TextAlign.center,
             "\n$line",
-            style: const TextStyle(fontSize: 18, fontWeight: FontWeight.w500),
+            style: const TextStyle(fontSize: 18, fontWeight: FontWeight.w400),
           ),
         );
-      } else if (line.startsWith("R/")) {
+      } else if (line.toLowerCase().startsWith("ref:")) {
         // Start of Chorus
         isChorus = true;
         formattedLines.add(
@@ -90,7 +78,7 @@ class BrideLyrics extends StatelessWidget {
                 fontStyle: FontStyle.italic,
                 fontWeight: FontWeight.w500,
                 color: Colors.blue,
-                  letterSpacing: 1, height: 1.4,
+                letterSpacing: 1, height: 1.4,
               ),
             ),
           ),
