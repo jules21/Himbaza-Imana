@@ -53,4 +53,12 @@ class SongCollectionProvider extends ChangeNotifier{
   List<hymnPraiseSong> getCategories() {
     return hymnPraiseSongs.where((song) => song.isCategory()).toList();
   }
+  // Get all categories
+  List<hymnPraiseSong> ugushimishaSongs() {
+    return hymnPraiseSongs.where((song) => song.parent =='0').toList();
+  }
+  // Get all categories
+  List<hymnPraiseSong> agakizaSongs() {
+    return hymnPraiseSongs.where((song) => song.parent == '554').toList();
+  }
 }
