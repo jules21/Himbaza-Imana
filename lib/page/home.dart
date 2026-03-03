@@ -1,13 +1,14 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:indirimbo/services/song_service.dart';
 import 'package:indirimbo/page/unified_lyrics.dart';
 import 'package:provider/provider.dart';
-
 import '../models/search_song_result.dart';
 import '../models/searchable_song.dart';
+import '../models/view_type.dart';
 import '../providers/songs_provider.dart';
-import '../providers/theme_provider.dart';
-import '../screens/grid_view_screen.dart';
+import '../screens/song_view_screen.dart';
+
 
 class Home extends StatefulWidget {
   const Home({super.key});
@@ -17,6 +18,7 @@ class Home extends StatefulWidget {
 }
 
 class _HomeState extends State<Home> {
+  ViewType _currentViewType = ViewType.list;
   List<SongSearchResult> _searchResults = [];
   bool _isSearching = false;
   final TextEditingController _searchController = TextEditingController();
@@ -36,85 +38,121 @@ class _HomeState extends State<Home> {
       length: 3,
       child: Scaffold(
         appBar: AppBar(
-          bottom: TabBar(tabs: [
-            Tab(
-              text: "Umugeni",
-            ),
-            Tab(
-              text: "Ugushimisha",
-            ),
-            Tab(
-              text: "Agakiza",
-            ),
-          ],
-          labelColor: Colors.white,
-            unselectedLabelColor: Colors.white70,
-            labelStyle: TextStyle(fontSize: 16),
-          ),
+          elevation: 0,
           iconTheme: const IconThemeData(color: Colors.white),
           title: _isSearching
               ? Container(
-                  height: 40,
-                  decoration: BoxDecoration(
-                      color: Colors.white,
-                      borderRadius: BorderRadius.circular(5)),
-                  child: Row(
-                    children: [
-                      Expanded(
-                        child: TextField(
-                          onChanged: (query) => _performUnifiedSearch(query),
-                          autofocus: true,
-                          controller: _searchController,
-                          decoration: InputDecoration(
-                              hintText: 'Gushaka...',
-                              border: InputBorder.none,
-                              contentPadding:
-                                  const EdgeInsets.fromLTRB(16, 10, 16, 10),
-                              hintStyle:
-                                  TextStyle(color: Colors.blueGrey[800])),
-                        ),
-                      ),
-                      IconButton(
-                          onPressed: () => _performUnifiedSearch,
-                          icon: const Icon(Icons.search))
-                    ],
-                  ),
-                )
-              : const Text(
-                  "Himbaza Imana",
-                  style: TextStyle(color: Colors.white),
+            height: 45,
+            decoration: BoxDecoration(
+              color: Colors.white,
+              borderRadius: BorderRadius.circular(25),
+              boxShadow: [
+                BoxShadow(
+                  color: Colors.black.withOpacity(0.1),
+                  blurRadius: 8,
+                  offset: const Offset(0, 2),
                 ),
+              ],
+            ),
+            child: TextField(
+              onChanged: (query) => _performUnifiedSearch(query),
+              autofocus: true,
+              controller: _searchController,
+              style: GoogleFonts.inter(
+                fontSize: 16,
+                color: Colors.blueGrey[900],
+              ),
+              decoration: InputDecoration(
+                hintText: 'Gushaka indirimbo...',
+                border: InputBorder.none,
+                contentPadding: const EdgeInsets.symmetric(
+                  horizontal: 20,
+                  vertical: 12,
+                ),
+                hintStyle: GoogleFonts.inter(
+                  color: Colors.blueGrey[400],
+                  fontSize: 15,
+                ),
+                prefixIcon: Icon(
+                  Icons.search,
+                  color: Colors.blueGrey[600],
+                  size: 22,
+                ),
+                suffixIcon: _searchController.text.isNotEmpty
+                    ? IconButton(
+                  icon: Icon(
+                    Icons.clear,
+                    color: Colors.blueGrey[600],
+                    size: 20,
+                  ),
+                  onPressed: () {
+                    _searchController.clear();
+                    _performUnifiedSearch('');
+                  },
+                )
+                    : null,
+              ),
+            ),
+          )
+              : Text(
+            "Himbaza Imana",
+            style: GoogleFonts.poppins(
+              color: Colors.white,
+              fontSize: 20,
+              fontWeight: FontWeight.w600,
+              letterSpacing: 0.5,
+            ),
+          ),
           backgroundColor: Colors.blueGrey[800],
           actions: [
-            IconButton(
-                onPressed: () => {
-                      setState(() {
-                        if (_isSearching) {
-                          _isSearching = false;
-                          _searchController.clear();
-                          _searchResults = [];
-                        } else {
-                          _isSearching = true;
-                        }
-                      })
-                    },
-                icon: Icon(
-                  (_isSearching ? Icons.clear : Icons.search),
-                  color: Colors.white,
-                  size: 30,
-                )),
-            Visibility(
-              visible: !_isSearching,
+            // Search Toggle Button
+            Container(
+              margin: const EdgeInsets.symmetric(horizontal: 4),
+              decoration: BoxDecoration(
+                color: _isSearching
+                    ? Colors.white.withOpacity(0.2)
+                    : Colors.transparent,
+                borderRadius: BorderRadius.circular(12),
+              ),
               child: IconButton(
-                  onPressed: () =>
-                      Provider.of<ThemeProvider>(context, listen: false)
-                          .toggleTheme(),
+                onPressed: () {
+                  setState(() {
+                    if (_isSearching) {
+                      _isSearching = false;
+                      _searchController.clear();
+                      _searchResults = [];
+                    } else {
+                      _isSearching = true;
+                    }
+                  });
+                },
+                icon: Icon(
+                  _isSearching ? Icons.close : Icons.search,
+                  color: Colors.white,
+                  size: 26,
+                ),
+                tooltip: _isSearching ? 'Close search' : 'Search songs',
+              ),
+            ),
+
+            // View Type Selector
+            if (!_isSearching)
+              Container(
+                margin: const EdgeInsets.only(right: 8, left: 4),
+                decoration: BoxDecoration(
+                  color: Colors.transparent,
+                  borderRadius: BorderRadius.circular(12),
+                ),
+                child: IconButton(
                   icon: Icon(
-                    Icons.more_vert,
-                    size: 30,
-                  )),
-              // icon: Icon((Provider.of<ThemeProvider>(context).isDark ? Icons.dark_mode : Icons.light_mode), color: Colors.white,size: 30,)),
-            )
+                    _getViewIcon(),
+                    color: Colors.white,
+                    size: 26,
+                  ),
+                  tooltip: 'Change view',
+                  onPressed: _toggleViewType,
+                ),
+              ),
           ],
         ),
         body: SafeArea(
@@ -138,12 +176,33 @@ class _HomeState extends State<Home> {
 
     return Column(
       children: [
+        Container(
+          color: Colors.blueGrey[800],
+          child: TabBar(
+            indicatorColor: Colors.white,
+            indicatorWeight: 3,
+            labelColor: Colors.white,
+            unselectedLabelColor: Colors.white70,
+            labelStyle: const TextStyle(
+              fontSize: 16,
+              fontWeight: FontWeight.bold,
+            ),
+            tabs: [
+              Tab(text: "Umugeni"),
+              Tab(text: "Ugushimisha"),
+              Tab(text: "Agakiza"),
+            ],
+          ),
+        ),
         Expanded(
-          child: TabBarView(children: [
-            GridViewScreen(songs: brideSongs),
-            GridViewScreen(songs: ugushimishaSongs),
-            GridViewScreen(songs: agakizaSongs),
-          ]),
+          child: TabBarView(
+            children: [
+              SongViewScreen(songs: brideSongs, viewType: _currentViewType),
+              SongViewScreen(
+                  songs: ugushimishaSongs, viewType: _currentViewType),
+              SongViewScreen(songs: agakizaSongs, viewType: _currentViewType),
+            ],
+          ),
         ),
       ],
     );
@@ -225,13 +284,7 @@ class _HomeState extends State<Home> {
                               Theme.of(context).primaryColor.withOpacity(0.1),
                           borderRadius: BorderRadius.circular(8),
                         ),
-                        child: Text(
-                          '#${song.id}',
-                          style: TextStyle(
-                            fontWeight: FontWeight.bold,
-                            color: Theme.of(context).primaryColor,
-                          ),
-                        ),
+                        child: Icon(Icons.music_note, color: Theme.of(context).primaryColor,),
                       ),
                       const SizedBox(width: 12),
                       Expanded(
@@ -302,4 +355,30 @@ class _HomeState extends State<Home> {
           .toList();
     });
   }
+
+  IconData _getViewIcon() {
+    switch (_currentViewType) {
+      case ViewType.grid:
+        return Icons.grid_view;
+      case ViewType.compactGrid:
+        return Icons.apps;
+      case ViewType.list:
+        return Icons.menu;
+      case ViewType.card:
+        return Icons.view_agenda;
+    }
+  }
+
+  void _toggleViewType() {
+    final values = ViewType.values;
+    final currentIndex = values.indexOf(_currentViewType);
+    final nextIndex = (currentIndex + 1) % values.length;
+
+    setState(() {
+      _currentViewType = values[nextIndex];
+    });
+  }
+
+
 }
+
