@@ -167,6 +167,9 @@ class _BrideLyricsState extends State<BrideLyrics> {
 
       if (RegExp(r"^\d+\.").hasMatch(line)) {
         flushChorus(); isChorus = false;
+        // Number without dot
+        final number = RegExp(r"^\d+").firstMatch(line)?.group(0) ?? '';
+        final rest = line.replaceFirst(RegExp(r"^\d+\.\s*"), '');
         widgets.add(const SizedBox(height: 16));
         widgets.add(Row(
           crossAxisAlignment: CrossAxisAlignment.start,
@@ -177,7 +180,7 @@ class _BrideLyricsState extends State<BrideLyrics> {
                 gradient: LinearGradient(colors: [Colors.blueGrey[700]!, Colors.blueGrey[900]!]),
                 borderRadius: BorderRadius.circular(8),
               ),
-              child: Text(RegExp(r"^\d+\.").firstMatch(line)?.group(0) ?? '', style: const TextStyle(fontSize: 12, fontWeight: FontWeight.bold, color: Colors.white)),
+              child: Text(number, style: const TextStyle(fontSize: 12, fontWeight: FontWeight.bold, color: Colors.white)),
             ),
             const SizedBox(width: 10),
             Expanded(child: Text(line.replaceFirst(RegExp(r"^\d+\.\s*"), ''), style: TextStyle(fontSize: _fontSize, fontWeight: FontWeight.w500, color: Colors.blueGrey[900], height: 1.65))),

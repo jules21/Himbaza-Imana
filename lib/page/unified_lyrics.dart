@@ -196,8 +196,31 @@ class _UnifiedLyricsState extends State<UnifiedLyrics> {
   );
 
   List<Widget> _formatLyrics(String lyrics) {
+    print("here");
+    lyrics = lyrics.replaceFirstMapped(
+      RegExp(r'^(\d+)\.'),
+          (m) => m.group(1) == '1' ? m.group(0)! : '1.',
+    );
+
     // FIX: Use a clean list copy so repeated calls never share state
-    final lines = List<String>.from(lyrics.split('\n'));
+    var lines = List<String>.from(lyrics.split('\n'));
+
+    // Strip a leading line that is ONLY a standalone number (the song's own
+    // catalogue number stored as the first line, e.g. "5" or "5.").
+    // Without this the first verse badge shows the song number instead of "1".
+    if (lines.isNotEmpty) {
+      final firstNonEmpty = lines.indexWhere((l) => l.trim().isNotEmpty);
+      if (firstNonEmpty != -1) {
+        final candidate = lines[firstNonEmpty].trim();
+        // Matches lines that are ONLY a number, optionally followed by a dot —
+        // no extra text after it (those are real "1. First line of verse" lines).
+        final soloNumber = RegExp(r'^\d+\.?\s*$');
+        if (soloNumber.hasMatch(candidate)) {
+          lines = List<String>.from(lines)..removeAt(firstNonEmpty);
+        }
+      }
+    }
+
     final widgets = <Widget>[];
 
     // State machine — avoids look-ahead index bugs
@@ -250,7 +273,7 @@ class _UnifiedLyricsState extends State<UnifiedLyrics> {
                   line,
                   textAlign: TextAlign.center,
                   style: TextStyle(
-                    fontSize: _fontSize, // FIX: always _fontSize
+                    fontSize: _fontSize,
                     color: Colors.blueGrey[700],
                     fontStyle: FontStyle.italic,
                     fontWeight: FontWeight.w500,
@@ -293,7 +316,6 @@ class _UnifiedLyricsState extends State<UnifiedLyrics> {
         widgets.add(Row(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            // FIX: show number WITHOUT dot
             Container(
               padding: const EdgeInsets.symmetric(
                   horizontal: 10, vertical: 3),
@@ -319,8 +341,8 @@ class _UnifiedLyricsState extends State<UnifiedLyrics> {
                 child: Text(
                   rest,
                   style: TextStyle(
-                    fontSize: _fontSize, // FIX: always _fontSize
-                    fontWeight: FontWeight.w500,
+                    fontSize: _fontSize,
+                    fontWeight: FontWeight.bold,// jules21
                     color: Colors.blueGrey[900],
                     height: 1.65,
                   ),
@@ -355,7 +377,8 @@ class _UnifiedLyricsState extends State<UnifiedLyrics> {
           line,
           textAlign: TextAlign.center,
           style: TextStyle(
-            fontSize: _fontSize, // FIX: always _fontSize
+            fontWeight: FontWeight.bold,
+            fontSize: _fontSize,
             color: Colors.blueGrey[800],
             height: 1.65,
             letterSpacing: 0.2,

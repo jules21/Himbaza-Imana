@@ -13,7 +13,6 @@ class BuildCardView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    print(songs[1]);
     return ListView.builder(
       padding: const EdgeInsets.all(16.0),
       itemCount: songs.length,
