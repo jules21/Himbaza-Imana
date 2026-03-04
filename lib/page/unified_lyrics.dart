@@ -10,19 +10,42 @@ class UnifiedLyrics extends StatefulWidget {
 
 class _UnifiedLyricsState extends State<UnifiedLyrics> {
   double _fontSize = 15.0;
+  late int _currentIndex;
+  late List<SearchableSong> _songs;
+  bool _hasList = false;
+
+  @override
+  void didChangeDependencies() {
+    super.didChangeDependencies();
+    final args = ModalRoute.of(context)!.settings.arguments;
+    if (args is Map) {
+      _songs = List<SearchableSong>.from(args['songs'] as List);
+      _currentIndex = args['index'] as int;
+      _hasList = true;
+    } else if (args is SearchableSong) {
+      _songs = [args];
+      _currentIndex = 0;
+      _hasList = false;
+    }
+  }
+
+  SearchableSong get _currentSong => _songs[_currentIndex];
+
+  void _goTo(int index) {
+    setState(() {
+      _currentIndex = index;
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
-    final song = ModalRoute.of(context)!.settings.arguments as SearchableSong;
-
     return Scaffold(
       backgroundColor: Colors.grey[100],
       appBar: AppBar(
         backgroundColor: Colors.blueGrey[800],
         elevation: 0,
         leading: const BackButton(color: Colors.white),
-        title:   const Icon(Icons.music_note_rounded, color: Colors.blueGrey, size: 20),
-
+        title: const Icon(Icons.music_note_rounded, color: Colors.blueGrey, size: 20),
         centerTitle: true,
         actions: [
           Container(
@@ -34,34 +57,34 @@ class _UnifiedLyricsState extends State<UnifiedLyrics> {
             child: Row(
               mainAxisSize: MainAxisSize.min,
               children: [
-                _fontButton(Icons.remove, () { setState(() { if (_fontSize > 12) _fontSize -= 1; }); }),
-                Text('${_fontSize.toInt()}', style: const TextStyle(color: Colors.white, fontSize: 12)),
-                _fontButton(Icons.add, () { setState(() { if (_fontSize < 32) _fontSize += 1; }); }),
+                _fontButton(Icons.remove, () {
+                  setState(() { if (_fontSize > 12) _fontSize -= 1; });
+                }),
+                Text('${_fontSize.toInt()}',
+                    style: const TextStyle(color: Colors.white, fontSize: 12)),
+                _fontButton(Icons.add, () {
+                  setState(() { if (_fontSize < 32) _fontSize += 1; });
+                }),
               ],
             ),
           ),
         ],
       ),
       body: SingleChildScrollView(
-        padding: const EdgeInsets.all(0),
+        padding: EdgeInsets.zero,
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
+            // ── Header ──────────────────────────────────────────────
             Container(
               width: double.infinity,
-              decoration: BoxDecoration(
-                color: Colors.blueGrey[800],
-                borderRadius: const BorderRadius.only(
-                  // bottomLeft: Radius.circular(28),
-                  // bottomRight: Radius.circular(28),
-                ),
-              ),
+              color: Colors.blueGrey[800],
               padding: const EdgeInsets.fromLTRB(24, 4, 24, 16),
               child: Column(
                 children: [
                   const SizedBox(height: 8),
                   Text(
-                    song.title,
+                    _currentSong.title,
                     textAlign: TextAlign.center,
                     style: const TextStyle(
                       color: Colors.white,
@@ -73,7 +96,8 @@ class _UnifiedLyricsState extends State<UnifiedLyrics> {
                   ),
                   const SizedBox(height: 20),
                   Container(
-                    width: 50, height: 2,
+                    width: 50,
+                    height: 2,
                     decoration: BoxDecoration(
                       color: Colors.white38,
                       borderRadius: BorderRadius.circular(2),
@@ -82,19 +106,79 @@ class _UnifiedLyricsState extends State<UnifiedLyrics> {
                 ],
               ),
             ),
+
             const SizedBox(height: 8),
+
+            // ── Lyrics card ─────────────────────────────────────────
             Card(
-              margin: EdgeInsets.symmetric(horizontal: 10),
+              margin: const EdgeInsets.symmetric(horizontal: 10),
               elevation: 1,
-              shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
+              shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(8)),
               child: Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 20),
+                padding:
+                const EdgeInsets.symmetric(horizontal: 16, vertical: 20),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.stretch,
-                  children: _formatLyrics(song.lyrics),
+                  children: _formatLyrics(_currentSong.lyrics),
                 ),
               ),
             ),
+
+            // ── Pagination ──────────────────────────────────────────
+            if (_hasList)
+              Padding(
+                padding:
+                const EdgeInsets.symmetric(horizontal: 16, vertical: 16),
+                child: Row(
+                  children: [
+                    // Previous
+                    Expanded(
+                      child: _currentIndex > 0
+                          ? OutlinedButton.icon(
+                        onPressed: () => _goTo(_currentIndex - 1),
+                        icon: const Icon(Icons.chevron_left),
+                        label: Text(
+                          _songs[_currentIndex - 1].title,
+                          maxLines: 1,
+                          overflow: TextOverflow.ellipsis,
+                        ),
+                        style: OutlinedButton.styleFrom(
+                          foregroundColor: Colors.blueGrey[700],
+                          side: BorderSide(
+                              color: Colors.blueGrey[300]!),
+                          padding: const EdgeInsets.symmetric(
+                              horizontal: 12, vertical: 10),
+                        ),
+                      )
+                          : const SizedBox.shrink(),
+                    ),
+                    const SizedBox(width: 8),
+                    // Next
+                    Expanded(
+                      child: _currentIndex < _songs.length - 1
+                          ? OutlinedButton.icon(
+                        onPressed: () => _goTo(_currentIndex + 1),
+                        icon: const Icon(Icons.chevron_right),
+                        label: Text(
+                          _songs[_currentIndex + 1].title,
+                          maxLines: 1,
+                          overflow: TextOverflow.ellipsis,
+                        ),
+                        style: OutlinedButton.styleFrom(
+                          foregroundColor: Colors.blueGrey[700],
+                          side: BorderSide(
+                              color: Colors.blueGrey[300]!),
+                          padding: const EdgeInsets.symmetric(
+                              horizontal: 12, vertical: 10),
+                        ),
+                      )
+                          : const SizedBox.shrink(),
+                    ),
+                  ],
+                ),
+              ),
+
             const SizedBox(height: 24),
           ],
         ),
@@ -112,95 +196,175 @@ class _UnifiedLyricsState extends State<UnifiedLyrics> {
   );
 
   List<Widget> _formatLyrics(String lyrics) {
-    final lines = lyrics.split("\n");
+    // FIX: Use a clean list copy so repeated calls never share state
+    final lines = List<String>.from(lyrics.split('\n'));
     final widgets = <Widget>[];
+
+    // State machine — avoids look-ahead index bugs
     bool isChorus = false;
-    List<String> chorusBuffer = [];
+    final chorusBuffer = <String>[];
 
     void flushChorus() {
       if (chorusBuffer.isEmpty) return;
       widgets.add(
         Container(
           margin: const EdgeInsets.symmetric(vertical: 10),
-          padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 12),
+          padding:
+          const EdgeInsets.symmetric(horizontal: 14, vertical: 12),
           decoration: BoxDecoration(
             color: Colors.blueGrey[50],
             borderRadius: BorderRadius.circular(8),
-            border: Border.all(color: Colors.blueGrey[200]!, width: 0.8),
+            border:
+            Border.all(color: Colors.blueGrey[200]!, width: 0.8),
           ),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
               Row(
                 children: [
-                  Expanded(child: Divider(color: Colors.blueGrey[300], thickness: 0.8)),
+                  Expanded(
+                      child: Divider(
+                          color: Colors.blueGrey[300], thickness: 0.8)),
                   Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 10),
-                    child: Text("CHORUS", style: TextStyle(fontSize: 10, fontWeight: FontWeight.w700, color: Colors.blueGrey[400], letterSpacing: 2.5)),
+                    padding:
+                    const EdgeInsets.symmetric(horizontal: 10),
+                    child: Text(
+                      'CHORUS',
+                      style: TextStyle(
+                        fontSize: 10,
+                        fontWeight: FontWeight.w700,
+                        color: Colors.blueGrey[400],
+                        letterSpacing: 2.5,
+                      ),
+                    ),
                   ),
-                  Expanded(child: Divider(color: Colors.blueGrey[300], thickness: 0.8)),
+                  Expanded(
+                      child: Divider(
+                          color: Colors.blueGrey[300], thickness: 0.8)),
                 ],
               ),
               const SizedBox(height: 8),
               ...chorusBuffer.map((line) => Padding(
                 padding: const EdgeInsets.symmetric(vertical: 2),
-                child: Text(line, textAlign: TextAlign.center, style: TextStyle(fontSize: _fontSize, color: Colors.blueGrey[700], fontStyle: FontStyle.italic, fontWeight: FontWeight.w500, height: 1.65)),
+                child: Text(
+                  line,
+                  textAlign: TextAlign.center,
+                  style: TextStyle(
+                    fontSize: _fontSize, // FIX: always _fontSize
+                    color: Colors.blueGrey[700],
+                    fontStyle: FontStyle.italic,
+                    fontWeight: FontWeight.w500,
+                    height: 1.65,
+                  ),
+                ),
               )),
             ],
           ),
         ),
       );
-      chorusBuffer = [];
+      chorusBuffer.clear();
     }
 
-    for (int i = 0; i < lines.length; i++) {
-      final line = lines[i].trim();
+    for (final rawLine in lines) {
+      final line = rawLine.trim();
 
-      if (line.isEmpty) { if (!isChorus) widgets.add(const SizedBox(height: 10)); continue; }
+      // ── Blank line ──────────────────────────────────────────────
+      if (line.isEmpty) {
+        if (isChorus) {
+          // blank line ends chorus
+          flushChorus();
+          isChorus = false;
+        } else {
+          widgets.add(const SizedBox(height: 10));
+        }
+        continue;
+      }
 
-      if (RegExp(r"^\d+\.").hasMatch(line)) {
-        flushChorus(); isChorus = false;
+      // ── Verse number line  (e.g. "1. …" or "2.") ───────────────
+      final verseMatch = RegExp(r'^(\d+)\.\s*(.*)$').firstMatch(line);
+      if (verseMatch != null) {
+        flushChorus();
+        isChorus = false;
+
+        final number = verseMatch.group(1)!;        // e.g. "1"
+        final rest = verseMatch.group(2)!.trim();   // text after "1."
+
         widgets.add(const SizedBox(height: 16));
         widgets.add(Row(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
+            // FIX: show number WITHOUT dot
             Container(
-              padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 3),
+              padding: const EdgeInsets.symmetric(
+                  horizontal: 10, vertical: 3),
               decoration: BoxDecoration(
-                gradient: LinearGradient(colors: [Colors.blueGrey[700]!, Colors.blueGrey[900]!]),
+                gradient: LinearGradient(colors: [
+                  Colors.blueGrey[700]!,
+                  Colors.blueGrey[900]!
+                ]),
                 borderRadius: BorderRadius.circular(8),
               ),
-              child: Text(RegExp(r"^\d+\.").firstMatch(line)?.group(0) ?? '', style: const TextStyle(fontSize: 12, fontWeight: FontWeight.bold, color: Colors.white)),
+              child: Text(
+                number,
+                style: const TextStyle(
+                  fontSize: 12,
+                  fontWeight: FontWeight.bold,
+                  color: Colors.white,
+                ),
+              ),
             ),
             const SizedBox(width: 10),
-            Expanded(child: Text(line.replaceFirst(RegExp(r"^\d+\.\s*"), ''), style: TextStyle(fontSize: _fontSize, fontWeight: FontWeight.w500, color: Colors.blueGrey[900], height: 1.65))),
+            if (rest.isNotEmpty)
+              Expanded(
+                child: Text(
+                  rest,
+                  style: TextStyle(
+                    fontSize: _fontSize, // FIX: always _fontSize
+                    fontWeight: FontWeight.w500,
+                    color: Colors.blueGrey[900],
+                    height: 1.65,
+                  ),
+                ),
+              ),
           ],
         ));
         continue;
       }
 
-      if (line.toLowerCase().startsWith("ref:") || RegExp(r"^R/").hasMatch(line)) {
-        flushChorus(); isChorus = true;
-        final after = line.replaceFirst(RegExp(r"^ref:\s*", caseSensitive: false), "").replaceFirst(RegExp(r"^R/\s*"), "");
+      // ── Chorus marker  ("ref:" or "R/") ─────────────────────────
+      final chorusMarker =
+      RegExp(r'^(?:ref:\s*|R/\s*)', caseSensitive: false);
+      if (chorusMarker.hasMatch(line)) {
+        flushChorus();
+        isChorus = true;
+        final after = line.replaceFirst(chorusMarker, '');
         if (after.isNotEmpty) chorusBuffer.add(after);
         continue;
       }
 
-      final isLast = i == lines.length - 1;
-      final nextIsVerse = !isLast && RegExp(r"^\d+\.").hasMatch(lines[i + 1].trim());
-
+      // ── Inside chorus ────────────────────────────────────────────
       if (isChorus) {
         chorusBuffer.add(line);
-        if (isLast || nextIsVerse) { flushChorus(); isChorus = false; }
         continue;
       }
 
+      // ── Plain verse line ─────────────────────────────────────────
       widgets.add(Padding(
         padding: const EdgeInsets.symmetric(vertical: 2),
-        child: Text(line, textAlign: TextAlign.center, style: TextStyle(fontSize: _fontSize, color: Colors.blueGrey[800], height: 1.65, letterSpacing: 0.2)),
+        child: Text(
+          line,
+          textAlign: TextAlign.center,
+          style: TextStyle(
+            fontSize: _fontSize, // FIX: always _fontSize
+            color: Colors.blueGrey[800],
+            height: 1.65,
+            letterSpacing: 0.2,
+          ),
+        ),
       ));
     }
 
+    // Flush any trailing chorus
     flushChorus();
     return widgets;
   }
