@@ -1,5 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:indirimbo/models/searchable_song.dart';
+import 'package:indirimbo/providers/songs_provider.dart';
+import 'package:indirimbo/widgets/song_navigation_bar.dart';
+import 'package:provider/provider.dart';
 
 class UnifiedLyrics extends StatefulWidget {
   const UnifiedLyrics({super.key});
@@ -13,10 +17,13 @@ class _UnifiedLyricsState extends State<UnifiedLyrics> {
   late int _currentIndex;
   late List<SearchableSong> _songs;
   bool _hasList = false;
+  bool _initialized = false;
+  final ScrollController _scrollController = ScrollController();
 
   @override
   void didChangeDependencies() {
     super.didChangeDependencies();
+    if (_initialized) return;
     final args = ModalRoute.of(context)!.settings.arguments;
     if (args is Map) {
       _songs = List<SearchableSong>.from(args['songs'] as List);
@@ -27,6 +34,7 @@ class _UnifiedLyricsState extends State<UnifiedLyrics> {
       _currentIndex = 0;
       _hasList = false;
     }
+    _initialized = true;
   }
 
   SearchableSong get _currentSong => _songs[_currentIndex];
@@ -35,19 +43,56 @@ class _UnifiedLyricsState extends State<UnifiedLyrics> {
     setState(() {
       _currentIndex = index;
     });
+    if (_scrollController.hasClients) _scrollController.jumpTo(0);
+  }
+
+  Future<void> _copyLyrics() async {
+    await Clipboard.setData(ClipboardData(
+      text: '${_currentSong.title}\n\n${_currentSong.lyrics}',
+    ));
+    if (!mounted) return;
+    ScaffoldMessenger.of(context).showSnackBar(
+      const SnackBar(content: Text('Lyrics copied to clipboard')),
+    );
+  }
+
+  @override
+  void dispose() {
+    _scrollController.dispose();
+    super.dispose();
   }
 
   @override
   Widget build(BuildContext context) {
+    final songsProvider = context.watch<SongCollectionProvider>();
     return Scaffold(
-      backgroundColor: Colors.grey[100],
+      backgroundColor: Theme.of(context).scaffoldBackgroundColor,
       appBar: AppBar(
         backgroundColor: Colors.blueGrey[800],
         elevation: 0,
         leading: const BackButton(color: Colors.white),
-        title: const Icon(Icons.music_note_rounded, color: Colors.blueGrey, size: 20),
+        title: const Icon(Icons.music_note_rounded,
+            color: Colors.blueGrey, size: 20),
         centerTitle: true,
         actions: [
+          IconButton(
+            tooltip: 'Copy lyrics',
+            onPressed: _copyLyrics,
+            icon: const Icon(Icons.copy, color: Colors.white),
+          ),
+          IconButton(
+            tooltip: songsProvider.isFavorite(_currentSong)
+                ? 'Remove favorite'
+                : 'Save favorite',
+            onPressed: () => context
+                .read<SongCollectionProvider>()
+                .toggleFavorite(_currentSong),
+            icon: Icon(
+                songsProvider.isFavorite(_currentSong)
+                    ? Icons.favorite
+                    : Icons.favorite_border,
+                color: Colors.white),
+          ),
           Container(
             margin: const EdgeInsets.symmetric(vertical: 10, horizontal: 10),
             decoration: BoxDecoration(
@@ -58,148 +103,115 @@ class _UnifiedLyricsState extends State<UnifiedLyrics> {
               mainAxisSize: MainAxisSize.min,
               children: [
                 _fontButton(Icons.remove, () {
-                  setState(() { if (_fontSize > 12) _fontSize -= 1; });
+                  setState(() {
+                    if (_fontSize > 12) _fontSize -= 1;
+                  });
                 }),
                 Text('${_fontSize.toInt()}',
                     style: const TextStyle(color: Colors.white, fontSize: 12)),
                 _fontButton(Icons.add, () {
-                  setState(() { if (_fontSize < 32) _fontSize += 1; });
+                  setState(() {
+                    if (_fontSize < 32) _fontSize += 1;
+                  });
                 }),
               ],
             ),
           ),
         ],
       ),
-      body: SingleChildScrollView(
-        padding: EdgeInsets.zero,
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.stretch,
-          children: [
-            // ── Header ──────────────────────────────────────────────
-            Container(
-              width: double.infinity,
-              color: Colors.blueGrey[800],
-              padding: const EdgeInsets.fromLTRB(24, 4, 24, 16),
-              child: Column(
-                children: [
-                  const SizedBox(height: 8),
-                  Text(
-                    _currentSong.title,
-                    textAlign: TextAlign.center,
-                    style: const TextStyle(
-                      color: Colors.white,
-                      fontSize: 20,
-                      fontWeight: FontWeight.bold,
-                      height: 1.35,
-                      letterSpacing: 0.4,
-                    ),
-                  ),
-                  const SizedBox(height: 20),
-                  Container(
-                    width: 50,
-                    height: 2,
-                    decoration: BoxDecoration(
-                      color: Colors.white38,
-                      borderRadius: BorderRadius.circular(2),
-                    ),
-                  ),
-                ],
-              ),
-            ),
-
-            const SizedBox(height: 8),
-
-            // ── Lyrics card ─────────────────────────────────────────
-            Card(
-              margin: const EdgeInsets.symmetric(horizontal: 10),
-              elevation: 1,
-              shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(8)),
-              child: Padding(
-                padding:
-                const EdgeInsets.symmetric(horizontal: 16, vertical: 20),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.stretch,
-                  children: _formatLyrics(_currentSong.lyrics),
+      bottomNavigationBar: _hasList && _songs.length > 1
+          ? SafeArea(
+              child: Material(
+                elevation: 8,
+                color: Theme.of(context).colorScheme.surface,
+                child: SongNavigationBar(
+                  currentIndex: _currentIndex,
+                  songCount: _songs.length,
+                  onNavigate: _goTo,
                 ),
               ),
-            ),
-
-            // ── Pagination ──────────────────────────────────────────
-            if (_hasList)
-              Padding(
-                padding:
-                const EdgeInsets.symmetric(horizontal: 16, vertical: 16),
-                child: Row(
+            )
+          : null,
+      body: SelectionArea(
+        child: SingleChildScrollView(
+          controller: _scrollController,
+          padding: EdgeInsets.zero,
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.stretch,
+            children: [
+              // ── Header ──────────────────────────────────────────────
+              Container(
+                width: double.infinity,
+                color: Colors.blueGrey[800],
+                padding: const EdgeInsets.fromLTRB(24, 4, 24, 16),
+                child: Column(
                   children: [
-                    // Previous
-                    Expanded(
-                      child: _currentIndex > 0
-                          ? OutlinedButton.icon(
-                        onPressed: () => _goTo(_currentIndex - 1),
-                        icon: const Icon(Icons.chevron_left),
-                        label: Text(
-                          _songs[_currentIndex - 1].title,
-                          maxLines: 1,
-                          overflow: TextOverflow.ellipsis,
-                        ),
-                        style: OutlinedButton.styleFrom(
-                          foregroundColor: Colors.blueGrey[700],
-                          side: BorderSide(
-                              color: Colors.blueGrey[300]!),
-                          padding: const EdgeInsets.symmetric(
-                              horizontal: 12, vertical: 10),
-                        ),
-                      )
-                          : const SizedBox.shrink(),
+                    const SizedBox(height: 8),
+                    Text(
+                      _currentSong.title,
+                      textAlign: TextAlign.center,
+                      style: const TextStyle(
+                        color: Colors.white,
+                        fontSize: 20,
+                        fontWeight: FontWeight.bold,
+                        height: 1.35,
+                        letterSpacing: 0.4,
+                      ),
                     ),
-                    const SizedBox(width: 8),
-                    // Next
-                    Expanded(
-                      child: _currentIndex < _songs.length - 1
-                          ? OutlinedButton.icon(
-                        onPressed: () => _goTo(_currentIndex + 1),
-                        icon: const Icon(Icons.chevron_right),
-                        label: Text(
-                          _songs[_currentIndex + 1].title,
-                          maxLines: 1,
-                          overflow: TextOverflow.ellipsis,
-                        ),
-                        style: OutlinedButton.styleFrom(
-                          foregroundColor: Colors.blueGrey[700],
-                          side: BorderSide(
-                              color: Colors.blueGrey[300]!),
-                          padding: const EdgeInsets.symmetric(
-                              horizontal: 12, vertical: 10),
-                        ),
-                      )
-                          : const SizedBox.shrink(),
+                    const SizedBox(height: 20),
+                    Container(
+                      width: 50,
+                      height: 2,
+                      decoration: BoxDecoration(
+                        color: Colors.white38,
+                        borderRadius: BorderRadius.circular(2),
+                      ),
                     ),
                   ],
                 ),
               ),
 
-            const SizedBox(height: 24),
-          ],
+              const SizedBox(height: 8),
+
+              // ── Lyrics card ─────────────────────────────────────────
+              Card(
+                margin: const EdgeInsets.symmetric(horizontal: 10),
+                elevation: 1,
+                shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(8)),
+                child: Padding(
+                  padding:
+                      const EdgeInsets.symmetric(horizontal: 16, vertical: 20),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.stretch,
+                    children: _formatLyrics(_currentSong.lyrics),
+                  ),
+                ),
+              ),
+
+              // ── Pagination ──────────────────────────────────────────
+              const SizedBox(height: 24),
+            ],
+          ),
         ),
       ),
     );
   }
 
   Widget _fontButton(IconData icon, VoidCallback onTap) => InkWell(
-    onTap: onTap,
-    borderRadius: BorderRadius.circular(20),
-    child: Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 6),
-      child: Icon(icon, color: Colors.white, size: 16),
-    ),
-  );
+        onTap: onTap,
+        borderRadius: BorderRadius.circular(20),
+        child: Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 6),
+          child: Icon(icon, color: Colors.white, size: 16),
+        ),
+      );
 
   List<Widget> _formatLyrics(String lyrics) {
-    print("here");
+    final colors = Theme.of(context).colorScheme;
     lyrics = lyrics.replaceFirstMapped(
       RegExp(r'^(\d+)\.'),
-          (m) => m.group(1) == '1' ? m.group(0)! : '1.',
+      (m) => m.group(1) == '1' ? m.group(0)! : '1.',
     );
 
     // FIX: Use a clean list copy so repeated calls never share state
@@ -232,13 +244,11 @@ class _UnifiedLyricsState extends State<UnifiedLyrics> {
       widgets.add(
         Container(
           margin: const EdgeInsets.symmetric(vertical: 10),
-          padding:
-          const EdgeInsets.symmetric(horizontal: 14, vertical: 12),
+          padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 12),
           decoration: BoxDecoration(
-            color: Colors.blueGrey[50],
+            color: colors.surfaceContainerHighest,
             borderRadius: BorderRadius.circular(8),
-            border:
-            Border.all(color: Colors.blueGrey[200]!, width: 0.8),
+            border: Border.all(color: Colors.blueGrey[200]!, width: 0.8),
           ),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.stretch,
@@ -246,11 +256,10 @@ class _UnifiedLyricsState extends State<UnifiedLyrics> {
               Row(
                 children: [
                   Expanded(
-                      child: Divider(
-                          color: Colors.blueGrey[300], thickness: 0.8)),
+                      child:
+                          Divider(color: Colors.blueGrey[300], thickness: 0.8)),
                   Padding(
-                    padding:
-                    const EdgeInsets.symmetric(horizontal: 10),
+                    padding: const EdgeInsets.symmetric(horizontal: 10),
                     child: Text(
                       'CHORUS',
                       style: TextStyle(
@@ -262,25 +271,25 @@ class _UnifiedLyricsState extends State<UnifiedLyrics> {
                     ),
                   ),
                   Expanded(
-                      child: Divider(
-                          color: Colors.blueGrey[300], thickness: 0.8)),
+                      child:
+                          Divider(color: Colors.blueGrey[300], thickness: 0.8)),
                 ],
               ),
               const SizedBox(height: 8),
               ...chorusBuffer.map((line) => Padding(
-                padding: const EdgeInsets.symmetric(vertical: 2),
-                child: Text(
-                  line,
-                  textAlign: TextAlign.center,
-                  style: TextStyle(
-                    fontSize: _fontSize,
-                    color: Colors.blueGrey[700],
-                    fontStyle: FontStyle.italic,
-                    fontWeight: FontWeight.w500,
-                    height: 1.65,
-                  ),
-                ),
-              )),
+                    padding: const EdgeInsets.symmetric(vertical: 2),
+                    child: Text(
+                      line,
+                      textAlign: TextAlign.center,
+                      style: TextStyle(
+                        fontSize: _fontSize,
+                        color: colors.onSurface,
+                        fontStyle: FontStyle.italic,
+                        fontWeight: FontWeight.w500,
+                        height: 1.65,
+                      ),
+                    ),
+                  )),
             ],
           ),
         ),
@@ -309,21 +318,18 @@ class _UnifiedLyricsState extends State<UnifiedLyrics> {
         flushChorus();
         isChorus = false;
 
-        final number = verseMatch.group(1)!;        // e.g. "1"
-        final rest = verseMatch.group(2)!.trim();   // text after "1."
+        final number = verseMatch.group(1)!; // e.g. "1"
+        final rest = verseMatch.group(2)!.trim(); // text after "1."
 
         widgets.add(const SizedBox(height: 16));
         widgets.add(Row(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Container(
-              padding: const EdgeInsets.symmetric(
-                  horizontal: 10, vertical: 3),
+              padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 3),
               decoration: BoxDecoration(
-                gradient: LinearGradient(colors: [
-                  Colors.blueGrey[700]!,
-                  Colors.blueGrey[900]!
-                ]),
+                gradient: LinearGradient(
+                    colors: [Colors.blueGrey[700]!, Colors.blueGrey[900]!]),
                 borderRadius: BorderRadius.circular(8),
               ),
               child: Text(
@@ -342,8 +348,8 @@ class _UnifiedLyricsState extends State<UnifiedLyrics> {
                   rest,
                   style: TextStyle(
                     fontSize: _fontSize,
-                    fontWeight: FontWeight.bold,// jules21
-                    color: Colors.blueGrey[900],
+                    fontWeight: FontWeight.bold, // jules21
+                    color: colors.onSurface,
                     height: 1.65,
                   ),
                 ),
@@ -354,8 +360,7 @@ class _UnifiedLyricsState extends State<UnifiedLyrics> {
       }
 
       // ── Chorus marker  ("ref:" or "R/") ─────────────────────────
-      final chorusMarker =
-      RegExp(r'^(?:ref:\s*|R/\s*)', caseSensitive: false);
+      final chorusMarker = RegExp(r'^(?:ref:\s*|R/\s*)', caseSensitive: false);
       if (chorusMarker.hasMatch(line)) {
         flushChorus();
         isChorus = true;
@@ -379,7 +384,7 @@ class _UnifiedLyricsState extends State<UnifiedLyrics> {
           style: TextStyle(
             fontWeight: FontWeight.bold,
             fontSize: _fontSize,
-            color: Colors.blueGrey[800],
+            color: colors.onSurface,
             height: 1.65,
             letterSpacing: 0.2,
           ),

@@ -7,8 +7,8 @@ import '../models/search_song_result.dart';
 import '../models/searchable_song.dart';
 import '../models/view_type.dart';
 import '../providers/songs_provider.dart';
+import '../providers/theme_provider.dart';
 import '../screens/song_view_screen.dart';
-
 
 class Home extends StatefulWidget {
   const Home({super.key});
@@ -35,76 +35,88 @@ class _HomeState extends State<Home> {
   @override
   Widget build(BuildContext context) {
     return DefaultTabController(
-      length: 3,
+      length: 4,
       child: Scaffold(
         appBar: AppBar(
           elevation: 0,
           iconTheme: const IconThemeData(color: Colors.white),
           title: _isSearching
               ? Container(
-            height: 45,
-            decoration: BoxDecoration(
-              color: Colors.white,
-              borderRadius: BorderRadius.circular(25),
-              boxShadow: [
-                BoxShadow(
-                  color: Colors.black.withOpacity(0.1),
-                  blurRadius: 8,
-                  offset: const Offset(0, 2),
-                ),
-              ],
-            ),
-            child: TextField(
-              onChanged: (query) => _performUnifiedSearch(query),
-              autofocus: true,
-              controller: _searchController,
-              style: GoogleFonts.inter(
-                fontSize: 16,
-                color: Colors.blueGrey[900],
-              ),
-              decoration: InputDecoration(
-                hintText: 'Gushaka indirimbo...',
-                border: InputBorder.none,
-                contentPadding: const EdgeInsets.symmetric(
-                  horizontal: 20,
-                  vertical: 12,
-                ),
-                hintStyle: GoogleFonts.inter(
-                  color: Colors.blueGrey[400],
-                  fontSize: 15,
-                ),
-                prefixIcon: Icon(
-                  Icons.search,
-                  color: Colors.blueGrey[600],
-                  size: 22,
-                ),
-                suffixIcon: _searchController.text.isNotEmpty
-                    ? IconButton(
-                  icon: Icon(
-                    Icons.clear,
-                    color: Colors.blueGrey[600],
-                    size: 20,
+                  height: 45,
+                  decoration: BoxDecoration(
+                    color: Colors.white,
+                    borderRadius: BorderRadius.circular(25),
+                    boxShadow: [
+                      BoxShadow(
+                        color: Colors.black.withOpacity(0.1),
+                        blurRadius: 8,
+                        offset: const Offset(0, 2),
+                      ),
+                    ],
                   ),
-                  onPressed: () {
-                    _searchController.clear();
-                    _performUnifiedSearch('');
-                  },
+                  child: TextField(
+                    onChanged: (query) => _performUnifiedSearch(query),
+                    autofocus: true,
+                    controller: _searchController,
+                    style: GoogleFonts.inter(
+                      fontSize: 16,
+                      color: Colors.blueGrey[900],
+                    ),
+                    decoration: InputDecoration(
+                      hintText: 'Gushaka indirimbo...',
+                      border: InputBorder.none,
+                      contentPadding: const EdgeInsets.symmetric(
+                        horizontal: 20,
+                        vertical: 12,
+                      ),
+                      hintStyle: GoogleFonts.inter(
+                        color: Colors.blueGrey[400],
+                        fontSize: 15,
+                      ),
+                      prefixIcon: Icon(
+                        Icons.search,
+                        color: Colors.blueGrey[600],
+                        size: 22,
+                      ),
+                      suffixIcon: _searchController.text.isNotEmpty
+                          ? IconButton(
+                              icon: Icon(
+                                Icons.clear,
+                                color: Colors.blueGrey[600],
+                                size: 20,
+                              ),
+                              onPressed: () {
+                                _searchController.clear();
+                                _performUnifiedSearch('');
+                              },
+                            )
+                          : null,
+                    ),
+                  ),
                 )
-                    : null,
-              ),
-            ),
-          )
               : Text(
-            "Himbaza Imana",
-            style: GoogleFonts.poppins(
-              color: Colors.white,
-              fontSize: 20,
-              fontWeight: FontWeight.w600,
-              letterSpacing: 0.5,
-            ),
-          ),
+                  "Himbaza Imana",
+                  style: GoogleFonts.poppins(
+                    color: Colors.white,
+                    fontSize: 20,
+                    fontWeight: FontWeight.w600,
+                    letterSpacing: 0.5,
+                  ),
+                ),
           backgroundColor: Colors.blueGrey[800],
           actions: [
+            IconButton(
+              onPressed: () => context.read<ThemeProvider>().toggleTheme(),
+              tooltip: context.watch<ThemeProvider>().isDark
+                  ? 'Use light mode'
+                  : 'Use dark mode',
+              icon: Icon(
+                context.watch<ThemeProvider>().isDark
+                    ? Icons.light_mode
+                    : Icons.dark_mode,
+                color: Colors.white,
+              ),
+            ),
             // Search Toggle Button
             Container(
               margin: const EdgeInsets.symmetric(horizontal: 4),
@@ -179,6 +191,8 @@ class _HomeState extends State<Home> {
         Container(
           color: Colors.blueGrey[800],
           child: TabBar(
+            isScrollable: true,
+            tabAlignment: TabAlignment.start,
             indicatorColor: Colors.white,
             indicatorWeight: 3,
             labelColor: Colors.white,
@@ -191,6 +205,7 @@ class _HomeState extends State<Home> {
               Tab(text: "Umugeni"),
               Tab(text: "Ugushimisha"),
               Tab(text: "Agakiza"),
+              Tab(icon: Icon(Icons.favorite)),
             ],
           ),
         ),
@@ -201,6 +216,11 @@ class _HomeState extends State<Home> {
               SongViewScreen(
                   songs: ugushimishaSongs, viewType: _currentViewType),
               SongViewScreen(songs: agakizaSongs, viewType: _currentViewType),
+              SongViewScreen(
+                songs: songsProvider.favoriteSongs,
+                viewType: _currentViewType,
+                emptyMessage: 'No favorite songs yet',
+              ),
             ],
           ),
         ),
@@ -255,11 +275,17 @@ class _HomeState extends State<Home> {
           child: InkWell(
             borderRadius: BorderRadius.circular(12),
             onTap: () {
+              final resultSongs = _searchResults
+                  .map((searchResult) => searchResult.song)
+                  .toList();
               // Navigate to the lyrics page with the selected song
               Navigator.of(context).push(
                 MaterialPageRoute(
                     builder: (context) => const UnifiedLyrics(),
-                    settings: RouteSettings(arguments: song)),
+                    settings: RouteSettings(arguments: {
+                      'songs': resultSongs,
+                      'index': index,
+                    })),
               );
 
               // Close search when navigating
@@ -284,7 +310,10 @@ class _HomeState extends State<Home> {
                               Theme.of(context).primaryColor.withOpacity(0.1),
                           borderRadius: BorderRadius.circular(8),
                         ),
-                        child: Icon(Icons.music_note, color: Theme.of(context).primaryColor,),
+                        child: Icon(
+                          Icons.music_note,
+                          color: Theme.of(context).primaryColor,
+                        ),
                       ),
                       const SizedBox(width: 12),
                       Expanded(
@@ -378,7 +407,4 @@ class _HomeState extends State<Home> {
       _currentViewType = values[nextIndex];
     });
   }
-
-
 }
-

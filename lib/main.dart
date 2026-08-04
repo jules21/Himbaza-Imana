@@ -1,33 +1,38 @@
 import 'package:flutter/material.dart';
 import 'package:indirimbo/page/home.dart';
-import 'package:indirimbo/page/unified_lyrics.dart';
 import 'package:indirimbo/providers/songs_provider.dart';
 import 'package:indirimbo/providers/theme_provider.dart';
 import 'package:provider/provider.dart';
+import 'package:wakelock_plus/wakelock_plus.dart';
 
-void main(){
-  runApp(
-    MultiProvider(
-      providers: [
-        ChangeNotifierProvider(create: (context) =>  SongCollectionProvider(),),
-       ChangeNotifierProvider(create: (context) =>  ThemeProvider(),
-       )
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await WakelockPlus.enable();
+  runApp(MultiProvider(
+    providers: [
+      ChangeNotifierProvider(
+        create: (context) => SongCollectionProvider(),
+      ),
+      ChangeNotifierProvider(
+        create: (context) => ThemeProvider(),
+      )
     ],
     child: const IndirimboApp(),
-    )
-  );
+  ));
 }
 
-class IndirimboApp extends StatelessWidget{
+class IndirimboApp extends StatelessWidget {
   const IndirimboApp({super.key});
 
   @override
   Widget build(BuildContext context) {
+    final themeProvider = context.watch<ThemeProvider>();
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       home: const Home(),
-      // theme: Provider.of<ThemeProvider>(context).themeData
+      theme: themeProvider.lightTheme,
+      darkTheme: themeProvider.darkTheme,
+      themeMode: themeProvider.themeMode,
     );
   }
-
 }

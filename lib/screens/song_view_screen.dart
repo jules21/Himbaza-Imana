@@ -8,11 +8,13 @@ import 'build_list_view.dart';
 class SongViewScreen extends StatefulWidget {
   final dynamic songs;
   final ViewType viewType;
+  final String emptyMessage;
 
   const SongViewScreen({
     Key? key,
     required this.songs,
     required this.viewType,
+    this.emptyMessage = 'No songs available',
   }) : super(key: key);
 
   @override
@@ -30,7 +32,7 @@ class _SongViewScreenState extends State<SongViewScreen> {
             Icon(Icons.music_note, size: 64, color: Colors.grey[400]),
             const SizedBox(height: 16),
             Text(
-              'No songs available',
+              widget.emptyMessage,
               style: TextStyle(fontSize: 18, color: Colors.grey[600]),
             ),
           ],

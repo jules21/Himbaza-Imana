@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import '../models/bride_song.dart';
 import '../page/bride_lyrics.dart';
 import '../page/unified_lyrics.dart';
+import '../models/searchable_song.dart';
 class BuildCardView extends StatelessWidget {
   BuildCardView({
     super.key,
@@ -19,20 +20,21 @@ class BuildCardView extends StatelessWidget {
       itemBuilder: (context, index) => _buildCardItem(index, context),
     );
   }
-  void _getSongLyrics(song, context) {
+  void _getSongLyrics(song, int index, context) {
+    final arguments = {'songs': List<SearchableSong>.from(songs), 'index': index};
     if (song is BrideSong) {
       //pass song to another page;
       Navigator.of(context).push(
         MaterialPageRoute(
             builder: (context) => const BrideLyrics(),
-            settings: RouteSettings(arguments: song)),
+            settings: RouteSettings(arguments: arguments)),
       );
     } else {
       //pass song to another page;
       Navigator.of(context).push(
         MaterialPageRoute(
             builder: (context) => const UnifiedLyrics(),
-            settings: RouteSettings(arguments: song)),
+            settings: RouteSettings(arguments: arguments)),
       );
     }
   }
@@ -44,7 +46,7 @@ class BuildCardView extends StatelessWidget {
         borderRadius: BorderRadius.circular(16),
       ),
       child: InkWell(
-        onTap: () => _getSongLyrics(songs[index], context),
+        onTap: () => _getSongLyrics(songs[index], index, context),
         borderRadius: BorderRadius.circular(16),
         child: Container(
           padding: const EdgeInsets.all(20),
