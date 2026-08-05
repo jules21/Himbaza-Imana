@@ -4,6 +4,8 @@ import 'package:indirimbo/providers/songs_provider.dart';
 import 'package:indirimbo/providers/theme_provider.dart';
 import 'package:provider/provider.dart';
 import 'package:wakelock_plus/wakelock_plus.dart';
+import 'package:indirimbo/widgets/pwa_install_banner.dart';
+import 'package:indirimbo/widgets/responsive_app_shell.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -33,6 +35,9 @@ class IndirimboApp extends StatelessWidget {
       theme: themeProvider.lightTheme,
       darkTheme: themeProvider.darkTheme,
       themeMode: themeProvider.themeMode,
+      builder: (context, child) => PwaInstallBanner(
+        child: ResponsiveAppShell(child: child ?? const SizedBox.shrink()),
+      ),
     );
   }
 }
