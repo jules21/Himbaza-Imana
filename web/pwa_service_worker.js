@@ -9,8 +9,17 @@ const APP_SHELL = [
   './manifest.json',
   './flutter_bootstrap.js',
   './main.dart.js',
+  './canvaskit/canvaskit.js',
+  './canvaskit/canvaskit.wasm',
+  './canvaskit/chromium/canvaskit.js',
+  './canvaskit/chromium/canvaskit.wasm',
   './assets/AssetManifest.bin.json',
   './assets/FontManifest.json',
+  './assets/fonts/MaterialIcons-Regular.otf',
+  './assets/packages/cupertino_icons/assets/CupertinoIcons.ttf',
+  './assets/assets/bride_songs.json',
+  './assets/assets/bride_songsx.json',
+  './assets/assets/hymns_praise_songs.json',
   './favicon.png',
   './icons/Icon-192.png',
   './icons/Icon-512.png',
@@ -65,7 +74,7 @@ self.addEventListener('fetch', (event) => {
     caches.match(event.request).then((cached) => cached || fetch(event.request).then((response) => {
       if (!response || response.status !== 200 || response.type === 'opaque') return response;
       const copy = response.clone();
-      caches.open(RUNTIME_CACHE).then((cache) => cache.put(event.request, copy));
+      event.waitUntil(caches.open(RUNTIME_CACHE).then((cache) => cache.put(event.request, copy)));
       return response;
     }))
   );
