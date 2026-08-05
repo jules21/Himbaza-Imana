@@ -106,67 +106,70 @@ class _HomeState extends State<Home> {
           backgroundColor: Colors.blueGrey[800],
           actions: [
             IconButton(
-              onPressed: () => context.read<ThemeProvider>().toggleTheme(),
-              tooltip: context.watch<ThemeProvider>().isDark
-                  ? 'Use light mode'
-                  : 'Use dark mode',
+              visualDensity: VisualDensity.compact,
+              onPressed: () {
+                setState(() {
+                  if (_isSearching) {
+                    _isSearching = false;
+                    _searchController.clear();
+                    _searchResults = [];
+                  } else {
+                    _isSearching = true;
+                  }
+                });
+              },
               icon: Icon(
-                context.watch<ThemeProvider>().isDark
-                    ? Icons.light_mode
-                    : Icons.dark_mode,
+                _isSearching ? Icons.close_rounded : Icons.search_rounded,
                 color: Colors.white,
+                size: 25,
               ),
+              tooltip: _isSearching ? 'Close search' : 'Search songs',
             ),
-            // Search Toggle Button
-            Container(
-              margin: const EdgeInsets.symmetric(horizontal: 4),
-              decoration: BoxDecoration(
-                color: _isSearching
-                    ? Colors.white.withOpacity(0.2)
-                    : Colors.transparent,
-                borderRadius: BorderRadius.circular(12),
-              ),
-              child: IconButton(
-                onPressed: () {
-                  setState(() {
-                    if (_isSearching) {
-                      _isSearching = false;
-                      _searchController.clear();
-                      _searchResults = [];
-                    } else {
-                      _isSearching = true;
-                    }
-                  });
-                },
-                icon: Icon(
-                  _isSearching ? Icons.close : Icons.search,
-                  color: Colors.white,
-                  size: 26,
-                ),
-                tooltip: _isSearching ? 'Close search' : 'Search songs',
-              ),
-            ),
-
-            // View Type Selector
             if (!_isSearching)
-              Container(
-                margin: const EdgeInsets.only(right: 8, left: 4),
-                decoration: BoxDecoration(
-                  color: Colors.transparent,
-                  borderRadius: BorderRadius.circular(12),
+              IconButton(
+                padding: const EdgeInsets.only(left: 2, right: 8),
+                visualDensity: VisualDensity.compact,
+                onPressed: () => setState(() {
+                  _currentViewType = _currentViewType == ViewType.compactGrid
+                      ? ViewType.list
+                      : ViewType.compactGrid;
+                }),
+                tooltip: _currentViewType == ViewType.compactGrid
+                    ? 'List song layout'
+                    : 'Compact song layout',
+                icon: Icon(
+                  _currentViewType == ViewType.compactGrid
+                      ? Icons.view_list_rounded
+                      : Icons.view_compact_alt_rounded,
+                  color: Colors.white,
+                  size: 25,
                 ),
-                child: IconButton(
-                  icon: Icon(
-                    _getViewIcon(),
-                    color: Colors.white,
-                    size: 26,
-                  ),
-                  tooltip: 'Change view',
-                  onPressed: _toggleViewType,
+              ),
+            if (!_isSearching)
+              IconButton(
+                padding: const EdgeInsets.only(right: 8),
+                visualDensity: VisualDensity.compact,
+                onPressed: () => context.read<ThemeProvider>().toggleTheme(),
+                tooltip: context.watch<ThemeProvider>().isDark
+                    ? 'Light mode'
+                    : 'Dark mode',
+                icon: Icon(
+                  context.watch<ThemeProvider>().isDark
+                      ? Icons.light_mode_rounded
+                      : Icons.dark_mode_rounded,
+                  color: Colors.white,
+                  size: 23,
                 ),
               ),
           ],
         ),
+        floatingActionButton: _isSearching
+            ? null
+            : FloatingActionButton.small(
+                onPressed: _showDisplayOptions,
+                tooltip: 'Display options',
+                child: const Icon(Icons.tune_rounded),
+              ),
         body: SafeArea(
             child:
                 _isSearching ? _buildSearchResults() : _buildDefaultContent()),
@@ -190,23 +193,35 @@ class _HomeState extends State<Home> {
       children: [
         Container(
           color: Colors.blueGrey[800],
-          child: TabBar(
-            isScrollable: true,
-            tabAlignment: TabAlignment.start,
-            indicatorColor: Colors.white,
-            indicatorWeight: 3,
-            labelColor: Colors.white,
-            unselectedLabelColor: Colors.white70,
-            labelStyle: const TextStyle(
-              fontSize: 16,
-              fontWeight: FontWeight.bold,
+          child: LayoutBuilder(
+            builder: (context, constraints) => TabBar(
+              isScrollable: true,
+              tabAlignment: TabAlignment.start,
+              padding: EdgeInsets.zero,
+              labelPadding: EdgeInsets.zero,
+              indicatorColor: Colors.white,
+              indicatorWeight: 3,
+              labelColor: Colors.white,
+              unselectedLabelColor: Colors.white70,
+              labelStyle: const TextStyle(
+                fontSize: 13,
+                fontWeight: FontWeight.bold,
+              ),
+              tabs: [
+                SizedBox(
+                    width: constraints.maxWidth * .29,
+                    child: const Tab(text: 'Umugeni')),
+                SizedBox(
+                    width: constraints.maxWidth * .29,
+                    child: const Tab(text: 'Ugushimisha')),
+                SizedBox(
+                    width: constraints.maxWidth * .29,
+                    child: const Tab(text: 'Agakiza')),
+                SizedBox(
+                    width: constraints.maxWidth * .13,
+                    child: const Tab(icon: Icon(Icons.favorite))),
+              ],
             ),
-            tabs: [
-              Tab(text: "Umugeni"),
-              Tab(text: "Ugushimisha"),
-              Tab(text: "Agakiza"),
-              Tab(icon: Icon(Icons.favorite)),
-            ],
           ),
         ),
         Expanded(
@@ -385,26 +400,46 @@ class _HomeState extends State<Home> {
     });
   }
 
-  IconData _getViewIcon() {
-    switch (_currentViewType) {
-      case ViewType.grid:
-        return Icons.grid_view;
-      case ViewType.compactGrid:
-        return Icons.apps;
-      case ViewType.list:
-        return Icons.menu;
-      case ViewType.card:
-        return Icons.view_agenda;
-    }
-  }
-
-  void _toggleViewType() {
-    final values = ViewType.values;
-    final currentIndex = values.indexOf(_currentViewType);
-    final nextIndex = (currentIndex + 1) % values.length;
-
-    setState(() {
-      _currentViewType = values[nextIndex];
-    });
+  void _showDisplayOptions() {
+    showModalBottomSheet<void>(
+      context: context,
+      showDragHandle: true,
+      builder: (sheetContext) => SafeArea(
+        child: Padding(
+          padding: const EdgeInsets.fromLTRB(16, 0, 16, 16),
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              ListTile(
+                leading: Icon(_currentViewType == ViewType.compactGrid
+                    ? Icons.view_list_rounded
+                    : Icons.view_compact_alt_rounded),
+                title: Text(_currentViewType == ViewType.compactGrid
+                    ? 'Use list layout'
+                    : 'Use compact layout'),
+                onTap: () {
+                  setState(() {
+                    _currentViewType = _currentViewType == ViewType.compactGrid
+                        ? ViewType.list
+                        : ViewType.compactGrid;
+                  });
+                  Navigator.pop(sheetContext);
+                },
+              ),
+              Consumer<ThemeProvider>(
+                builder: (context, themeProvider, child) => SwitchListTile(
+                  secondary: Icon(themeProvider.isDark
+                      ? Icons.dark_mode_rounded
+                      : Icons.light_mode_rounded),
+                  title: const Text('Dark mode'),
+                  value: themeProvider.isDark,
+                  onChanged: (_) => themeProvider.toggleTheme(),
+                ),
+              ),
+            ],
+          ),
+        ),
+      ),
+    );
   }
 }

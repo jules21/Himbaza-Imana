@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:indirimbo/models/searchable_song.dart';
 import 'package:indirimbo/providers/songs_provider.dart';
 import 'package:indirimbo/widgets/song_navigation_bar.dart';
@@ -41,16 +40,6 @@ class _BrideLyricsState extends State<BrideLyrics> {
     if (_scrollController.hasClients) _scrollController.jumpTo(0);
   }
 
-  Future<void> _copyLyrics() async {
-    await Clipboard.setData(ClipboardData(
-      text: '${_currentSong.title}\n\n${_currentSong.lyrics}',
-    ));
-    if (!mounted) return;
-    ScaffoldMessenger.of(context).showSnackBar(
-      const SnackBar(content: Text('Lyrics copied to clipboard')),
-    );
-  }
-
   @override
   void dispose() {
     _scrollController.dispose();
@@ -72,23 +61,6 @@ class _BrideLyricsState extends State<BrideLyrics> {
             color: Colors.blueGrey, size: 20),
         centerTitle: true,
         actions: [
-          IconButton(
-            tooltip: 'Copy lyrics',
-            onPressed: _copyLyrics,
-            icon: const Icon(Icons.copy, color: Colors.white),
-          ),
-          IconButton(
-            tooltip: songsProvider.isFavorite(song)
-                ? 'Remove favorite'
-                : 'Save favorite',
-            onPressed: () =>
-                context.read<SongCollectionProvider>().toggleFavorite(song),
-            icon: Icon(
-                songsProvider.isFavorite(song)
-                    ? Icons.favorite
-                    : Icons.favorite_border,
-                color: Colors.white),
-          ),
           Container(
             margin: const EdgeInsets.symmetric(vertical: 10, horizontal: 10),
             decoration: BoxDecoration(
@@ -115,19 +87,20 @@ class _BrideLyricsState extends State<BrideLyrics> {
           ),
         ],
       ),
-      bottomNavigationBar: _songs.length > 1
-          ? SafeArea(
-              child: Material(
-                elevation: 8,
-                color: Theme.of(context).colorScheme.surface,
-                child: SongNavigationBar(
-                  currentIndex: _currentIndex,
-                  songCount: _songs.length,
-                  onNavigate: _goTo,
-                ),
-              ),
-            )
-          : null,
+      bottomNavigationBar: SafeArea(
+        child: Material(
+          elevation: 8,
+          color: Theme.of(context).colorScheme.surface,
+          child: SongNavigationBar(
+            currentIndex: _currentIndex,
+            songCount: _songs.length,
+            onNavigate: _goTo,
+            isFavorite: songsProvider.isFavorite(song),
+            onToggleFavorite: () =>
+                context.read<SongCollectionProvider>().toggleFavorite(song),
+          ),
+        ),
+      ),
       body: SelectionArea(
         child: SingleChildScrollView(
           controller: _scrollController,

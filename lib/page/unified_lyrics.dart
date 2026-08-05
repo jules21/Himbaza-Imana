@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:indirimbo/models/searchable_song.dart';
 import 'package:indirimbo/providers/songs_provider.dart';
 import 'package:indirimbo/widgets/song_navigation_bar.dart';
@@ -16,7 +15,6 @@ class _UnifiedLyricsState extends State<UnifiedLyrics> {
   double _fontSize = 15.0;
   late int _currentIndex;
   late List<SearchableSong> _songs;
-  bool _hasList = false;
   bool _initialized = false;
   final ScrollController _scrollController = ScrollController();
 
@@ -28,11 +26,9 @@ class _UnifiedLyricsState extends State<UnifiedLyrics> {
     if (args is Map) {
       _songs = List<SearchableSong>.from(args['songs'] as List);
       _currentIndex = args['index'] as int;
-      _hasList = true;
     } else if (args is SearchableSong) {
       _songs = [args];
       _currentIndex = 0;
-      _hasList = false;
     }
     _initialized = true;
   }
@@ -44,16 +40,6 @@ class _UnifiedLyricsState extends State<UnifiedLyrics> {
       _currentIndex = index;
     });
     if (_scrollController.hasClients) _scrollController.jumpTo(0);
-  }
-
-  Future<void> _copyLyrics() async {
-    await Clipboard.setData(ClipboardData(
-      text: '${_currentSong.title}\n\n${_currentSong.lyrics}',
-    ));
-    if (!mounted) return;
-    ScaffoldMessenger.of(context).showSnackBar(
-      const SnackBar(content: Text('Lyrics copied to clipboard')),
-    );
   }
 
   @override
@@ -75,24 +61,6 @@ class _UnifiedLyricsState extends State<UnifiedLyrics> {
             color: Colors.blueGrey, size: 20),
         centerTitle: true,
         actions: [
-          IconButton(
-            tooltip: 'Copy lyrics',
-            onPressed: _copyLyrics,
-            icon: const Icon(Icons.copy, color: Colors.white),
-          ),
-          IconButton(
-            tooltip: songsProvider.isFavorite(_currentSong)
-                ? 'Remove favorite'
-                : 'Save favorite',
-            onPressed: () => context
-                .read<SongCollectionProvider>()
-                .toggleFavorite(_currentSong),
-            icon: Icon(
-                songsProvider.isFavorite(_currentSong)
-                    ? Icons.favorite
-                    : Icons.favorite_border,
-                color: Colors.white),
-          ),
           Container(
             margin: const EdgeInsets.symmetric(vertical: 10, horizontal: 10),
             decoration: BoxDecoration(
@@ -119,19 +87,21 @@ class _UnifiedLyricsState extends State<UnifiedLyrics> {
           ),
         ],
       ),
-      bottomNavigationBar: _hasList && _songs.length > 1
-          ? SafeArea(
-              child: Material(
-                elevation: 8,
-                color: Theme.of(context).colorScheme.surface,
-                child: SongNavigationBar(
-                  currentIndex: _currentIndex,
-                  songCount: _songs.length,
-                  onNavigate: _goTo,
-                ),
-              ),
-            )
-          : null,
+      bottomNavigationBar: SafeArea(
+        child: Material(
+          elevation: 8,
+          color: Theme.of(context).colorScheme.surface,
+          child: SongNavigationBar(
+            currentIndex: _currentIndex,
+            songCount: _songs.length,
+            onNavigate: _goTo,
+            isFavorite: songsProvider.isFavorite(_currentSong),
+            onToggleFavorite: () => context
+                .read<SongCollectionProvider>()
+                .toggleFavorite(_currentSong),
+          ),
+        ),
+      ),
       body: SelectionArea(
         child: SingleChildScrollView(
           controller: _scrollController,

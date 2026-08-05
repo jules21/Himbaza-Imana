@@ -4,35 +4,38 @@ import '../models/bride_song.dart';
 import '../page/bride_lyrics.dart';
 import '../page/unified_lyrics.dart';
 import '../models/searchable_song.dart';
-class BuildGridView extends StatelessWidget {
-  BuildGridView({
-    super.key,
-    required this.songs,
-    this.crossAxisCount = 4
 
-  });
+class BuildGridView extends StatelessWidget {
+  BuildGridView({super.key, required this.songs, this.crossAxisCount = 4});
 
   final dynamic songs;
-  int crossAxisCount;
+  final int crossAxisCount;
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      padding: const EdgeInsets.all(12.0),
-      child: GridView.builder(
-        itemCount: songs.length,
-        gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-          crossAxisCount: crossAxisCount,
-          mainAxisSpacing: 12.0,
-          crossAxisSpacing: 12.0,
-          childAspectRatio: 1.2,
-        ),
-        itemBuilder: (context, index) => _buildGridItem(index, context),
+    return GridView.builder(
+      padding: EdgeInsets.fromLTRB(
+        12,
+        12,
+        12,
+        crossAxisCount == 6 ? 96 : 12,
       ),
+      itemCount: songs.length,
+      gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+        crossAxisCount: crossAxisCount,
+        mainAxisSpacing: 12.0,
+        crossAxisSpacing: 12.0,
+        childAspectRatio: 1.2,
+      ),
+      itemBuilder: (context, index) => _buildGridItem(index, context),
     );
   }
+
   void _getSongLyrics(song, int index, context) {
-    final arguments = {'songs': List<SearchableSong>.from(songs), 'index': index};
+    final arguments = {
+      'songs': List<SearchableSong>.from(songs),
+      'index': index
+    };
     if (song is BrideSong) {
       //pass song to another page;
       Navigator.of(context).push(
@@ -49,6 +52,7 @@ class BuildGridView extends StatelessWidget {
       );
     }
   }
+
   Widget _buildGridItem(int index, context) {
     return Material(
       color: Colors.white,
