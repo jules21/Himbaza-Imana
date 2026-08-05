@@ -125,42 +125,6 @@ class _HomeState extends State<Home> {
               ),
               tooltip: _isSearching ? 'Close search' : 'Search songs',
             ),
-            if (!_isSearching)
-              IconButton(
-                padding: const EdgeInsets.only(left: 2, right: 8),
-                visualDensity: VisualDensity.compact,
-                onPressed: () => setState(() {
-                  _currentViewType = _currentViewType == ViewType.compactGrid
-                      ? ViewType.list
-                      : ViewType.compactGrid;
-                }),
-                tooltip: _currentViewType == ViewType.compactGrid
-                    ? 'List song layout'
-                    : 'Compact song layout',
-                icon: Icon(
-                  _currentViewType == ViewType.compactGrid
-                      ? Icons.view_list_rounded
-                      : Icons.view_compact_alt_rounded,
-                  color: Colors.white,
-                  size: 25,
-                ),
-              ),
-            if (!_isSearching)
-              IconButton(
-                padding: const EdgeInsets.only(right: 8),
-                visualDensity: VisualDensity.compact,
-                onPressed: () => context.read<ThemeProvider>().toggleTheme(),
-                tooltip: context.watch<ThemeProvider>().isDark
-                    ? 'Light mode'
-                    : 'Dark mode',
-                icon: Icon(
-                  context.watch<ThemeProvider>().isDark
-                      ? Icons.light_mode_rounded
-                      : Icons.dark_mode_rounded,
-                  color: Colors.white,
-                  size: 23,
-                ),
-              ),
           ],
         ),
         floatingActionButton: _isSearching
