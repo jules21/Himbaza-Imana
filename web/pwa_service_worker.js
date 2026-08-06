@@ -1,81 +1,110 @@
-const CACHE_VERSION = new URL(self.location.href).searchParams.get('v') || 'dev';
-const SHELL_CACHE = `indirimbo-shell-${CACHE_VERSION}`;
-const RUNTIME_CACHE = `indirimbo-runtime-${CACHE_VERSION}`;
+const CACHE_VERSION = "indirimbo-v1";
 
-// Keep this list small: it is the minimum shell required to start offline.
+const APP_SHELL_CACHE = `${CACHE_VERSION}-shell`;
+const RUNTIME_CACHE = `${CACHE_VERSION}-runtime`;
+
 const APP_SHELL = [
-  './',
-  './index.html',
-  './manifest.json',
-  './flutter_bootstrap.js',
-  './main.dart.js',
-  './canvaskit/canvaskit.js',
-  './canvaskit/canvaskit.wasm',
-  './canvaskit/chromium/canvaskit.js',
-  './canvaskit/chromium/canvaskit.wasm',
-  './assets/AssetManifest.bin.json',
-  './assets/FontManifest.json',
-  './assets/fonts/MaterialIcons-Regular.otf',
-  './assets/packages/cupertino_icons/assets/CupertinoIcons.ttf',
-  './assets/assets/bride_songs.json',
-  './assets/assets/bride_songsx.json',
-  './assets/assets/hymns_praise_songs.json',
-  './favicon.png',
-  './icons/Icon-192.png',
-  './icons/Icon-512.png',
+  "./",
+  "./index.html",
+  "./manifest.json",
+  "./flutter_bootstrap.js",
+  "./favicon.png",
+  "./icons/Icon-192.png",
+  "./icons/Icon-512.png",
+  "./icons/Icon-maskable-192.png",
+  "./icons/Icon-maskable-512.png"
 ];
 
-self.addEventListener('install', (event) => {
+self.addEventListener("install", (event) => {
   event.waitUntil(
-    caches.open(SHELL_CACHE)
+    caches
+      .open(APP_SHELL_CACHE)
       .then((cache) => cache.addAll(APP_SHELL))
       .then(() => self.skipWaiting())
   );
 });
 
-self.addEventListener('activate', (event) => {
+self.addEventListener("activate", (event) => {
   event.waitUntil(
-    caches.keys()
-      .then((keys) => Promise.all(
-        keys.filter((key) =>
-          (key.startsWith('indirimbo-shell-') || key.startsWith('indirimbo-runtime-')) &&
-          key !== SHELL_CACHE && key !== RUNTIME_CACHE
-        ).map((key) => caches.delete(key))
-      ))
+    caches
+      .keys()
+      .then((cacheNames) => {
+        return Promise.all(
+          cacheNames
+            .filter(
+              (name) =>
+                name.startsWith("indirimbo-") &&
+                name !== APP_SHELL_CACHE &&
+                name !== RUNTIME_CACHE
+            )
+            .map((name) => caches.delete(name))
+        );
+      })
       .then(() => self.clients.claim())
   );
 });
 
-self.addEventListener('fetch', (event) => {
-  if (event.request.method !== 'GET') return;
-  const url = new URL(event.request.url);
-  if (url.origin !== self.location.origin) return;
+self.addEventListener("fetch", (event) => {
+  const request = event.request;
 
-  // Documents are network-first so deployments become visible immediately,
-  // with the cached app shell as the offline fallback.
-  if (event.request.mode === 'navigate') {
-    event.respondWith(
-      fetch(event.request)
-        .then((response) => {
-          const copy = response.clone();
-          caches.open(RUNTIME_CACHE).then((cache) => cache.put(event.request, copy));
-          return response;
-        })
-        .catch(async () =>
-          (await caches.match(event.request)) || (await caches.match('./index.html'))
-        )
-    );
+  if (request.method !== "GET") {
     return;
   }
 
-  // Versioned Flutter assets are cache-first; new versions receive new URLs or
-  // a new worker cache version. A miss is cached at runtime.
-  event.respondWith(
-    caches.match(event.request).then((cached) => cached || fetch(event.request).then((response) => {
-      if (!response || response.status !== 200 || response.type === 'opaque') return response;
-      const copy = response.clone();
-      event.waitUntil(caches.open(RUNTIME_CACHE).then((cache) => cache.put(event.request, copy)));
-      return response;
-    }))
-  );
+  const url = new URL(request.url);
+
+  if (url.origin !== self.location.origin) {
+    return;
+  }
+
+  if (request.mode === "navigate") {
+    event.respondWith(networkFirst(request));
+    return;
+  }
+
+  event.respondWith(cacheFirst(request));
 });
+
+async function networkFirst(request) {
+  try {
+    const response = await fetch(request);
+
+    if (response.ok) {
+      const cache = await caches.open(RUNTIME_CACHE);
+      await cache.put(request, response.clone());
+    }
+
+    return response;
+  } catch (_) {
+    return (
+      (await caches.match(request)) ||
+      (await caches.match("./index.html")) ||
+      new Response("Application unavailable offline.", {
+        status: 503
+      })
+    );
+  }
+}
+
+async function cacheFirst(request) {
+  const cachedResponse = await caches.match(request);
+
+  if (cachedResponse) {
+    return cachedResponse;
+  }
+
+  try {
+    const response = await fetch(request);
+
+    if (response.ok) {
+      const cache = await caches.open(RUNTIME_CACHE);
+      await cache.put(request, response.clone());
+    }
+
+    return response;
+  } catch (_) {
+    return new Response("Resource unavailable offline.", {
+      status: 503
+    });
+  }
+}

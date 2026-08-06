@@ -1,17 +1,16 @@
 {
+    "name": "indirimbo",
+    "short_name": "indirimbo",
     "id": "./",
-    "name": "Indirimbo zo Guhimbaza Imana",
-    "short_name": "Indirimbo",
-    "description": "Indirimbo zo Guhimbaza Imana, ziboneka no mu gihe nta murandasi uhari.",
-    "lang": "rw",
     "start_url": "./",
     "scope": "./",
     "display": "standalone",
-    "display_override": ["window-controls-overlay", "standalone", "minimal-ui"],
-    "background_color": "#263238",
-    "theme_color": "#37474F",
-    "orientation": "any",
+    "background_color": "#0175C2",
+    "theme_color": "#0175C2",
+    "description": "Indirimbo zo guhimbaza no kuramya Imana",
+    "orientation": "portrait-primary",
     "prefer_related_applications": false,
+    "lang": "rw",
     "icons": [
         {
             "src": "icons/Icon-192.png",
@@ -27,13 +26,13 @@
             "src": "icons/Icon-maskable-192.png",
             "sizes": "192x192",
             "type": "image/png",
-            "purpose": "any maskable"
+            "purpose": "maskable"
         },
         {
             "src": "icons/Icon-maskable-512.png",
             "sizes": "512x512",
             "type": "image/png",
-            "purpose": "any maskable"
+            "purpose": "maskable"
         }
     ]
 }
