@@ -8,6 +8,7 @@ class SongNavigationBar extends StatelessWidget {
     required this.onNavigate,
     required this.isFavorite,
     required this.onToggleFavorite,
+    this.onCopy,
   });
 
   final int currentIndex;
@@ -15,6 +16,7 @@ class SongNavigationBar extends StatelessWidget {
   final ValueChanged<int> onNavigate;
   final bool isFavorite;
   final VoidCallback onToggleFavorite;
+  final VoidCallback? onCopy;
 
   @override
   Widget build(BuildContext context) {
@@ -37,9 +39,17 @@ class SongNavigationBar extends StatelessWidget {
               hasNext ? () => onNavigate(currentIndex + 1) : null),
           _button(Icons.last_page, 'Last song',
               hasNext ? () => onNavigate(songCount - 1) : null),
+          if (onCopy != null)
+            IconButton(
+              onPressed: onCopy,
+              tooltip: 'Copy lyrics',
+              visualDensity: VisualDensity.compact,
+              icon: const Icon(Icons.copy_rounded),
+            ),
           IconButton(
             onPressed: onToggleFavorite,
             tooltip: isFavorite ? 'Remove favorite' : 'Save favorite',
+            visualDensity: VisualDensity.compact,
             icon: Icon(
               isFavorite
                   ? Icons.favorite_rounded
@@ -54,5 +64,9 @@ class SongNavigationBar extends StatelessWidget {
 
   Widget _button(IconData icon, String tooltip, VoidCallback? onPressed) =>
       IconButton.filledTonal(
-          icon: Icon(icon), tooltip: tooltip, onPressed: onPressed);
+        visualDensity: VisualDensity.compact,
+        icon: Icon(icon),
+        tooltip: tooltip,
+        onPressed: onPressed,
+      );
 }

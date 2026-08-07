@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:indirimbo/services/song_service.dart';
 import 'package:indirimbo/page/unified_lyrics.dart';
 import 'package:provider/provider.dart';
@@ -8,6 +7,7 @@ import '../models/searchable_song.dart';
 import '../models/view_type.dart';
 import '../providers/songs_provider.dart';
 import '../providers/theme_provider.dart';
+import '../providers/layout_provider.dart';
 import '../screens/song_view_screen.dart';
 
 class Home extends StatefulWidget {
@@ -34,6 +34,7 @@ class _HomeState extends State<Home> {
 
   @override
   Widget build(BuildContext context) {
+    final usesNewLayout = context.watch<LayoutProvider>().usesNewLayout;
     return DefaultTabController(
       length: 4,
       child: Scaffold(
@@ -58,7 +59,7 @@ class _HomeState extends State<Home> {
                     onChanged: (query) => _performUnifiedSearch(query),
                     autofocus: true,
                     controller: _searchController,
-                    style: GoogleFonts.inter(
+                    style: TextStyle(
                       fontSize: 16,
                       color: Colors.blueGrey[900],
                     ),
@@ -69,7 +70,7 @@ class _HomeState extends State<Home> {
                         horizontal: 20,
                         vertical: 12,
                       ),
-                      hintStyle: GoogleFonts.inter(
+                      hintStyle: TextStyle(
                         color: Colors.blueGrey[400],
                         fontSize: 15,
                       ),
@@ -96,7 +97,7 @@ class _HomeState extends State<Home> {
                 )
               : Text(
                   "Himbaza Imana",
-                  style: GoogleFonts.poppins(
+                  style: const TextStyle(
                     color: Colors.white,
                     fontSize: 20,
                     fontWeight: FontWeight.w600,
@@ -105,6 +106,27 @@ class _HomeState extends State<Home> {
                 ),
           backgroundColor: Colors.blueGrey[800],
           actions: [
+            if (!_isSearching && usesNewLayout) ...[
+              IconButton(
+                visualDensity: VisualDensity.compact,
+                onPressed: () => context.read<ThemeProvider>().toggleTheme(),
+                tooltip: context.watch<ThemeProvider>().isDark
+                    ? 'Use light mode'
+                    : 'Use dark mode',
+                icon: Icon(
+                  context.watch<ThemeProvider>().isDark
+                      ? Icons.light_mode_rounded
+                      : Icons.dark_mode_rounded,
+                  color: Colors.white,
+                ),
+              ),
+              IconButton(
+                visualDensity: VisualDensity.compact,
+                onPressed: _toggleViewType,
+                tooltip: 'Change song layout',
+                icon: Icon(_getViewIcon(), color: Colors.white),
+              ),
+            ],
             IconButton(
               visualDensity: VisualDensity.compact,
               onPressed: () {
@@ -130,9 +152,14 @@ class _HomeState extends State<Home> {
         floatingActionButton: _isSearching
             ? null
             : FloatingActionButton.small(
-                onPressed: _showDisplayOptions,
-                tooltip: 'Display options',
-                child: const Icon(Icons.tune_rounded),
+                onPressed: usesNewLayout
+                    ? () => context.read<LayoutProvider>().toggleLayout()
+                    : _showDisplayOptions,
+                tooltip:
+                    usesNewLayout ? 'Use old app layout' : 'Display options',
+                child: Icon(usesNewLayout
+                    ? Icons.dashboard_customize_rounded
+                    : Icons.tune_rounded),
               ),
         body: SafeArea(
             child:
@@ -400,10 +427,42 @@ class _HomeState extends State<Home> {
                   onChanged: (_) => themeProvider.toggleTheme(),
                 ),
               ),
+              Consumer<LayoutProvider>(
+                builder: (context, layoutProvider, child) => SwitchListTile(
+                  secondary: const Icon(Icons.dashboard_customize_rounded),
+                  title: const Text('New app layout'),
+                  value: layoutProvider.usesNewLayout,
+                  onChanged: (_) {
+                    layoutProvider.toggleLayout();
+                    Navigator.pop(sheetContext);
+                  },
+                ),
+              ),
             ],
           ),
         ),
       ),
     );
+  }
+
+  IconData _getViewIcon() {
+    switch (_currentViewType) {
+      case ViewType.grid:
+        return Icons.grid_view_rounded;
+      case ViewType.compactGrid:
+        return Icons.apps_rounded;
+      case ViewType.list:
+        return Icons.view_list_rounded;
+      case ViewType.card:
+        return Icons.view_agenda_rounded;
+    }
+  }
+
+  void _toggleViewType() {
+    final values = ViewType.values;
+    setState(() {
+      _currentViewType =
+          values[(values.indexOf(_currentViewType) + 1) % values.length];
+    });
   }
 }

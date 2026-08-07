@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:indirimbo/models/searchable_song.dart';
+import 'package:indirimbo/providers/layout_provider.dart';
 import 'package:indirimbo/providers/songs_provider.dart';
 import 'package:indirimbo/widgets/song_navigation_bar.dart';
 import 'package:provider/provider.dart';
@@ -42,6 +44,24 @@ class _UnifiedLyricsState extends State<UnifiedLyrics> {
     if (_scrollController.hasClients) _scrollController.jumpTo(0);
   }
 
+  void _copyLyrics() {
+    Clipboard.setData(ClipboardData(
+      text: '${_currentSong.title}\n\n${_currentSong.lyrics}',
+    ));
+    ScaffoldMessenger.of(context).showSnackBar(
+      const SnackBar(content: Text('Lyrics copied')),
+    );
+  }
+
+  void _handleSwipe(DragEndDetails details) {
+    final velocity = details.primaryVelocity ?? 0;
+    if (velocity < -250 && _currentIndex < _songs.length - 1) {
+      _goTo(_currentIndex + 1);
+    } else if (velocity > 250 && _currentIndex > 0) {
+      _goTo(_currentIndex - 1);
+    }
+  }
+
   @override
   void dispose() {
     _scrollController.dispose();
@@ -51,6 +71,7 @@ class _UnifiedLyricsState extends State<UnifiedLyrics> {
   @override
   Widget build(BuildContext context) {
     final songsProvider = context.watch<SongCollectionProvider>();
+    final usesNewLayout = context.watch<LayoutProvider>().usesNewLayout;
     return Scaffold(
       backgroundColor: Theme.of(context).scaffoldBackgroundColor,
       appBar: AppBar(
@@ -61,6 +82,29 @@ class _UnifiedLyricsState extends State<UnifiedLyrics> {
             color: Colors.blueGrey, size: 20),
         centerTitle: true,
         actions: [
+          if (usesNewLayout) ...[
+            IconButton(
+              onPressed: _copyLyrics,
+              tooltip: 'Copy lyrics',
+              icon: const Icon(Icons.copy_rounded, color: Colors.white),
+            ),
+            IconButton(
+              onPressed: () => context
+                  .read<SongCollectionProvider>()
+                  .toggleFavorite(_currentSong),
+              tooltip: songsProvider.isFavorite(_currentSong)
+                  ? 'Remove favorite'
+                  : 'Save favorite',
+              icon: Icon(
+                songsProvider.isFavorite(_currentSong)
+                    ? Icons.favorite_rounded
+                    : Icons.favorite_border_rounded,
+                color: songsProvider.isFavorite(_currentSong)
+                    ? Colors.redAccent
+                    : Colors.white,
+              ),
+            ),
+          ],
           Container(
             margin: const EdgeInsets.symmetric(vertical: 10, horizontal: 10),
             decoration: BoxDecoration(
@@ -99,11 +143,15 @@ class _UnifiedLyricsState extends State<UnifiedLyrics> {
             onToggleFavorite: () => context
                 .read<SongCollectionProvider>()
                 .toggleFavorite(_currentSong),
+            onCopy: usesNewLayout ? null : _copyLyrics,
           ),
         ),
       ),
-      body: SelectionArea(
-        child: SingleChildScrollView(
+      body: GestureDetector(
+        behavior: HitTestBehavior.translucent,
+        onHorizontalDragEnd: _handleSwipe,
+        child: SelectionArea(
+          child: SingleChildScrollView(
           controller: _scrollController,
           padding: EdgeInsets.zero,
           child: Column(
@@ -162,6 +210,7 @@ class _UnifiedLyricsState extends State<UnifiedLyrics> {
               // ── Pagination ──────────────────────────────────────────
               const SizedBox(height: 24),
             ],
+          ),
           ),
         ),
       ),

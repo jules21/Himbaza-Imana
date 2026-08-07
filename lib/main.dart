@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:indirimbo/page/home.dart';
 import 'package:indirimbo/providers/songs_provider.dart';
 import 'package:indirimbo/providers/theme_provider.dart';
+import 'package:indirimbo/providers/layout_provider.dart';
 import 'package:provider/provider.dart';
 import 'package:wakelock_plus/wakelock_plus.dart';
 import 'package:indirimbo/widgets/pwa_install_banner.dart';
@@ -17,7 +18,10 @@ void main() async {
       ),
       ChangeNotifierProvider(
         create: (context) => ThemeProvider(),
-      )
+      ),
+      ChangeNotifierProvider(
+        create: (context) => LayoutProvider(),
+      ),
     ],
     child: const IndirimboApp(),
   ));
