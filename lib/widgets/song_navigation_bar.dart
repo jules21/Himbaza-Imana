@@ -9,6 +9,7 @@ class SongNavigationBar extends StatelessWidget {
     required this.isFavorite,
     required this.onToggleFavorite,
     this.onCopy,
+    this.showFavorite = true,
   });
 
   final int currentIndex;
@@ -17,6 +18,7 @@ class SongNavigationBar extends StatelessWidget {
   final bool isFavorite;
   final VoidCallback onToggleFavorite;
   final VoidCallback? onCopy;
+  final bool showFavorite;
 
   @override
   Widget build(BuildContext context) {
@@ -46,17 +48,18 @@ class SongNavigationBar extends StatelessWidget {
               visualDensity: VisualDensity.compact,
               icon: const Icon(Icons.copy_rounded),
             ),
-          IconButton(
-            onPressed: onToggleFavorite,
-            tooltip: isFavorite ? 'Remove favorite' : 'Save favorite',
-            visualDensity: VisualDensity.compact,
-            icon: Icon(
-              isFavorite
-                  ? Icons.favorite_rounded
-                  : Icons.favorite_border_rounded,
-              color: isFavorite ? Colors.redAccent : null,
+          if (showFavorite)
+            IconButton(
+              onPressed: onToggleFavorite,
+              tooltip: isFavorite ? 'Remove favorite' : 'Save favorite',
+              visualDensity: VisualDensity.compact,
+              icon: Icon(
+                isFavorite
+                    ? Icons.favorite_rounded
+                    : Icons.favorite_border_rounded,
+                color: isFavorite ? Colors.redAccent : null,
+              ),
             ),
-          ),
         ],
       ),
     );

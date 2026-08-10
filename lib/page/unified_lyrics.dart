@@ -3,6 +3,7 @@ import 'package:flutter/services.dart';
 import 'package:indirimbo/models/searchable_song.dart';
 import 'package:indirimbo/providers/layout_provider.dart';
 import 'package:indirimbo/providers/songs_provider.dart';
+import 'package:indirimbo/utils/lyrics_clipboard_formatter.dart';
 import 'package:indirimbo/widgets/song_navigation_bar.dart';
 import 'package:provider/provider.dart';
 
@@ -46,7 +47,11 @@ class _UnifiedLyricsState extends State<UnifiedLyrics> {
 
   void _copyLyrics() {
     Clipboard.setData(ClipboardData(
-      text: '${_currentSong.title}\n\n${_currentSong.lyrics}',
+      text: formatLyricsForClipboard(
+        id: _currentSong.id,
+        title: _currentSong.title,
+        lyrics: _currentSong.lyrics,
+      ),
     ));
     ScaffoldMessenger.of(context).showSnackBar(
       const SnackBar(content: Text('Lyrics copied')),
@@ -144,6 +149,7 @@ class _UnifiedLyricsState extends State<UnifiedLyrics> {
                 .read<SongCollectionProvider>()
                 .toggleFavorite(_currentSong),
             onCopy: usesNewLayout ? null : _copyLyrics,
+            showFavorite: !usesNewLayout,
           ),
         ),
       ),
@@ -152,65 +158,65 @@ class _UnifiedLyricsState extends State<UnifiedLyrics> {
         onHorizontalDragEnd: _handleSwipe,
         child: SelectionArea(
           child: SingleChildScrollView(
-          controller: _scrollController,
-          padding: EdgeInsets.zero,
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.stretch,
-            children: [
-              // ── Header ──────────────────────────────────────────────
-              Container(
-                width: double.infinity,
-                color: Colors.blueGrey[800],
-                padding: const EdgeInsets.fromLTRB(24, 4, 24, 16),
-                child: Column(
-                  children: [
-                    const SizedBox(height: 8),
-                    Text(
-                      _currentSong.title,
-                      textAlign: TextAlign.center,
-                      style: const TextStyle(
-                        color: Colors.white,
-                        fontSize: 20,
-                        fontWeight: FontWeight.bold,
-                        height: 1.35,
-                        letterSpacing: 0.4,
-                      ),
-                    ),
-                    const SizedBox(height: 20),
-                    Container(
-                      width: 50,
-                      height: 2,
-                      decoration: BoxDecoration(
-                        color: Colors.white38,
-                        borderRadius: BorderRadius.circular(2),
-                      ),
-                    ),
-                  ],
-                ),
-              ),
-
-              const SizedBox(height: 8),
-
-              // ── Lyrics card ─────────────────────────────────────────
-              Card(
-                margin: const EdgeInsets.symmetric(horizontal: 10),
-                elevation: 1,
-                shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(8)),
-                child: Padding(
-                  padding:
-                      const EdgeInsets.symmetric(horizontal: 16, vertical: 20),
+            controller: _scrollController,
+            padding: EdgeInsets.zero,
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.stretch,
+              children: [
+                // ── Header ──────────────────────────────────────────────
+                Container(
+                  width: double.infinity,
+                  color: Colors.blueGrey[800],
+                  padding: const EdgeInsets.fromLTRB(24, 4, 24, 16),
                   child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.stretch,
-                    children: _formatLyrics(_currentSong.lyrics),
+                    children: [
+                      const SizedBox(height: 8),
+                      Text(
+                        _currentSong.title,
+                        textAlign: TextAlign.center,
+                        style: const TextStyle(
+                          color: Colors.white,
+                          fontSize: 20,
+                          fontWeight: FontWeight.bold,
+                          height: 1.35,
+                          letterSpacing: 0.4,
+                        ),
+                      ),
+                      const SizedBox(height: 20),
+                      Container(
+                        width: 50,
+                        height: 2,
+                        decoration: BoxDecoration(
+                          color: Colors.white38,
+                          borderRadius: BorderRadius.circular(2),
+                        ),
+                      ),
+                    ],
                   ),
                 ),
-              ),
 
-              // ── Pagination ──────────────────────────────────────────
-              const SizedBox(height: 24),
-            ],
-          ),
+                const SizedBox(height: 8),
+
+                // ── Lyrics card ─────────────────────────────────────────
+                Card(
+                  margin: const EdgeInsets.symmetric(horizontal: 10),
+                  elevation: 1,
+                  shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(8)),
+                  child: Padding(
+                    padding: const EdgeInsets.symmetric(
+                        horizontal: 16, vertical: 20),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.stretch,
+                      children: _formatLyrics(_currentSong.lyrics),
+                    ),
+                  ),
+                ),
+
+                // ── Pagination ──────────────────────────────────────────
+                const SizedBox(height: 24),
+              ],
+            ),
           ),
         ),
       ),

@@ -3,6 +3,7 @@ import 'package:flutter/services.dart';
 import 'package:indirimbo/models/searchable_song.dart';
 import 'package:indirimbo/providers/layout_provider.dart';
 import 'package:indirimbo/providers/songs_provider.dart';
+import 'package:indirimbo/utils/lyrics_clipboard_formatter.dart';
 import 'package:indirimbo/widgets/song_navigation_bar.dart';
 import 'package:provider/provider.dart';
 
@@ -44,7 +45,11 @@ class _BrideLyricsState extends State<BrideLyrics> {
 
   void _copyLyrics() {
     Clipboard.setData(ClipboardData(
-      text: '${_currentSong.id} ${_currentSong.title}\n\n${_currentSong.lyrics}',
+      text: formatLyricsForClipboard(
+        id: _currentSong.id,
+        title: _currentSong.title,
+        lyrics: _currentSong.lyrics,
+      ),
     ));
     ScaffoldMessenger.of(context).showSnackBar(
       const SnackBar(content: Text('Lyrics copied')),
@@ -89,9 +94,8 @@ class _BrideLyricsState extends State<BrideLyrics> {
               icon: const Icon(Icons.copy_rounded, color: Colors.white),
             ),
             IconButton(
-              onPressed: () => context
-                  .read<SongCollectionProvider>()
-                  .toggleFavorite(song),
+              onPressed: () =>
+                  context.read<SongCollectionProvider>().toggleFavorite(song),
               tooltip: songsProvider.isFavorite(song)
                   ? 'Remove favorite'
                   : 'Save favorite',
@@ -143,6 +147,7 @@ class _BrideLyricsState extends State<BrideLyrics> {
             onToggleFavorite: () =>
                 context.read<SongCollectionProvider>().toggleFavorite(song),
             onCopy: usesNewLayout ? null : _copyLyrics,
+            showFavorite: !usesNewLayout,
           ),
         ),
       ),
@@ -151,63 +156,63 @@ class _BrideLyricsState extends State<BrideLyrics> {
         onHorizontalDragEnd: _handleSwipe,
         child: SelectionArea(
           child: SingleChildScrollView(
-          controller: _scrollController,
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.stretch,
-            children: [
-              Container(
-                width: double.infinity,
-                decoration: BoxDecoration(
-                  color: Colors.blueGrey[800],
-                  borderRadius: const BorderRadius.only(
-                      // bottomLeft: Radius.circular(28),
-                      // bottomRight: Radius.circular(28),
-                      ),
-                ),
-                padding: const EdgeInsets.fromLTRB(24, 4, 24, 16),
-                child: Column(
-                  children: [
-                    const SizedBox(height: 8),
-                    Text(
-                      '${song.id} ${song.title}',
-                      textAlign: TextAlign.center,
-                      style: const TextStyle(
-                        color: Colors.white,
-                        fontSize: 20,
-                        fontWeight: FontWeight.bold,
-                        height: 1.35,
-                        letterSpacing: 0.4,
-                      ),
-                    ),
-                    const SizedBox(height: 20),
-                    Container(
-                      width: 50,
-                      height: 2,
-                      decoration: BoxDecoration(
-                        color: Colors.white38,
-                        borderRadius: BorderRadius.circular(2),
-                      ),
-                    ),
-                  ],
-                ),
-              ),
-              Card(
-                margin: EdgeInsets.symmetric(horizontal: 10),
-                elevation: 1,
-                shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(8)),
-                child: Padding(
-                  padding:
-                      const EdgeInsets.symmetric(horizontal: 16, vertical: 20),
+            controller: _scrollController,
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.stretch,
+              children: [
+                Container(
+                  width: double.infinity,
+                  decoration: BoxDecoration(
+                    color: Colors.blueGrey[800],
+                    borderRadius: const BorderRadius.only(
+                        // bottomLeft: Radius.circular(28),
+                        // bottomRight: Radius.circular(28),
+                        ),
+                  ),
+                  padding: const EdgeInsets.fromLTRB(24, 4, 24, 16),
                   child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.stretch,
-                    children: _formatLyrics(song.lyrics),
+                    children: [
+                      const SizedBox(height: 8),
+                      Text(
+                        '${song.id} ${song.title}',
+                        textAlign: TextAlign.center,
+                        style: const TextStyle(
+                          color: Colors.white,
+                          fontSize: 20,
+                          fontWeight: FontWeight.bold,
+                          height: 1.35,
+                          letterSpacing: 0.4,
+                        ),
+                      ),
+                      const SizedBox(height: 20),
+                      Container(
+                        width: 50,
+                        height: 2,
+                        decoration: BoxDecoration(
+                          color: Colors.white38,
+                          borderRadius: BorderRadius.circular(2),
+                        ),
+                      ),
+                    ],
                   ),
                 ),
-              ),
-              const SizedBox(height: 24),
-            ],
-          ),
+                Card(
+                  margin: EdgeInsets.symmetric(horizontal: 10),
+                  elevation: 1,
+                  shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(8)),
+                  child: Padding(
+                    padding: const EdgeInsets.symmetric(
+                        horizontal: 16, vertical: 20),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.stretch,
+                      children: _formatLyrics(song.lyrics),
+                    ),
+                  ),
+                ),
+                const SizedBox(height: 24),
+              ],
+            ),
           ),
         ),
       ),
