@@ -1,10 +1,10 @@
 {
-    "name": "indirimbo",
-    "short_name": "indirimbo",
+    "name": "Himbaza Imana",
+    "short_name": "Himbaza Imana",
     "id": "./",
     "start_url": "./",
     "scope": "./",
-    "display": "standalone",
+    "display": "fullscreen",
     "background_color": "#0175C2",
     "theme_color": "#0175C2",
     "description": "Indirimbo zo guhimbaza no kuramya Imana",
@@ -13,23 +13,23 @@
     "lang": "rw",
     "icons": [
         {
-            "src": "icons/Icon-192.png",
+            "src": "icons/himbaza-imana-192.png",
             "sizes": "192x192",
             "type": "image/png"
         },
         {
-            "src": "icons/Icon-512.png",
+            "src": "icons/himbaza-imana-512.png",
             "sizes": "512x512",
             "type": "image/png"
         },
         {
-            "src": "icons/Icon-maskable-192.png",
+            "src": "icons/himbaza-imana-maskable-192.png",
             "sizes": "192x192",
             "type": "image/png",
             "purpose": "maskable"
         },
         {
-            "src": "icons/Icon-maskable-512.png",
+            "src": "icons/himbaza-imana-maskable-512.png",
             "sizes": "512x512",
             "type": "image/png",
             "purpose": "maskable"

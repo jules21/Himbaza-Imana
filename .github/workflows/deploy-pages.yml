@@ -32,7 +32,13 @@ jobs:
         run: flutter pub get
 
       - name: Build web app
-        run: flutter build web --release --base-href /Himbaza-Imana/
+        run: flutter build web --release --base-href /Himbaza-Imana/ --pwa-strategy none
+
+      - name: Prepare complete offline cache
+        run: node tool/prepare_pwa.mjs
+
+      - name: Verify offline resources
+        run: node --test test/pwa_service_worker_test.mjs
 
       - name: Configure GitHub Pages
         uses: actions/configure-pages@v5

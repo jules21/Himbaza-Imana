@@ -1,89 +1,56 @@
-# Indirimbo PWA implementation
+# Indirimbo PWA
 
-## 1. Install metadata
+## Build and deploy
 
-`web/manifest.json` defines the install name, stable app id/scope, standalone
-display mode, Kinyarwanda language, colors, and regular/maskable icons.
-`web/index.html` links the manifest and supplies matching browser/iOS metadata.
-
-Keep the 192x192 and 512x512 PNG files in `web/icons/`. Installability must be
-tested through HTTPS (localhost is accepted for local development).
-
-## 2. Offline caching
-
-`web/flutter_bootstrap.js` tells Flutter's loader to register
-`web/pwa_service_worker.js`. Flutter replaces the service-worker-version token
-at build time, so a deployment activates a fresh cache.
-
-The worker uses:
-
-- network-first for page navigations, falling back to cached `index.html`;
-- cache-first for same-origin Flutter code, fonts, images, and app assets;
-- versioned shell/runtime caches, with old versions deleted on activation.
-
-Add any file that is absolutely required on first offline launch to `APP_SHELL`.
-Do not cache authenticated API responses without designing per-user eviction.
-
-## 3. Custom install banner
-
-`PwaInstallService` uses a conditional export. Mobile/desktop builds receive a
-no-op implementation, while web listens for `beforeinstallprompt`, calls
-`preventDefault()`, and retains the event until the user presses Install.
-`PwaInstallBanner` is mounted through `MaterialApp.builder` in `lib/main.dart`.
-
-Chrome/Edge fire this event only when their installability checks pass. iOS
-Safari does not expose it; iOS users must use Share > Add to Home Screen.
-
-## 4. Responsive shell
-
-`ResponsiveAppShell` uses `LayoutBuilder` and these content caps:
-
-- phone (<700px): full width;
-- tablet (700-1199px): maximum 840px;
-- desktop (1200px+): maximum 1100px.
-
-For screens that benefit from a true master/detail UI, add a second breakpoint
-inside that screen and render a `Row` with navigation and content panes.
-
-## 5. Production builds
-
-From the repository root:
+Use Flutter stable and Node.js, then run:
 
 ```powershell
-flutter pub get
-flutter build web --release --web-renderer html --base-href /
+.\tool\build_pwa.ps1 -BaseHref /Himbaza-Imana/
 ```
 
-HTML has the smaller initial download and is the recommended starting point for
-this text/list-heavy application. For maximum visual fidelity and consistent
-graphics rendering:
+For a root deployment, use `-BaseHref /`. The helper runs Flutter with its
+legacy service worker disabled, then `node tool/prepare_pwa.mjs`. The GitHub
+Pages workflow runs these same steps. Deploy the entire `build/web` directory.
+Do not skip the preparation step: it generates the resource list and build hash
+in the custom worker. Serve through HTTPS (localhost is also supported).
+
+## Offline behavior
+
+The worker precaches every production file except service workers and source
+maps, including app code, both song collections, bundled Roboto fonts, and the
+local CanvasKit renderer. Installation completes only when all resources have
+been saved. Cache names change when build contents change. Navigation and
+resources come from the same cached build. Updates wait for existing app windows
+to close before activating, preventing a mixture of old and new code.
+
+The first visit needs internet and enough time for the offline download to
+finish. Open the installed app online once before testing offline. iOS can evict
+website storage, so downloading again may be necessary if its cache is cleared.
+Avoid long-lived immutable HTTP caching for index.html, flutter_bootstrap.js,
+and pwa_service_worker.js.
+
+## Full-screen layout
+
+The manifest requests fullscreen. iPhone uses Apple's standalone web-app meta
+tag with a translucent status bar and viewport-fit=cover. iOS controls the
+system status bar. The Flutter shell fills the available width and height;
+screens retain their SafeArea protection around controls.
+
+Existing iPhone installations may need to be removed and added again through
+Safari > Share > Add to Home Screen to pick up the display metadata.
+
+## Verification
 
 ```powershell
-flutter build web --release --web-renderer canvaskit --base-href /
+node --test test/pwa_service_worker_test.mjs
 ```
 
-The included helper accepts the same choice:
+Serve a fresh production build, wait for the service worker to activate, then
+switch the browser offline and reload the root and a nested route. Check both
+song collections and open lyrics that have never been viewed online. Repeat on
+an iPhone: launch from the Home Screen, close it, enable airplane mode, and
+relaunch. Check portrait and landscape, including the notch and home indicator.
 
-```powershell
-.\tool\build_pwa.ps1 -Renderer html -BaseHref /
-.\tool\build_pwa.ps1 -Renderer canvaskit -BaseHref /
-```
-
-If deploying under a subpath, use matching leading/trailing slashes, for example
-`-BaseHref /indirimbo/`. Deploy the contents of `build/web`, not the directory
-itself. Configure the host to rewrite unknown navigation routes to `index.html`,
-serve `.wasm` as `application/wasm`, and avoid long-lived immutable caching for
-`index.html`, `flutter_bootstrap.js`, and `pwa_service_worker.js`.
-
-## 6. Verification
-
-Serve the production output over HTTP rather than opening `index.html` directly:
-
-```powershell
-cd build\web
-python -m http.server 8080
-```
-
-In Chrome DevTools, use Application > Manifest to check installability and
-Application > Service Workers to enable Offline, then reload. Run Lighthouse in
-an incognito profile for a clean PWA/performance audit.
+Implementation references:
+- https://docs.flutter.dev/platform-integration/web/initialization
+- https://developer.apple.com/library/archive/documentation/AppleApplications/Reference/SafariWebContent/ConfiguringWebApplications/ConfiguringWebApplications.html

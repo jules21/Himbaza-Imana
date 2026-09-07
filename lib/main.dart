@@ -34,6 +34,7 @@ class IndirimboApp extends StatelessWidget {
   Widget build(BuildContext context) {
     final themeProvider = context.watch<ThemeProvider>();
     return MaterialApp(
+      title: 'Himbaza Imana',
       debugShowCheckedModeBanner: false,
       home: const Home(),
       theme: themeProvider.lightTheme,

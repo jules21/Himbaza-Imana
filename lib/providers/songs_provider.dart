@@ -56,7 +56,7 @@ class SongCollectionProvider extends ChangeNotifier{
 
       // Load bride songs collection
       final brideSongsJson = await DefaultAssetBundle.of(context)
-          .loadString('assets/bride_songs.json');
+          .loadString('assets/Bride_songs.json');
       brideSongs = (json.decode(brideSongsJson) as List)
           .map((json) => BrideSong.fromJson(json))
           .toList();
