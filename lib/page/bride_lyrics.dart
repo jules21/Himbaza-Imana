@@ -137,7 +137,6 @@ class _BrideLyricsState extends State<BrideLyrics> {
       ),
       bottomNavigationBar: SafeArea(
         child: Material(
-          elevation: 8,
           color: Theme.of(context).colorScheme.surface,
           child: SongNavigationBar(
             currentIndex: _currentIndex,
@@ -174,7 +173,7 @@ class _BrideLyricsState extends State<BrideLyrics> {
                     children: [
                       const SizedBox(height: 8),
                       Text(
-                        '${song.id} ${song.title}',
+                        songTitleWithNumber(song),
                         textAlign: TextAlign.center,
                         style: const TextStyle(
                           color: Colors.white,

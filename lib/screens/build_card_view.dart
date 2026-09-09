@@ -89,7 +89,7 @@ class BuildCardView extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
-                      songs[index].title ?? 'Song ${index + 1}',
+                      songTitleWithNumber(songs[index]),
                       style: TextStyle(
                         fontSize: 18,
                         fontWeight: FontWeight.bold,

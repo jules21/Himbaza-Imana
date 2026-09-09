@@ -22,7 +22,7 @@ class SongService {
   SongSearchResult getUnifiedContextualPreview(
       SearchableSong song, String searchTerm) {
     final searchTermLower = searchTerm.trim().toLowerCase();
-    final titleLower = song.title.toLowerCase();
+    final titleLower = songTitleWithNumber(song).toLowerCase();
     final lyricsLower = song.lyrics.toLowerCase();
     final matchesSongNumber = song.id == searchTermLower;
 

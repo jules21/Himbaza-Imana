@@ -33,8 +33,12 @@ class _VersePresentationState extends State<VersePresentation> {
           Row(children: [
             IconButton(tooltip: 'Close presentation', onPressed: () => Navigator.pop(context),
                 icon: Icon(Icons.close, color: foreground)),
-            Expanded(child: Text(widget.song.title.trim(), maxLines: 2, overflow: TextOverflow.ellipsis,
-                style: TextStyle(color: foreground, fontSize: 14), textAlign: TextAlign.center)),
+            Expanded(
+                child: Text(songTitleWithNumber(widget.song),
+                    maxLines: 2,
+                    overflow: TextOverflow.ellipsis,
+                    style: TextStyle(color: foreground, fontSize: 14),
+                    textAlign: TextAlign.center)),
             IconButton(tooltip: 'Invert black and white',
                 onPressed: () => setState(() => _whiteBackground = !_whiteBackground),
                 icon: Icon(Icons.contrast, color: foreground)),

@@ -1,5 +1,6 @@
 import 'package:flutter_test/flutter_test.dart';
 import 'package:indirimbo/models/bride_song.dart';
+import 'package:indirimbo/models/searchable_song.dart';
 import 'package:indirimbo/providers/songs_provider.dart';
 import 'package:indirimbo/services/song_service.dart';
 import 'package:indirimbo/utils/lyrics_sections.dart';
@@ -23,6 +24,7 @@ void main() {
     expect(song.id, '1');
     expect(song.parent, BrideSong.wokovuCategoryId);
     expect(song.usesBrideLyrics, isFalse);
+    expect(songTitleWithNumber(song), '1. Wokovu song');
     expect(song.title, 'Wokovu song');
     expect(song.lyrics, '1. Lyrics');
   });

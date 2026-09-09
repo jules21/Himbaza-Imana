@@ -3,6 +3,7 @@ import 'package:indirimbo/services/song_service.dart';
 import 'package:indirimbo/page/unified_lyrics.dart';
 import 'package:provider/provider.dart';
 import '../models/search_song_result.dart';
+import '../models/searchable_song.dart';
 import '../models/view_type.dart';
 import '../providers/songs_provider.dart';
 import '../providers/theme_provider.dart';
@@ -331,7 +332,7 @@ class _HomeState extends State<Home> {
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             Text(
-                              song.title,
+                              songTitleWithNumber(song),
                               style: const TextStyle(
                                 fontSize: 16,
                                 fontWeight: FontWeight.bold,

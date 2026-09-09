@@ -140,7 +140,6 @@ class _UnifiedLyricsState extends State<UnifiedLyrics> {
       ),
       bottomNavigationBar: SafeArea(
         child: Material(
-          elevation: 8,
           color: Theme.of(context).colorScheme.surface,
           child: SongNavigationBar(
             currentIndex: _currentIndex,
@@ -174,7 +173,7 @@ class _UnifiedLyricsState extends State<UnifiedLyrics> {
                     children: [
                       const SizedBox(height: 8),
                       Text(
-                        _currentSong.title,
+                        songTitleWithNumber(_currentSong),
                         textAlign: TextAlign.center,
                         style: const TextStyle(
                           color: Colors.white,

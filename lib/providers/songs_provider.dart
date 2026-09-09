@@ -50,7 +50,9 @@ class SongCollectionProvider extends ChangeNotifier {
     final isSongNumber = RegExp(r'^\d+$').hasMatch(normalizedQuery);
     return searchableSongs.where((song) {
       if (isSongNumber) return song.id == normalizedQuery;
-      return song.title.toLowerCase().contains(normalizedQuery) ||
+      return songTitleWithNumber(song)
+              .toLowerCase()
+              .contains(normalizedQuery) ||
           song.lyrics.toLowerCase().contains(normalizedQuery);
     }).toList();
   }
