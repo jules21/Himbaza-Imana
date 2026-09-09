@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 import 'package:indirimbo/page/home.dart';
 import 'package:indirimbo/providers/songs_provider.dart';
@@ -8,9 +10,8 @@ import 'package:wakelock_plus/wakelock_plus.dart';
 import 'package:indirimbo/widgets/pwa_install_banner.dart';
 import 'package:indirimbo/widgets/responsive_app_shell.dart';
 
-void main() async {
+void main() {
   WidgetsFlutterBinding.ensureInitialized();
-  await WakelockPlus.enable();
   runApp(MultiProvider(
     providers: [
       ChangeNotifierProvider(
@@ -25,6 +26,15 @@ void main() async {
     ],
     child: const IndirimboApp(),
   ));
+  unawaited(_enableWakelock());
+}
+
+Future<void> _enableWakelock() async {
+  try {
+    await WakelockPlus.enable();
+  } catch (error) {
+    debugPrint('Unable to enable wake lock: $error');
+  }
 }
 
 class IndirimboApp extends StatelessWidget {

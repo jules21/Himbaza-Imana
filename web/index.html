@@ -19,7 +19,7 @@
   <meta charset="UTF-8">
   <meta content="IE=Edge" http-equiv="X-UA-Compatible">
   <meta name="description" content="Himbaza Imana App">
-  <meta name="theme-color" content="#6750A4">
+  <meta name="theme-color" content="#37474F">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 
   <!-- iOS meta tags & icons -->
@@ -35,8 +35,14 @@
   <title>Himbaza Imana</title>
   <link rel="manifest" href="manifest.json">
   <style>
-    html, body { width: 100%; height: 100%; margin: 0; overflow: hidden; }
-    body { min-height: 100dvh; background: #6750A4; }
+    html, body {
+      width: 100%;
+      height: 100%;
+      margin: 0;
+      overflow: hidden;
+      background: #37474F;
+    }
+    body { min-height: 100vh; min-height: 100dvh; }
   </style>
 </head>
 <body>
@@ -48,30 +54,6 @@
     For more details:
     * https://docs.flutter.dev/platform-integration/web/initialization
   -->
-  <script>
-    if ("serviceWorker" in navigator) {
-      window.addEventListener("load", async () => {
-        try {
-          const registration = await navigator.serviceWorker.register(
-            "pwa_service_worker.js",
-            {
-              scope: "./"
-            }
-          );
-
-          console.log(
-            "PWA service worker registered:",
-            registration.scope
-          );
-        } catch (error) {
-          console.error(
-            "PWA service worker registration failed:",
-            error
-          );
-        }
-      });
-    }
-  </script>
   <script src="flutter_bootstrap.js" async></script>
 </body>
 </html>

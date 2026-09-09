@@ -13,9 +13,15 @@ async function filesIn(directory) {
 }
 const files = (await filesIn(output))
   .map((file) => path.relative(output, file).split(path.sep).join('/'))
-  .filter((file) => !['pwa_service_worker.js', 'flutter_service_worker.js'].includes(file) && !file.endsWith('.map'))
+  .filter((file) => {
+    if (['pwa_service_worker.js', 'flutter_service_worker.js', 'assets/NOTICES'].includes(file)) return false;
+    if (file.endsWith('.map') || file.endsWith('.symbols')) return false;
+    if (file.startsWith('canvaskit/experimental_webparagraph/')) return false;
+    if (/^canvaskit\/(?:skwasm|skwasm_heavy|wimp)\./.test(file)) return false;
+    return true;
+  })
   .sort();
-for (const required of ['index.html', 'flutter_bootstrap.js', 'main.dart.js', 'assets/assets/Bride_songs.json', 'assets/assets/hymns_praise_songs.json']) {
+for (const required of ['index.html', 'flutter_bootstrap.js', 'main.dart.js', 'canvaskit/canvaskit.js', 'canvaskit/canvaskit.wasm', 'canvaskit/chromium/canvaskit.js', 'canvaskit/chromium/canvaskit.wasm', 'assets/assets/Bride_songs.json', 'assets/assets/hymns_praise_songs.json']) {
   if (!files.includes(required)) throw new Error(`Missing offline resource: ${required}`);
 }
 const hash = createHash('sha256');
@@ -29,4 +35,6 @@ const version = hash.digest('hex').slice(0, 20);
 await writeFile(path.join(output, 'pwa_service_worker.js'), template
   .replace('__BUILD_HASH__', version)
   .replace('/* __APP_SHELL__ */ []', JSON.stringify(files.map((file) => file.split('/').map(encodeURIComponent).join('/')), null, 2)));
-console.log(`Prepared ${files.length} offline resources (${version}).`);
+const bytes = (await Promise.all(files.map(async (file) => (await readFile(path.join(output, file))).byteLength)))
+  .reduce((total, size) => total + size, 0);
+console.log(`Prepared ${files.length} offline resources (${(bytes / 1024 / 1024).toFixed(1)} MiB, ${version}).`);

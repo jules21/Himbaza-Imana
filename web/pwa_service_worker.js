@@ -9,8 +9,11 @@ self.addEventListener("install", (event) => {
   event.waitUntil((async () => {
     if (!APP_SHELL.length) throw new Error("Run tool/prepare_pwa.mjs after building Flutter.");
     const cache = await caches.open(APP_CACHE);
-    // Activate only after all code, renderer, fonts and songs are cached.
-    await cache.addAll(APP_SHELL.map((path) => new Request(scopedUrl(path), { cache: "reload" })));
+    // Smaller batches are more reliable on iOS than one large concurrent fetch.
+    const requests = APP_SHELL.map((path) => new Request(scopedUrl(path), { cache: "reload" }));
+    for (let index = 0; index < requests.length; index += 8) {
+      await cache.addAll(requests.slice(index, index + 8));
+    }
     // Existing app windows keep their matching build until they close.
   })());
 });
