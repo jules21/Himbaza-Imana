@@ -1,5 +1,6 @@
 import 'package:flutter_test/flutter_test.dart';
 import 'package:indirimbo/models/bride_song.dart';
+import 'package:indirimbo/models/hymn_praise_song.dart';
 import 'package:indirimbo/models/searchable_song.dart';
 import 'package:indirimbo/providers/songs_provider.dart';
 import 'package:indirimbo/services/song_service.dart';
@@ -25,6 +26,8 @@ void main() {
     expect(song.parent, BrideSong.wokovuCategoryId);
     expect(song.usesBrideLyrics, isFalse);
     expect(songTitleWithNumber(song), '1. Wokovu song');
+    expect(songCatalogNumber(song), '1');
+    expect(songCategoryLabel(song), 'Nyimbo za Wokovu');
     expect(song.title, 'Wokovu song');
     expect(song.lyrics, '1. Lyrics');
   });
@@ -47,6 +50,19 @@ void main() {
       ),
       contains(wokovuSong),
     );
+  });
+
+  test('catalog number uses the visible Hymn Praise number instead of its id',
+      () {
+    final song = hymnPraiseSong(
+      id: '27',
+      parent: '554',
+      title: '4.Niboney\' urukundo rw\'Umukiza',
+      contentFile: '',
+    );
+
+    expect(songCatalogNumber(song), '4');
+    expect(songCategoryLabel(song), 'Agakiza');
   });
 
   test('numeric search finds the matching song number without scanning lyrics',

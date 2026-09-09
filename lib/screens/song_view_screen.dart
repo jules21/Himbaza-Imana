@@ -9,12 +9,14 @@ class SongViewScreen extends StatefulWidget {
   final dynamic songs;
   final ViewType viewType;
   final String emptyMessage;
+  final bool showSongMetadata;
 
   const SongViewScreen({
     Key? key,
     required this.songs,
     required this.viewType,
     this.emptyMessage = 'No songs available',
+    this.showSongMetadata = false,
   }) : super(key: key);
 
   @override
@@ -42,13 +44,26 @@ class _SongViewScreenState extends State<SongViewScreen> {
 
     switch (widget.viewType) {
       case ViewType.grid:
-        return BuildGridView(songs: widget.songs);
+        return BuildGridView(
+          songs: widget.songs,
+          showSongMetadata: widget.showSongMetadata,
+        );
       case ViewType.compactGrid:
-        return BuildGridView(songs: widget.songs, crossAxisCount: 6);
+        return BuildGridView(
+          songs: widget.songs,
+          crossAxisCount: 6,
+          showSongMetadata: widget.showSongMetadata,
+        );
       case ViewType.list:
-        return BuildListView(songs: widget.songs);
+        return BuildListView(
+          songs: widget.songs,
+          showSongMetadata: widget.showSongMetadata,
+        );
       case ViewType.card:
-        return BuildCardView(songs: widget.songs);
+        return BuildCardView(
+          songs: widget.songs,
+          showSongMetadata: widget.showSongMetadata,
+        );
     }
   }
 

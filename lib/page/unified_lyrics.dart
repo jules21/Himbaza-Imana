@@ -6,6 +6,7 @@ import 'package:indirimbo/page/verse_presentation.dart';
 import 'package:indirimbo/providers/layout_provider.dart';
 import 'package:indirimbo/providers/songs_provider.dart';
 import 'package:indirimbo/utils/lyrics_clipboard_formatter.dart';
+import 'package:indirimbo/utils/lyrics_sharing.dart';
 import 'package:indirimbo/utils/lyrics_sections.dart';
 import 'package:indirimbo/widgets/song_page_transition.dart';
 import 'package:indirimbo/widgets/song_navigation_bar.dart';
@@ -53,15 +54,16 @@ class _UnifiedLyricsState extends State<UnifiedLyrics> {
   }
 
   void _copyLyrics() {
-    Clipboard.setData(ClipboardData(
-      text: formatLyricsForClipboard(
-        id: _currentSong.id,
-        title: _currentSong.title,
-        lyrics: _currentSong.lyrics,
-      ),
-    ));
-    ScaffoldMessenger.of(context).showSnackBar(
-      const SnackBar(content: Text('Lyrics copied')),
+    final text = formatLyricsForClipboard(
+      id: _currentSong.id,
+      title: _currentSong.title,
+      lyrics: _currentSong.lyrics,
+    );
+    Clipboard.setData(ClipboardData(text: text));
+    showLyricsCopiedSnackBar(
+      context,
+      text: text,
+      title: songTitleWithNumber(_currentSong),
     );
   }
 

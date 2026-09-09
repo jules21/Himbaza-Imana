@@ -8,9 +8,11 @@ class BuildCardView extends StatelessWidget {
   BuildCardView({
     super.key,
     required this.songs,
+    this.showSongMetadata = false,
   });
 
   final dynamic songs;
+  final bool showSongMetadata;
 
   @override
   Widget build(BuildContext context) {
@@ -74,7 +76,9 @@ class BuildCardView extends StatelessWidget {
                 ),
                 child: Center(
                   child: Text(
-                    '${index + 1}',
+                    showSongMetadata
+                        ? songCatalogNumber(songs[index])
+                        : '${index + 1}',
                     style: const TextStyle(
                       color: Colors.white,
                       fontWeight: FontWeight.bold,
@@ -96,7 +100,7 @@ class BuildCardView extends StatelessWidget {
                         color: Colors.blueGrey[900],
                       ),
                     ),
-                    const SizedBox(height: 8),
+                    SizedBox(height: showSongMetadata ? 4 : 8),
                     Row(
                       children: [
                         Icon(
@@ -106,7 +110,9 @@ class BuildCardView extends StatelessWidget {
                         ),
                         const SizedBox(width: 4),
                         Text(
-                          'Himbaza Imana',
+                          showSongMetadata
+                              ? songCategoryLabel(songs[index])
+                              : 'Himbaza Imana',
                           style: TextStyle(
                             fontSize: 14,
                             color: Colors.blueGrey[600],

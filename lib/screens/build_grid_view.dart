@@ -6,10 +6,16 @@ import '../page/unified_lyrics.dart';
 import '../models/searchable_song.dart';
 
 class BuildGridView extends StatelessWidget {
-  BuildGridView({super.key, required this.songs, this.crossAxisCount = 4});
+  BuildGridView({
+    super.key,
+    required this.songs,
+    this.crossAxisCount = 4,
+    this.showSongMetadata = false,
+  });
 
   final dynamic songs;
   final int crossAxisCount;
+  final bool showSongMetadata;
 
   @override
   Widget build(BuildContext context) {
@@ -78,13 +84,32 @@ class BuildGridView extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Text(
-                  '${index + 1}',
+                  showSongMetadata
+                      ? songCatalogNumber(songs[index])
+                      : '${index + 1}',
                   style: const TextStyle(
                     fontSize: 24,
                     fontWeight: FontWeight.bold,
                     color: Colors.white,
                   ),
                 ),
+                if (showSongMetadata) ...[
+                  const SizedBox(height: 4),
+                  Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 4),
+                    child: Text(
+                      songCategoryLabel(songs[index]),
+                      maxLines: 1,
+                      overflow: TextOverflow.ellipsis,
+                      textAlign: TextAlign.center,
+                      style: const TextStyle(
+                        color: Colors.white70,
+                        fontSize: 10,
+                        fontWeight: FontWeight.w600,
+                      ),
+                    ),
+                  ),
+                ],
               ],
             ),
           ),

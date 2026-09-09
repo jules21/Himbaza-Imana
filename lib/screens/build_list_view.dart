@@ -8,10 +8,11 @@ class BuildListView extends StatelessWidget {
   BuildListView({
     super.key,
     required this.songs,
-
+    this.showSongMetadata = false,
   });
 
   final dynamic songs;
+  final bool showSongMetadata;
 
   @override
   Widget build(BuildContext context) {
@@ -58,7 +59,9 @@ class BuildListView extends StatelessWidget {
           ),
           child: Center(
             child: Text(
-              '${index + 1}',
+              showSongMetadata
+                  ? songCatalogNumber(songs[index])
+                  : '${index + 1}',
               style: const TextStyle(
                 color: Colors.white,
                 fontWeight: FontWeight.bold,
@@ -68,17 +71,32 @@ class BuildListView extends StatelessWidget {
           ),
         ),
         title: Padding(
-          padding: const EdgeInsets.symmetric(vertical: 18),
-          child: Text(
-            songs[index].title.contains('.')
-                ? songs[index].title
-                .substring(songs[index].title.indexOf('.') + 1)
-                .trimLeft()
-                : songs[index].title,
-            style: const TextStyle(
-              fontWeight: FontWeight.w600,
-              fontSize: 16,
-            ),
+          padding: EdgeInsets.symmetric(
+            vertical: showSongMetadata ? 12 : 18,
+          ),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              Text(
+                songTitleWithoutNumber(songs[index]),
+                style: const TextStyle(
+                  fontWeight: FontWeight.w600,
+                  fontSize: 16,
+                ),
+              ),
+              if (showSongMetadata) ...[
+                const SizedBox(height: 3),
+                Text(
+                  songCategoryLabel(songs[index]),
+                  style: TextStyle(
+                    color: Theme.of(context).colorScheme.primary,
+                    fontSize: 12,
+                    fontWeight: FontWeight.w600,
+                  ),
+                ),
+              ],
+            ],
           ),
         ),
         trailing: Icon(

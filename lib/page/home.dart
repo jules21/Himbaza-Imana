@@ -231,6 +231,7 @@ class _HomeState extends State<Home> {
                 songs: songsProvider.favoriteSongs,
                 viewType: _currentViewType,
                 emptyMessage: 'No favorite songs yet',
+                showSongMetadata: true,
               ),
             ],
           ),

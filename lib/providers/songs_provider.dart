@@ -57,18 +57,7 @@ class SongCollectionProvider extends ChangeNotifier {
     }).toList();
   }
 
-  String categoryLabel(SearchableSong song) {
-    switch (song.parent) {
-      case BrideSong.umugeniCategoryId:
-        return 'Umugeni';
-      case BrideSong.wokovuCategoryId:
-        return 'Nyimbo za Wokovu';
-      case '554':
-        return 'Agakiza';
-      default:
-        return 'Gushimisha';
-    }
-  }
+  String categoryLabel(SearchableSong song) => songCategoryLabel(song);
 
   Future<void> _loadFavorites() async {
     final preferences = await SharedPreferences.getInstance();
