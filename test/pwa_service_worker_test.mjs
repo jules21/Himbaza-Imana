@@ -64,7 +64,7 @@ for (const scope of ['https://example.test/', 'https://example.test/Himbaza-Iman
     for (const route of ['', 'lyrics/42?source=home']) {
       assert.match(await (await app.fetch(route, 'navigate')).text(), /<html>/);
     }
-    for (const file of ['flutter_bootstrap.js', 'main.dart.js?v=1', 'canvaskit/canvaskit.js', 'canvaskit/canvaskit.wasm', 'canvaskit/chromium/canvaskit.js', 'canvaskit/chromium/canvaskit.wasm', 'assets/assets/Bride_songs.json', 'assets/assets/hymns_praise_songs.json']) {
+    for (const file of ['flutter_bootstrap.js', 'main.dart.js?v=1', 'canvaskit/canvaskit.js', 'canvaskit/canvaskit.wasm', 'canvaskit/chromium/canvaskit.js', 'canvaskit/chromium/canvaskit.wasm', 'assets/assets/Bride_songs.json', 'assets/assets/nyimbo_za_wokovu.json', 'assets/assets/hymns_praise_songs.json']) {
       const response = await app.fetch(file);
       assert.equal(response.status, 200, file);
       assert.ok((await response.arrayBuffer()).byteLength > 0, file);

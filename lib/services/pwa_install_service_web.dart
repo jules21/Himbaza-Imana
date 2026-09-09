@@ -1,20 +1,27 @@
-// ignore_for_file: avoid_web_libraries_in_flutter
-import 'dart:async';
-import 'dart:html' as html;
-import 'dart:js_util' as js_util;
+import 'dart:js_interop';
 
 import 'package:flutter/foundation.dart';
+import 'package:web/web.dart' as web;
+
+extension type _BeforeInstallPromptEvent._(JSObject _)
+    implements web.Event, JSObject {
+  external JSPromise<JSAny?> prompt();
+}
 
 class PwaInstallService extends ChangeNotifier {
-  html.Event? _installEvent;
-  StreamSubscription<html.Event>? _subscription;
+  _BeforeInstallPromptEvent? _installEvent;
+  late final JSFunction _beforeInstallPromptListener;
 
   PwaInstallService() {
-    _subscription = html.window.on['beforeinstallprompt']?.listen((event) {
+    _beforeInstallPromptListener = ((web.Event event) {
       event.preventDefault();
-      _installEvent = event;
+      _installEvent = _BeforeInstallPromptEvent._(event as JSObject);
       notifyListeners();
-    });
+    }).toJS;
+    web.window.addEventListener(
+      'beforeinstallprompt',
+      _beforeInstallPromptListener,
+    );
   }
 
   bool get canInstall => _installEvent != null;
@@ -22,7 +29,7 @@ class PwaInstallService extends ChangeNotifier {
   Future<bool> promptInstall() async {
     final event = _installEvent;
     if (event == null) return false;
-    await js_util.promiseToFuture<Object?>(js_util.callMethod(event, 'prompt', const []));
+    await event.prompt().toDart;
     _installEvent = null;
     notifyListeners();
     return true;
@@ -35,7 +42,10 @@ class PwaInstallService extends ChangeNotifier {
 
   @override
   void dispose() {
-    _subscription?.cancel();
+    web.window.removeEventListener(
+      'beforeinstallprompt',
+      _beforeInstallPromptListener,
+    );
     super.dispose();
   }
 }

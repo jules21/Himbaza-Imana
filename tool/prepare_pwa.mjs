@@ -21,7 +21,7 @@ const files = (await filesIn(output))
     return true;
   })
   .sort();
-for (const required of ['index.html', 'flutter_bootstrap.js', 'main.dart.js', 'canvaskit/canvaskit.js', 'canvaskit/canvaskit.wasm', 'canvaskit/chromium/canvaskit.js', 'canvaskit/chromium/canvaskit.wasm', 'assets/assets/Bride_songs.json', 'assets/assets/hymns_praise_songs.json']) {
+for (const required of ['index.html', 'flutter_bootstrap.js', 'main.dart.js', 'canvaskit/canvaskit.js', 'canvaskit/canvaskit.wasm', 'canvaskit/chromium/canvaskit.js', 'canvaskit/chromium/canvaskit.wasm', 'assets/assets/Bride_songs.json', 'assets/assets/nyimbo_za_wokovu.json', 'assets/assets/hymns_praise_songs.json']) {
   if (!files.includes(required)) throw new Error(`Missing offline resource: ${required}`);
 }
 const hash = createHash('sha256');
