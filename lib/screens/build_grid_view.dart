@@ -36,7 +36,7 @@ class BuildGridView extends StatelessWidget {
       'songs': List<SearchableSong>.from(songs),
       'index': index
     };
-    if (song is BrideSong) {
+    if (song is BrideSong && song.usesBrideLyrics) {
       //pass song to another page;
       Navigator.of(context).push(
         MaterialPageRoute(

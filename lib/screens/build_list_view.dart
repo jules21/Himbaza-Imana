@@ -23,7 +23,7 @@ class BuildListView extends StatelessWidget {
   }
   void _getSongLyrics(song, int index, context) {
     final arguments = {'songs': List<SearchableSong>.from(songs), 'index': index};
-    if (song is BrideSong) {
+    if (song is BrideSong && song.usesBrideLyrics) {
       //pass song to another page;
       Navigator.of(context).push(
         MaterialPageRoute(

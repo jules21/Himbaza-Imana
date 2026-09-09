@@ -5,6 +5,26 @@ class LyricsSection {
   final bool isChorus;
 }
 
+String markUnnumberedParagraphsAsChorus(String lyrics) {
+  final paragraphs = lyrics
+      .replaceAll('\r', '')
+      .split(RegExp(r'\n\s*\n'))
+      .map((paragraph) => paragraph.trim())
+      .where((paragraph) => paragraph.isNotEmpty);
+  final verseNumber = RegExp(r'^\d+\.\s*');
+  final chorusMarker = RegExp(
+    r'^(?:ref\s*:|r\s*/|chorus\s*:)',
+    caseSensitive: false,
+  );
+
+  return paragraphs.map((paragraph) {
+    if (verseNumber.hasMatch(paragraph) || chorusMarker.hasMatch(paragraph)) {
+      return paragraph;
+    }
+    return 'R/$paragraph';
+  }).join('\n\n');
+}
+
 List<LyricsSection> parseLyrics(String lyrics) {
   final lines = lyrics.replaceAll('\r', '').split('\n');
   final sections = <LyricsSection>[];

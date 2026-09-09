@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:indirimbo/models/bride_song.dart';
 import 'package:indirimbo/models/searchable_song.dart';
 import 'package:indirimbo/providers/layout_provider.dart';
 import 'package:indirimbo/providers/songs_provider.dart';
 import 'package:indirimbo/utils/lyrics_clipboard_formatter.dart';
+import 'package:indirimbo/utils/lyrics_sections.dart';
 import 'package:indirimbo/widgets/song_navigation_bar.dart';
 import 'package:provider/provider.dart';
 
@@ -208,7 +210,7 @@ class _UnifiedLyricsState extends State<UnifiedLyrics> {
                         horizontal: 16, vertical: 20),
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.stretch,
-                      children: _formatLyrics(_currentSong.lyrics),
+                      children: _formatLyrics(_currentSong),
                     ),
                   ),
                 ),
@@ -232,8 +234,12 @@ class _UnifiedLyricsState extends State<UnifiedLyrics> {
         ),
       );
 
-  List<Widget> _formatLyrics(String lyrics) {
+  List<Widget> _formatLyrics(SearchableSong song) {
     final colors = Theme.of(context).colorScheme;
+    var lyrics = song.lyrics;
+    if (song.parent == BrideSong.wokovuCategoryId) {
+      lyrics = markUnnumberedParagraphsAsChorus(lyrics);
+    }
     lyrics = lyrics.replaceFirstMapped(
       RegExp(r'^(\d+)\.'),
       (m) => m.group(1) == '1' ? m.group(0)! : '1.',

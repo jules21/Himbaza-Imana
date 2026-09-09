@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import '../models/search_song_result.dart';
 import '../models/searchable_song.dart';
 
- class SongService {
+class SongService {
   TextStyle _previewTextStyle() => TextStyle(
         fontSize: 14,
         color: Colors.grey[800],
@@ -21,11 +21,12 @@ import '../models/searchable_song.dart';
   // Get a contextual preview around the search term
   SongSearchResult getUnifiedContextualPreview(
       SearchableSong song, String searchTerm) {
-    final searchTermLower = searchTerm.toLowerCase();
+    final searchTermLower = searchTerm.trim().toLowerCase();
     final titleLower = song.title.toLowerCase();
     final lyricsLower = song.lyrics.toLowerCase();
+    final matchesSongNumber = song.id == searchTermLower;
 
-    if (titleLower.contains(searchTermLower)) {
+    if (matchesSongNumber || titleLower.contains(searchTermLower)) {
       final previewText = song.lyrics.length > 60
           ? '${song.lyrics.substring(0, 60)}...'
           : song.lyrics;
@@ -38,7 +39,7 @@ import '../models/searchable_song.dart';
       ];
 
       return SongSearchResult(
-        song: song, // assuming `SongSearchResult` accepts `SearchableSong`
+        song: song,
         previewText: previewText,
         highlightedPreview: highlightedPreview,
       );
@@ -80,6 +81,4 @@ import '../models/searchable_song.dart';
       );
     }
   }
-
-
 }

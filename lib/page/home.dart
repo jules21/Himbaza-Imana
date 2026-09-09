@@ -3,7 +3,6 @@ import 'package:indirimbo/services/song_service.dart';
 import 'package:indirimbo/page/unified_lyrics.dart';
 import 'package:provider/provider.dart';
 import '../models/search_song_result.dart';
-import '../models/searchable_song.dart';
 import '../models/view_type.dart';
 import '../providers/songs_provider.dart';
 import '../providers/theme_provider.dart';
@@ -36,7 +35,7 @@ class _HomeState extends State<Home> {
   Widget build(BuildContext context) {
     final usesNewLayout = context.watch<LayoutProvider>().usesNewLayout;
     return DefaultTabController(
-      length: 4,
+      length: 5,
       child: Scaffold(
         appBar: AppBar(
           elevation: 0,
@@ -177,6 +176,7 @@ class _HomeState extends State<Home> {
       return Center(child: Text("Error: ${songsProvider.error}"));
     }
     final brideSongs = songsProvider.brideSongs;
+    final wokovuSongs = songsProvider.wokovuSongs;
     final ugushimishaSongs = songsProvider.ugushimishaSongs();
     final agakizaSongs = songsProvider.agakizaSongs();
 
@@ -209,6 +209,9 @@ class _HomeState extends State<Home> {
                     width: constraints.maxWidth * .29,
                     child: const Tab(text: 'Agakiza')),
                 SizedBox(
+                    width: constraints.maxWidth * .29,
+                    child: const Tab(text: 'Wokovu')),
+                SizedBox(
                     width: constraints.maxWidth * .13,
                     child: const Tab(icon: Icon(Icons.favorite))),
               ],
@@ -222,6 +225,7 @@ class _HomeState extends State<Home> {
               SongViewScreen(
                   songs: ugushimishaSongs, viewType: _currentViewType),
               SongViewScreen(songs: agakizaSongs, viewType: _currentViewType),
+              SongViewScreen(songs: wokovuSongs, viewType: _currentViewType),
               SongViewScreen(
                 songs: songsProvider.favoriteSongs,
                 viewType: _currentViewType,
@@ -335,7 +339,7 @@ class _HomeState extends State<Home> {
                             ),
                             SizedBox(height: 4),
                             Text(
-                              '#${song.parent != '554' ? (song.parent == "21" ? "Umugeni" : "Gushimisha") : "Agakiza"}',
+                              '#${context.read<SongCollectionProvider>().categoryLabel(song)}',
                               style: TextStyle(
                                 fontSize: 14,
                                 color: Colors.grey[600],
@@ -370,23 +374,13 @@ class _HomeState extends State<Home> {
     final provider = context.read<SongCollectionProvider>();
 
     // Combine all searchable songs regardless of original type
-    final List<SearchableSong> allSongs = [
-      ...provider.hymnPraiseSongs.where((element) => element.parent != "-1"),
-      ...provider.brideSongs,
-      // Add more sources here if needed
-    ];
-
-    final searchLower = query.toLowerCase();
-
-    final matchingSongs = allSongs.where((song) {
-      return song.title.toLowerCase().contains(searchLower) ||
-          song.lyrics.toLowerCase().contains(searchLower);
-    }).toList();
+    final matchingSongs = provider.searchSongs(query);
 
     SongService songService = SongService();
     setState(() {
       _searchResults = matchingSongs
-          .map((song) => songService.getUnifiedContextualPreview(song, query))
+          .map((song) =>
+              songService.getUnifiedContextualPreview(song, query.trim()))
           .toList();
     });
   }
