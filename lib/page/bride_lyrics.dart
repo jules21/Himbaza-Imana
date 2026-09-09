@@ -4,6 +4,7 @@ import 'package:indirimbo/models/searchable_song.dart';
 import 'package:indirimbo/providers/layout_provider.dart';
 import 'package:indirimbo/providers/songs_provider.dart';
 import 'package:indirimbo/utils/lyrics_clipboard_formatter.dart';
+import 'package:indirimbo/widgets/song_page_transition.dart';
 import 'package:indirimbo/widgets/song_navigation_bar.dart';
 import 'package:provider/provider.dart';
 
@@ -18,6 +19,7 @@ class _BrideLyricsState extends State<BrideLyrics> {
   double _fontSize = 15.0;
   late List<SearchableSong> _songs;
   late int _currentIndex;
+  bool _navigatingForward = true;
   bool _initialized = false;
   final ScrollController _scrollController = ScrollController();
 
@@ -39,7 +41,11 @@ class _BrideLyricsState extends State<BrideLyrics> {
   SearchableSong get _currentSong => _songs[_currentIndex];
 
   void _goTo(int index) {
-    setState(() => _currentIndex = index);
+    if (index == _currentIndex) return;
+    setState(() {
+      _navigatingForward = index > _currentIndex;
+      _currentIndex = index;
+    });
     if (_scrollController.hasClients) _scrollController.jumpTo(0);
   }
 
@@ -150,13 +156,16 @@ class _BrideLyricsState extends State<BrideLyrics> {
           ),
         ),
       ),
-      body: GestureDetector(
-        behavior: HitTestBehavior.translucent,
-        onHorizontalDragEnd: _handleSwipe,
-        child: SelectionArea(
-          child: SingleChildScrollView(
-            controller: _scrollController,
-            child: Column(
+      body: SongPageTransition(
+        key: ValueKey(_currentIndex),
+        forward: _navigatingForward,
+        child: GestureDetector(
+          behavior: HitTestBehavior.translucent,
+          onHorizontalDragEnd: _handleSwipe,
+          child: SelectionArea(
+            child: SingleChildScrollView(
+              controller: _scrollController,
+              child: Column(
               crossAxisAlignment: CrossAxisAlignment.stretch,
               children: [
                 Container(
@@ -211,6 +220,7 @@ class _BrideLyricsState extends State<BrideLyrics> {
                 ),
                 const SizedBox(height: 24),
               ],
+              ),
             ),
           ),
         ),
@@ -229,14 +239,7 @@ class _BrideLyricsState extends State<BrideLyrics> {
 
   List<Widget> _formatLyrics(String lyrics) {
     final colors = Theme.of(context).colorScheme;
-    List<String> lines = lyrics.split("\n");
-
-    // Original BrideLyrics pre-processing — preserved exactly
-    if (lines.isNotEmpty) {
-      if (!lines.first.startsWith(RegExp(r'^\d'))) lines.remove(lines.first);
-      if (lines.isNotEmpty) lines.remove(lines.first);
-      if (lines.isNotEmpty) lines.removeLast();
-    }
+    final lines = lyrics.split("\n");
 
     final widgets = <Widget>[];
     bool isChorus = false;

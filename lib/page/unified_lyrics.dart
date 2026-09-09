@@ -6,6 +6,7 @@ import 'package:indirimbo/providers/layout_provider.dart';
 import 'package:indirimbo/providers/songs_provider.dart';
 import 'package:indirimbo/utils/lyrics_clipboard_formatter.dart';
 import 'package:indirimbo/utils/lyrics_sections.dart';
+import 'package:indirimbo/widgets/song_page_transition.dart';
 import 'package:indirimbo/widgets/song_navigation_bar.dart';
 import 'package:provider/provider.dart';
 
@@ -20,6 +21,7 @@ class _UnifiedLyricsState extends State<UnifiedLyrics> {
   double _fontSize = 15.0;
   late int _currentIndex;
   late List<SearchableSong> _songs;
+  bool _navigatingForward = true;
   bool _initialized = false;
   final ScrollController _scrollController = ScrollController();
 
@@ -41,7 +43,9 @@ class _UnifiedLyricsState extends State<UnifiedLyrics> {
   SearchableSong get _currentSong => _songs[_currentIndex];
 
   void _goTo(int index) {
+    if (index == _currentIndex) return;
     setState(() {
+      _navigatingForward = index > _currentIndex;
       _currentIndex = index;
     });
     if (_scrollController.hasClients) _scrollController.jumpTo(0);
@@ -154,14 +158,17 @@ class _UnifiedLyricsState extends State<UnifiedLyrics> {
           ),
         ),
       ),
-      body: GestureDetector(
-        behavior: HitTestBehavior.translucent,
-        onHorizontalDragEnd: _handleSwipe,
-        child: SelectionArea(
-          child: SingleChildScrollView(
-            controller: _scrollController,
-            padding: EdgeInsets.zero,
-            child: Column(
+      body: SongPageTransition(
+        key: ValueKey(_currentIndex),
+        forward: _navigatingForward,
+        child: GestureDetector(
+          behavior: HitTestBehavior.translucent,
+          onHorizontalDragEnd: _handleSwipe,
+          child: SelectionArea(
+            child: SingleChildScrollView(
+              controller: _scrollController,
+              padding: EdgeInsets.zero,
+              child: Column(
               crossAxisAlignment: CrossAxisAlignment.stretch,
               children: [
                 // ── Header ──────────────────────────────────────────────
@@ -217,6 +224,7 @@ class _UnifiedLyricsState extends State<UnifiedLyrics> {
                 // ── Pagination ──────────────────────────────────────────
                 const SizedBox(height: 24),
               ],
+              ),
             ),
           ),
         ),
