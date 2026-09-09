@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:indirimbo/models/searchable_song.dart';
+import 'package:indirimbo/page/verse_presentation.dart';
 import 'package:indirimbo/providers/layout_provider.dart';
 import 'package:indirimbo/providers/songs_provider.dart';
 import 'package:indirimbo/utils/lyrics_clipboard_formatter.dart';
@@ -89,8 +90,7 @@ class _BrideLyricsState extends State<BrideLyrics> {
         backgroundColor: Colors.blueGrey[800],
         elevation: 0,
         leading: const BackButton(color: Colors.white),
-        title: const Icon(Icons.music_note_rounded,
-            color: Colors.blueGrey, size: 20),
+        title: VersePresentationButton(song: song),
         centerTitle: true,
         actions: [
           if (usesNewLayout) ...[
@@ -240,6 +240,8 @@ class _BrideLyricsState extends State<BrideLyrics> {
   List<Widget> _formatLyrics(String lyrics) {
     final colors = Theme.of(context).colorScheme;
     final lines = lyrics.split("\n");
+    const verseNumberWidth = 32.0;
+    const verseTextIndent = 42.0;
 
     final widgets = <Widget>[];
     bool isChorus = false;
@@ -315,7 +317,9 @@ class _BrideLyricsState extends State<BrideLyrics> {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Container(
-              padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 3),
+              width: verseNumberWidth,
+              alignment: Alignment.center,
+              padding: const EdgeInsets.symmetric(vertical: 3),
               decoration: BoxDecoration(
                 gradient: LinearGradient(
                     colors: [Colors.blueGrey[700]!, Colors.blueGrey[900]!]),
@@ -330,6 +334,7 @@ class _BrideLyricsState extends State<BrideLyrics> {
             const SizedBox(width: 10),
             Expanded(
                 child: Text(line.replaceFirst(RegExp(r"^\d+\.\s*"), ''),
+                    textAlign: TextAlign.start,
                     style: TextStyle(
                         fontSize: _fontSize,
                         fontWeight: FontWeight.w500,
@@ -362,11 +367,12 @@ class _BrideLyricsState extends State<BrideLyrics> {
       }
 
       widgets.add(Padding(
-        padding: const EdgeInsets.symmetric(vertical: 2),
+        padding: const EdgeInsets.fromLTRB(verseTextIndent, 2, 0, 2),
         child: Text(line,
-            textAlign: TextAlign.center,
+            textAlign: TextAlign.start,
             style: TextStyle(
                 fontSize: _fontSize,
+                fontWeight: FontWeight.w500,
                 color: colors.onSurface,
                 height: 1.65,
                 letterSpacing: 0.2)),

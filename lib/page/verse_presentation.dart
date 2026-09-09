@@ -1,6 +1,32 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
+import '../models/bride_song.dart';
 import '../models/searchable_song.dart';
 import '../utils/lyrics_sections.dart';
+
+class VersePresentationButton extends StatelessWidget {
+  const VersePresentationButton({super.key, required this.song});
+
+  final SearchableSong song;
+
+  @override
+  Widget build(BuildContext context) {
+    return IconButton(
+      padding: EdgeInsets.all(100),
+      tooltip: 'Present verses fullscreen',
+      onPressed: () => Navigator.of(context).push(
+        MaterialPageRoute(
+          builder: (context) => VersePresentation(song: song),
+          fullscreenDialog: true,
+        ),
+      ),
+      icon: const Icon(Icons.music_note_rounded),
+      color: Colors.blueGrey, iconSize: 20,
+    );
+  }
+}
 
 class VersePresentation extends StatefulWidget {
   const VersePresentation({super.key, required this.song});
@@ -11,11 +37,28 @@ class VersePresentation extends StatefulWidget {
 
 class _VersePresentationState extends State<VersePresentation> {
   final _pages = PageController();
-  late final _sections = presentationSections(parseLyrics(widget.song.lyrics));
+  late final _sections = presentationSections(parseLyrics(
+    widget.song.parent == BrideSong.wokovuCategoryId
+        ? markUnnumberedParagraphsAsChorus(widget.song.lyrics)
+        : widget.song.lyrics,
+  ));
   int _index = 0;
   bool _whiteBackground = false;
+
   @override
-  void dispose() { _pages.dispose(); super.dispose(); }
+  void initState() {
+    super.initState();
+    unawaited(
+      SystemChrome.setEnabledSystemUIMode(SystemUiMode.immersiveSticky),
+    );
+  }
+
+  @override
+  void dispose() {
+    unawaited(SystemChrome.setEnabledSystemUIMode(SystemUiMode.edgeToEdge));
+    _pages.dispose();
+    super.dispose();
+  }
   void _next() {
     if (_index == _sections.length - 1) { Navigator.pop(context); return; }
     _pages.nextPage(duration: const Duration(milliseconds: 280), curve: Curves.easeOutCubic);

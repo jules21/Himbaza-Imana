@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:indirimbo/models/bride_song.dart';
 import 'package:indirimbo/models/searchable_song.dart';
+import 'package:indirimbo/page/verse_presentation.dart';
 import 'package:indirimbo/providers/layout_provider.dart';
 import 'package:indirimbo/providers/songs_provider.dart';
 import 'package:indirimbo/utils/lyrics_clipboard_formatter.dart';
@@ -89,8 +90,7 @@ class _UnifiedLyricsState extends State<UnifiedLyrics> {
         backgroundColor: Colors.blueGrey[800],
         elevation: 0,
         leading: const BackButton(color: Colors.white),
-        title: const Icon(Icons.music_note_rounded,
-            color: Colors.blueGrey, size: 20),
+        title: VersePresentationButton(song: _currentSong),
         centerTitle: true,
         actions: [
           if (usesNewLayout) ...[

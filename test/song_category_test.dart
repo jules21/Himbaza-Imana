@@ -81,4 +81,16 @@ void main() {
       '1. First verse\n\nR/Sing the chorus\nTogether\n\n2. Second verse',
     );
   });
+
+  test('Wokovu presentation repeats its chorus after every verse', () {
+    const lyrics = '1. First verse\n\nSing the chorus\n\n2. Second verse';
+    final slides = presentationSections(
+      parseLyrics(markUnnumberedParagraphsAsChorus(lyrics)),
+    );
+
+    expect(
+      slides.map((section) => section.label),
+      ['Verse 1', 'Chorus', 'Verse 2', 'Chorus'],
+    );
+  });
 }
