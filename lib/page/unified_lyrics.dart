@@ -8,7 +8,7 @@ import 'package:indirimbo/providers/songs_provider.dart';
 import 'package:indirimbo/utils/lyrics_clipboard_formatter.dart';
 import 'package:indirimbo/utils/lyrics_sharing.dart';
 import 'package:indirimbo/utils/lyrics_sections.dart';
-import 'package:indirimbo/widgets/song_page_transition.dart';
+import 'package:indirimbo/widgets/song_lyrics_pager.dart';
 import 'package:indirimbo/widgets/song_navigation_bar.dart';
 import 'package:provider/provider.dart';
 
@@ -23,9 +23,8 @@ class _UnifiedLyricsState extends State<UnifiedLyrics> {
   double _fontSize = 15.0;
   late int _currentIndex;
   late List<SearchableSong> _songs;
-  bool _navigatingForward = true;
   bool _initialized = false;
-  final ScrollController _scrollController = ScrollController();
+  late PageController _pageController;
 
   @override
   void didChangeDependencies() {
@@ -39,6 +38,10 @@ class _UnifiedLyricsState extends State<UnifiedLyrics> {
       _songs = [args];
       _currentIndex = 0;
     }
+    _pageController = PageController(
+      initialPage: _currentIndex,
+      viewportFraction: 0.92,
+    );
     _initialized = true;
   }
 
@@ -46,11 +49,11 @@ class _UnifiedLyricsState extends State<UnifiedLyrics> {
 
   void _goTo(int index) {
     if (index == _currentIndex) return;
-    setState(() {
-      _navigatingForward = index > _currentIndex;
-      _currentIndex = index;
-    });
-    if (_scrollController.hasClients) _scrollController.jumpTo(0);
+    _pageController.animateToPage(
+      index,
+      duration: const Duration(milliseconds: 360),
+      curve: Curves.easeInOutCubic,
+    );
   }
 
   void _copyLyrics() {
@@ -67,18 +70,14 @@ class _UnifiedLyricsState extends State<UnifiedLyrics> {
     );
   }
 
-  void _handleSwipe(DragEndDetails details) {
-    final velocity = details.primaryVelocity ?? 0;
-    if (velocity < -250 && _currentIndex < _songs.length - 1) {
-      _goTo(_currentIndex + 1);
-    } else if (velocity > 250 && _currentIndex > 0) {
-      _goTo(_currentIndex - 1);
-    }
+  void _onPageChanged(int index) {
+    if (index == _currentIndex) return;
+    setState(() => _currentIndex = index);
   }
 
   @override
   void dispose() {
-    _scrollController.dispose();
+    _pageController.dispose();
     super.dispose();
   }
 
@@ -121,7 +120,7 @@ class _UnifiedLyricsState extends State<UnifiedLyrics> {
           Container(
             margin: const EdgeInsets.symmetric(vertical: 10, horizontal: 10),
             decoration: BoxDecoration(
-              color: Colors.white.withOpacity(0.15),
+              color: Colors.white.withValues(alpha: 0.15),
               borderRadius: BorderRadius.circular(20),
             ),
             child: Row(
@@ -160,75 +159,14 @@ class _UnifiedLyricsState extends State<UnifiedLyrics> {
           ),
         ),
       ),
-      body: SongPageTransition(
-        key: ValueKey(_currentIndex),
-        forward: _navigatingForward,
-        child: GestureDetector(
-          behavior: HitTestBehavior.translucent,
-          onHorizontalDragEnd: _handleSwipe,
-          child: SelectionArea(
-            child: SingleChildScrollView(
-              controller: _scrollController,
-              padding: EdgeInsets.zero,
-              child: Column(
-              crossAxisAlignment: CrossAxisAlignment.stretch,
-              children: [
-                // ── Header ──────────────────────────────────────────────
-                Container(
-                  width: double.infinity,
-                  color: Colors.blueGrey[800],
-                  padding: const EdgeInsets.fromLTRB(24, 4, 24, 16),
-                  child: Column(
-                    children: [
-                      const SizedBox(height: 8),
-                      Text(
-                        songTitleWithNumber(_currentSong),
-                        textAlign: TextAlign.center,
-                        style: const TextStyle(
-                          color: Colors.white,
-                          fontSize: 20,
-                          fontWeight: FontWeight.bold,
-                          height: 1.35,
-                          letterSpacing: 0.4,
-                        ),
-                      ),
-                      const SizedBox(height: 20),
-                      Container(
-                        width: 50,
-                        height: 2,
-                        decoration: BoxDecoration(
-                          color: Colors.white38,
-                          borderRadius: BorderRadius.circular(2),
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
-
-                const SizedBox(height: 8),
-
-                // ── Lyrics card ─────────────────────────────────────────
-                Card(
-                  margin: const EdgeInsets.symmetric(horizontal: 10),
-                  elevation: 1,
-                  shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(8)),
-                  child: Padding(
-                    padding: const EdgeInsets.symmetric(
-                        horizontal: 16, vertical: 20),
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.stretch,
-                      children: _formatLyrics(_currentSong),
-                    ),
-                  ),
-                ),
-
-                // ── Pagination ──────────────────────────────────────────
-                const SizedBox(height: 24),
-              ],
-              ),
-            ),
-          ),
+      body: SongLyricsPager(
+        title: songTitleWithNumber(_currentSong),
+        controller: _pageController,
+        itemCount: _songs.length,
+        onPageChanged: _onPageChanged,
+        itemBuilder: (context, index) => Column(
+          crossAxisAlignment: CrossAxisAlignment.stretch,
+          children: _formatLyrics(_songs[index]),
         ),
       ),
     );
