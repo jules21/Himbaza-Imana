@@ -1,7 +1,24 @@
 {{flutter_js}}
 {{flutter_build_config}}
 
-const OFFLINE_READY_TIMEOUT_MS = 15000;
+function waitForActivation(registration) {
+  const worker = registration.installing || registration.waiting;
+  if (!worker || worker.state === "activated") return Promise.resolve();
+
+  return new Promise((resolve, reject) => {
+    const onStateChange = () => {
+      if (worker.state === "activated") {
+        worker.removeEventListener("statechange", onStateChange);
+        resolve();
+      } else if (worker.state === "redundant") {
+        worker.removeEventListener("statechange", onStateChange);
+        reject(new Error("PWA service worker installation failed."));
+      }
+    };
+    worker.addEventListener("statechange", onStateChange);
+    onStateChange();
+  });
+}
 
 async function prepareOfflineSupport() {
   if (!("serviceWorker" in navigator)) return;
@@ -11,12 +28,18 @@ async function prepareOfflineSupport() {
     { scope: "./", updateViaCache: "none" }
   );
 
-  // A first launch must finish caching before the user can install and reopen
-  // the app offline. Existing installations resolve this immediately.
-  await Promise.race([
-    navigator.serviceWorker.ready,
-    new Promise((resolve) => setTimeout(resolve, OFFLINE_READY_TIMEOUT_MS))
-  ]);
+  // Home Screen apps have storage isolated from Safari on iOS. Do not show the
+  // app until this standalone instance has finished caching its own shell.
+  await waitForActivation(registration);
+  await navigator.serviceWorker.ready;
+
+  if (navigator.storage?.persist) {
+    try {
+      await navigator.storage.persist();
+    } catch (_) {
+      // Persistence is a best-effort hint; the completed cache still works.
+    }
+  }
   console.log("PWA service worker registered:", registration.scope);
 }
 

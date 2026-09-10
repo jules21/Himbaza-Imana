@@ -7,12 +7,13 @@ const source = await readFile(new URL('../build/web/pwa_service_worker.js', impo
 const indexSource = await readFile(new URL('../build/web/index.html', import.meta.url), 'utf8');
 const manifest = JSON.parse(await readFile(new URL('../build/web/manifest.json', import.meta.url), 'utf8'));
 const bootstrapTemplate = await readFile(new URL('../web/flutter_bootstrap.js', import.meta.url), 'utf8');
-function worker(scope, failedPath = '') {
+function worker(scope, failedPath = '', userAgent = '') {
   const handlers = {};
   const stores = new Map();
   let offline = false;
   let cacheUnavailable = false;
   let networkRequests = 0;
+  let skippedWaiting = false;
   const network = async (request) => {
     networkRequests += 1;
     const url = typeof request === 'string' ? request : request.url;
@@ -44,13 +45,16 @@ function worker(scope, failedPath = '') {
   };
   vm.runInNewContext(source, {
     URL, Request, Response, caches, fetch: network,
-    self: { registration: { scope }, clients: { claim: async () => {} },
+    self: { registration: { scope }, navigator: { userAgent },
+      clients: { claim: async () => {} },
+      skipWaiting: async () => { skippedWaiting = true; },
       addEventListener: (name, handler) => { handlers[name] = handler; } },
   });
   return {
     offline: () => { offline = true; },
     makeCacheUnavailable: () => { cacheUnavailable = true; },
     networkRequests: () => networkRequests,
+    skippedWaiting: () => skippedWaiting,
     cachedUrls: () => [...stores.values()].flatMap((store) => [...store.keys()]),
     lifecycle: (name) => new Promise((resolve, reject) => handlers[name]({ waitUntil: (promise) => promise.then(resolve, reject) })),
     fetch: (relative, mode = 'cors') => {
@@ -66,6 +70,7 @@ for (const scope of ['https://example.test/', 'https://example.test/Himbaza-Iman
     await app.lifecycle('install');
     await app.lifecycle('activate');
     assert.ok(app.cachedUrls().length > 0);
+    assert.equal(app.skippedWaiting(), true);
     assert.equal(app.cachedUrls().some((url) => url.endsWith('.symbols')), false);
     assert.equal(app.cachedUrls().some((url) => url.includes('/skwasm')), false);
     assert.equal(app.cachedUrls().some((url) => url.includes('no_sleep.js')), false);
@@ -80,6 +85,22 @@ for (const scope of ['https://example.test/', 'https://example.test/Himbaza-Iman
     }
   });
 }
+test('iOS install excludes the Chromium-only CanvasKit variant', async () => {
+  const app = worker(
+    'https://example.test/',
+    '',
+    'Mozilla/5.0 (iPhone) AppleWebKit/605.1.15 Version/18.0 Mobile Safari/604.1',
+  );
+  await app.lifecycle('install');
+  await app.lifecycle('activate');
+  assert.equal(
+    app.cachedUrls().some((url) => url.includes('canvaskit/chromium/')),
+    false,
+  );
+  app.offline();
+  assert.match(await (await app.fetch('', 'navigate')).text(), /<html>/);
+  assert.equal((await app.fetch('canvaskit/canvaskit.wasm')).status, 200);
+});
 test('incomplete download fails installation', async () => {
   const app = worker('https://example.test/', 'main.dart.js');
   await assert.rejects(app.lifecycle('install'), /offline/);
@@ -110,5 +131,7 @@ test('iOS standalone shell uses stable viewport sizing and caches before Flutter
   assert.equal(manifest.display, 'standalone');
   assert.equal(manifest.theme_color, '#37474F');
   assert.equal(manifest.background_color, '#37474F');
+  assert.match(bootstrapTemplate, /await waitForActivation\(registration\)/);
+  assert.doesNotMatch(bootstrapTemplate, /OFFLINE_READY_TIMEOUT_MS/);
   assert.ok(bootstrapTemplate.indexOf('await prepareOfflineSupport()') < bootstrapTemplate.indexOf('await _flutter.loader.load'));
 });
