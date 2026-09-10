@@ -32,10 +32,17 @@ self.addEventListener("fetch", (event) => {
   const url = new URL(request.url);
   if (request.method !== "GET" || url.origin !== scopeUrl.origin || !url.pathname.startsWith(scopeUrl.pathname)) return;
   event.respondWith((async () => {
-    const cache = await caches.open(APP_CACHE);
-    const cached = request.mode === "navigate"
-      ? await cache.match(scopedUrl("index.html"))
-      : await cache.match(request, { ignoreSearch: true });
-    return cached || fetch(request);
+    try {
+      const cache = await caches.open(APP_CACHE);
+      const cached = request.mode === "navigate"
+        ? await cache.match(scopedUrl("index.html"))
+        : await cache.match(request, { ignoreSearch: true });
+      if (cached) return cached;
+    } catch (error) {
+      // Cache Storage can be evicted or denied, especially on iOS. Never turn
+      // that storage failure into a failed online navigation.
+      console.warn("PWA cache read failed; using the network:", error);
+    }
+    return fetch(request);
   })());
 });

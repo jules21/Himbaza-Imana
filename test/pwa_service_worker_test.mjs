@@ -11,16 +11,20 @@ function worker(scope, failedPath = '') {
   const handlers = {};
   const stores = new Map();
   let offline = false;
+  let cacheUnavailable = false;
   const network = async (request) => {
     const url = typeof request === 'string' ? request : request.url;
     if (offline || (failedPath && url.endsWith(failedPath))) throw new Error('offline');
-    const file = decodeURIComponent(url.slice(scope.length));
+    const file = typeof request !== 'string' && request.mode === 'navigate'
+      ? 'index.html'
+      : decodeURIComponent(url.slice(scope.length));
     return new Response(await readFile(new URL(`../build/web/${file}`, import.meta.url)));
   };
   const caches = {
     keys: async () => [...stores.keys()],
     delete: async (key) => stores.delete(key),
     open: async (key) => {
+      if (cacheUnavailable) throw new Error('cache unavailable');
       if (!stores.has(key)) stores.set(key, new Map());
       const store = stores.get(key);
       return {
@@ -43,6 +47,7 @@ function worker(scope, failedPath = '') {
   });
   return {
     offline: () => { offline = true; },
+    makeCacheUnavailable: () => { cacheUnavailable = true; },
     cachedUrls: () => [...stores.values()].flatMap((store) => [...store.keys()]),
     lifecycle: (name) => new Promise((resolve, reject) => handlers[name]({ waitUntil: (promise) => promise.then(resolve, reject) })),
     fetch: (relative, mode = 'cors') => {
@@ -74,6 +79,14 @@ for (const scope of ['https://example.test/', 'https://example.test/Himbaza-Iman
 test('incomplete download fails installation', async () => {
   const app = worker('https://example.test/', 'main.dart.js');
   await assert.rejects(app.lifecycle('install'), /offline/);
+});
+
+test('cache storage failure falls back to the network', async () => {
+  const app = worker('https://example.test/');
+  await app.lifecycle('install');
+  await app.lifecycle('activate');
+  app.makeCacheUnavailable();
+  assert.match(await (await app.fetch('lyrics/42', 'navigate')).text(), /<html>/);
 });
 
 test('iOS standalone shell matches the app bar and starts caching before Flutter', () => {
