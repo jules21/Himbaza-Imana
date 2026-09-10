@@ -32,11 +32,26 @@ self.addEventListener("fetch", (event) => {
   const url = new URL(request.url);
   if (request.method !== "GET" || url.origin !== scopeUrl.origin || !url.pathname.startsWith(scopeUrl.pathname)) return;
   event.respondWith((async () => {
+    if (request.mode === "navigate") {
+      try {
+        // Prefer the current document while online. This avoids replaying a
+        // stale or partially persisted shell after an iOS home-screen reload.
+        return await fetch(request);
+      } catch (networkError) {
+        try {
+          const cache = await caches.open(APP_CACHE);
+          const cached = await cache.match(scopedUrl("index.html"));
+          if (cached) return cached;
+        } catch (cacheError) {
+          console.warn("PWA offline shell unavailable:", cacheError);
+        }
+        throw networkError;
+      }
+    }
+
     try {
       const cache = await caches.open(APP_CACHE);
-      const cached = request.mode === "navigate"
-        ? await cache.match(scopedUrl("index.html"))
-        : await cache.match(request, { ignoreSearch: true });
+      const cached = await cache.match(request, { ignoreSearch: true });
       if (cached) return cached;
     } catch (error) {
       // Cache Storage can be evicted or denied, especially on iOS. Never turn

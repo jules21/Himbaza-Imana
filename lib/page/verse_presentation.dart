@@ -1,7 +1,9 @@
 import 'dart:async';
 
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:wakelock_plus/wakelock_plus.dart';
 import '../models/bride_song.dart';
 import '../models/searchable_song.dart';
 import '../utils/lyrics_sections.dart';
@@ -52,13 +54,26 @@ class _VersePresentationState extends State<VersePresentation> {
     unawaited(
       SystemChrome.setEnabledSystemUIMode(SystemUiMode.immersiveSticky),
     );
+    unawaited(_setWakelock(enabled: true));
   }
 
   @override
   void dispose() {
     unawaited(SystemChrome.setEnabledSystemUIMode(SystemUiMode.edgeToEdge));
+    unawaited(_setWakelock(enabled: false));
     _pages.dispose();
     super.dispose();
+  }
+
+  Future<void> _setWakelock({required bool enabled}) async {
+    // The web implementation needs a user-gesture media workaround which can
+    // interfere with iOS standalone input. Keep wake lock on native apps only.
+    if (kIsWeb) return;
+    try {
+      await WakelockPlus.toggle(enable: enabled);
+    } catch (error) {
+      debugPrint('Unable to update wake lock: $error');
+    }
   }
 
   void _next() {

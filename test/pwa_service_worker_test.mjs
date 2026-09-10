@@ -12,7 +12,9 @@ function worker(scope, failedPath = '') {
   const stores = new Map();
   let offline = false;
   let cacheUnavailable = false;
+  let networkRequests = 0;
   const network = async (request) => {
+    networkRequests += 1;
     const url = typeof request === 'string' ? request : request.url;
     if (offline || (failedPath && url.endsWith(failedPath))) throw new Error('offline');
     const file = typeof request !== 'string' && request.mode === 'navigate'
@@ -48,6 +50,7 @@ function worker(scope, failedPath = '') {
   return {
     offline: () => { offline = true; },
     makeCacheUnavailable: () => { cacheUnavailable = true; },
+    networkRequests: () => networkRequests,
     cachedUrls: () => [...stores.values()].flatMap((store) => [...store.keys()]),
     lifecycle: (name) => new Promise((resolve, reject) => handlers[name]({ waitUntil: (promise) => promise.then(resolve, reject) })),
     fetch: (relative, mode = 'cors') => {
@@ -86,7 +89,16 @@ test('cache storage failure falls back to the network', async () => {
   await app.lifecycle('install');
   await app.lifecycle('activate');
   app.makeCacheUnavailable();
+  assert.ok((await (await app.fetch('version.json')).arrayBuffer()).byteLength > 0);
+});
+
+test('online navigation bypasses the cached shell', async () => {
+  const app = worker('https://example.test/');
+  await app.lifecycle('install');
+  await app.lifecycle('activate');
+  const beforeNavigation = app.networkRequests();
   assert.match(await (await app.fetch('lyrics/42', 'navigate')).text(), /<html>/);
+  assert.equal(app.networkRequests(), beforeNavigation + 1);
 });
 
 test('iOS standalone shell matches the app bar and starts caching before Flutter', () => {
