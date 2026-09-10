@@ -68,6 +68,7 @@ for (const scope of ['https://example.test/', 'https://example.test/Himbaza-Iman
     assert.ok(app.cachedUrls().length > 0);
     assert.equal(app.cachedUrls().some((url) => url.endsWith('.symbols')), false);
     assert.equal(app.cachedUrls().some((url) => url.includes('/skwasm')), false);
+    assert.equal(app.cachedUrls().some((url) => url.includes('no_sleep.js')), false);
     app.offline();
     for (const route of ['', 'lyrics/42?source=home']) {
       assert.match(await (await app.fetch(route, 'navigate')).text(), /<html>/);
@@ -101,10 +102,12 @@ test('online navigation bypasses the cached shell', async () => {
   assert.equal(app.networkRequests(), beforeNavigation + 1);
 });
 
-test('iOS standalone shell matches the app bar and starts caching before Flutter', () => {
+test('iOS standalone shell uses stable viewport sizing and caches before Flutter', () => {
   assert.match(indexSource, /theme-color" content="#37474F"/);
   assert.match(indexSource, /apple-mobile-web-app-capable" content="yes"/);
-  assert.match(indexSource, /apple-mobile-web-app-status-bar-style" content="black-translucent"/);
+  assert.match(indexSource, /apple-mobile-web-app-status-bar-style" content="black"/);
+  assert.doesNotMatch(indexSource, /viewport-fit=cover/);
+  assert.equal(manifest.display, 'standalone');
   assert.equal(manifest.theme_color, '#37474F');
   assert.equal(manifest.background_color, '#37474F');
   assert.ok(bootstrapTemplate.indexOf('await prepareOfflineSupport()') < bootstrapTemplate.indexOf('await _flutter.loader.load'));

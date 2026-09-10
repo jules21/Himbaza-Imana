@@ -4,7 +4,7 @@
     "id": "./",
     "start_url": "./",
     "scope": "./",
-    "display": "fullscreen",
+    "display": "standalone",
     "background_color": "#37474F",
     "theme_color": "#37474F",
     "description": "Indirimbo zo guhimbaza no kuramya Imana",
